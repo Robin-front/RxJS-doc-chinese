@@ -1,6 +1,9 @@
 {
+  "generator": "site",
+  "title": "RxJS - Javascript library for functional reactive programming.",
+  "description": "RxJS 中文文档",
   "structure": {
-      "readme": "INTRO.md"
+      "readme": "intro.md"
   },
   "plugins": [
       "jsbin",
