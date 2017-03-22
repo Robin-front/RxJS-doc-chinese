@@ -18,7 +18,8 @@
       "todo",
       "quiz",
       "include-highlight",
-      "tonic"
+      "tonic",
+      "ace"
   ],
   "theme": "theme",
   "pluginsConfig": {

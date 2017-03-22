@@ -320,9 +320,9 @@
           * [fromTransformStream](content/rxjs_bindings/node/stream_handlers/from_transform_stream.md)
           * [writeToStream](content/rxjs_bindings/node/stream_handlers/write_to_stream.md)
 {% if book.isPdf==false %}
-* [Resources](content/resources/README.md)
-    * [Articles](content/resources/articles/README.md)   
-    * [Reactive Libraries](content/resources/reactive_libraries/README.md)
+* [资源](content/resources/README.md)
+    * [文章](content/resources/articles/README.md)   
+    * [反应式编辑类库](content/resources/reactive_libraries/README.md)
         * [Bacon](content/resources/reactive_libraries/bacon.md)
         * [Cycle](content/resources/reactive_libraries/cycle.md)
         * [Elm](content/resources/reactive_libraries/elm.md)
@@ -330,8 +330,8 @@
         * [Kefir](content/resources/reactive_libraries/kefir.md)
         * [RxJS](content/resources/reactive_libraries/rx.md)
         * [Most](content/resources/reactive_libraries/most.md)
-    * [Presentations](content/resources/presentations/README.md)
-    * [Video](content/resources/video/README.md)
+    * [演讲](content/resources/presentations/README.md)
+    * [视频](content/resources/video/README.md)
 {% endif %}
 * [Recipes](content/recipes/README.md)
 {% if false %}

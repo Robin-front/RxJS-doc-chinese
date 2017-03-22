@@ -4,5 +4,8 @@
   "description": "RxJS中文文档",
   "main": "index.js",
   "author": "<lb.robin1991@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "gitbook-plugin-toggle-chapters": "^0.0.3"
+  }
 }
