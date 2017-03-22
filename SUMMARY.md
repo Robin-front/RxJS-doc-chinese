@@ -1,4 +1,4 @@
 
-# Summary
+# 介绍
 
-* [Why RxJS](why_rxjs.md)
+* [为什么选择 RxJS](why_rxjs.md)
