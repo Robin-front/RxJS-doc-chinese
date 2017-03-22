@@ -1,10 +1,4 @@
 
 # Summary
 
-## Overview
-
-* [My Awesome API](README.md)
-
-## Methods
-
-* [Defining Methods](methods.md)
+* [Why RxJS](why_rxjs.md)

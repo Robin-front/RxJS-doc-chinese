@@ -1,18 +1,38 @@
 {
-    "plugins": [ "theme-api" ],
-    "pluginsConfig": {
-        "theme-api": {
-            "languages": [
-                {
-                    "lang": "js",
-                    "name": "JavaScript",
-                    "default": true
-                },
-                {
-                    "lang": "go",
-                    "name": "Go"
-                }
-            ]
-        }
-    }
+  "plugins": [
+      "jsbin",
+      "anchors",
+      "video",
+      "toggle-chapters",
+      "editlink",
+      "include-codeblock",
+      "splitter",
+      "github-buttons",
+      "chart",
+      "todo",
+      "quiz",
+      "include-highlight",
+      "tonic"
+  ],
+  "theme": "theme",
+  "pluginsConfig": {
+      "fontSettings": {
+          "theme": "white",
+          "family": "sans"
+      },
+      "editlink": {
+          "base": "https://github.com/Robin-front/RxJS-doc-chinese/edit/master",
+          "label": "编辑本页"
+      },
+      "github-buttons": {
+          "repo": "Robin-front/RxJS-doc-chinese",
+          "types": [
+              "star"
+          ],
+          "size": "small"
+      }
+  },
+  "variables": {
+      "isPdf": false
+  }
 }
