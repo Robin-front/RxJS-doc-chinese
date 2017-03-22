@@ -1,4 +1,7 @@
 {
+  "structure": {
+      "readme": "INTRO.md"
+  },
   "plugins": [
       "jsbin",
       "anchors",
