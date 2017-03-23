@@ -4,7 +4,7 @@
 ## 入门指南
 
 * [为什么选择 RxJS](why_rxjs.md)
-* [RxJS 设计指南](content/guidelines/README.md)
+* [RxJS 设计指南](content/guidelines/readme.md)
   * [简介](content/guidelines/introduction.md)
   * [什么时候该用 RxJS](content/guidelines/when.md)
   * [RxJS的约定](content/guidelines/contract.md)
