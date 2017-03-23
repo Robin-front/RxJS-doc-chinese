@@ -16,11 +16,10 @@
       "splitter",
       "github-buttons",
       "sitemap-general",
-      "simple-page-toc",
       "quiz",
+      "include-codeblock",
       "include-highlight",
       "tonic",
-      "ace",
       "ga"
   ],
   "theme": "theme",
@@ -51,10 +50,6 @@
       },
       "sitemap-general": {
           "prefix": "https://robin-front.gitbooks.io/rxjs-doc-chinese/content/"
-      },
-      "simple-page-toc": {
-          "maxDepth": 3,
-          "skipFirstH1": true
       }
   },
   "variables": {
