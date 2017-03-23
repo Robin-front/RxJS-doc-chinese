@@ -15,7 +15,6 @@
       "editlink",
       "splitter",
       "github-buttons",
-      "sitemap-general",
       "quiz",
       "include-codeblock",
       "include-highlight",
@@ -47,9 +46,6 @@
               "star"
           ],
           "size": "small"
-      },
-      "sitemap-general": {
-          "prefix": "https://robin-front.gitbooks.io/rxjs-doc-chinese/content/"
       }
   },
   "variables": {
