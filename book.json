@@ -6,16 +6,13 @@
       "readme": "intro.md"
   },
   "plugins": [
-      "jsbin",
       "anchors",
-      "video",
       "toggle-chapters",
       "editlink",
-      "include-codeblock",
       "splitter",
       "github-buttons",
-      "chart",
-      "todo",
+      "sitemap-general",
+      "simple-page-toc",
       "quiz",
       "include-highlight",
       "tonic",
@@ -24,6 +21,12 @@
   ],
   "theme": "theme",
   "pluginsConfig": {
+      "theme-default": {
+        "showLevel": true,
+        "styles": {
+          "website": "build/gitbook.css"
+        }
+      },
       "fontSettings": {
           "theme": "white",
           "family": "sans"
@@ -41,6 +44,13 @@
               "star"
           ],
           "size": "small"
+      },
+      "sitemap-general": {
+          "prefix": "https://robin-front.gitbooks.io/rxjs-doc-chinese/content/"
+      },
+      "simple-page-toc": {
+          "maxDepth": 3,
+          "skipFirstH1": true
       }
   },
   "variables": {
