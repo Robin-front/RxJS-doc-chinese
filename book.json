@@ -9,25 +9,22 @@
       "jsbin",
       "anchors",
       "video",
-      "chart",
-      "todo",
+      "ga",
       "toggle-chapters",
       "editlink",
+      "include-codeblock",
       "splitter",
       "github-buttons",
+      "chart",
+      "todo",
       "quiz",
-      "include-codeblock",
       "include-highlight",
-      "tonic",
-      "ga"
+      "tonic"
   ],
   "theme": "theme",
   "pluginsConfig": {
       "theme-default": {
-        "showLevel": true,
-        "styles": {
-          "website": "build/gitbook.css"
-        }
+        "showLevel": true
       },
       "fontSettings": {
           "theme": "white",
