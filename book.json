@@ -19,13 +19,17 @@
       "quiz",
       "include-highlight",
       "tonic",
-      "ace"
+      "ace",
+      "ga"
   ],
   "theme": "theme",
   "pluginsConfig": {
       "fontSettings": {
           "theme": "white",
           "family": "sans"
+      },
+      "ga": {
+        "token": "UA-74634898-2"
       },
       "editlink": {
           "base": "https://github.com/Robin-front/RxJS-doc-chinese/edit/master",
