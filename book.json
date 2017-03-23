@@ -6,7 +6,11 @@
       "readme": "intro.md"
   },
   "plugins": [
+      "jsbin",
       "anchors",
+      "video",
+      "chart",
+      "todo",
       "toggle-chapters",
       "editlink",
       "splitter",
