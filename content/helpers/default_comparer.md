@@ -1,15 +1,15 @@
 ## [`Rx.helpers.defaultComparer(x, y)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/headers/basicheader.js#L8)
 
-The default equality comparer, used when a comparer is not supplied to a function.  Uses an internal deep equality check.
+默认的等式比较器，不适用于函数。内部使用深度比较。
 
-#### Arguments
-1. `x` *(Any)*: The first value to compare
-2. `y` *(Any)*: The second value to compare
+#### 参数
+1. `x` *(任意值)*: 第一个比较值
+2. `y` *(任意值)*: 第二个比较值
 
-#### Returns
+#### 返回值
 *(Boolean)*: `true` if equal; else `false`.
 
-#### Example 
+#### 例
 
 ```js
 var comparer = Rx.helpers.defaultComparer;
