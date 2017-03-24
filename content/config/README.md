@@ -1,9 +1,8 @@
-# Reactive Extensions Configuration #
+# Reactive Extensions 配置 #
 
-Configuration information for the Reactive Extensions for JavaScript
+Reactive Extensions 配置信息
 
-## Documentation ##
+## 文档 ##
 
 - [`Rx.config.Promise`](content/config/promise.html)
 - [`Rx.config.useNativeEvents`](content/config/usenativeevents.html)
-

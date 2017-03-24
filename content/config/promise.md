@@ -1,8 +1,8 @@
 ## [`Rx.config.Promise`]()
 
-Sets the default Promise type to be used when the [`toPromise`](../observable/observable_instance_methods/topromise.html) method is called.  Note that the Promise implementation must conform to the ES6 specification.  Some of those supported libraries are [Q](https://github.com/kriskowal/q), [RSVP](https://github.com/tildeio/rsvp.js), [when.js](https://github.com/cujojs/when) among others.  If not specified, this defaults to the native ES6 Promise, if available, else will throw an error.
+设置当[`toPromise`](../observable/observable_instance_methods/topromise.html)方法被调用时要使用的默认的Promise类型。请注意，Promise实施必须符合ES6规范。其中一些支持的库是[Q](https://github.com/kriskowal/q), [RSVP](https://github.com/tildeio/rsvp.js), [when.js](https://github.com/cujojs/when)等。如果未指定，则默认为原生ES6 Promise（如果可用），否则将抛出错误。
 
-#### Example
+#### 例
 
 ```js
 Rx.config.Promise = RSVP.Promise;
