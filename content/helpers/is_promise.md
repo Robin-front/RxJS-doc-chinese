@@ -5,7 +5,7 @@ A function which determines whether the object is a `Promise`.
 #### 参数
 1. `p` *(Any)*: The object to determine whether it is a promise.
 
-#### Returns
+#### 返回值
 *(Boolean)*: `true` if the object is a `Promise` else `false`
 
 #### 例 

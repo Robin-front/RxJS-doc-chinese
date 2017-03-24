@@ -5,7 +5,7 @@ A function which takes an argument and returns a function, when invoked, returns
 #### 参数
 1. `value` *(Any)*: The value to return.
 
-#### Returns
+#### 返回值
 *(Function)*: A function, when invoked, returns the value.
 
 #### 例 

@@ -5,7 +5,7 @@ Plucks a property from the object.
 #### 参数
 1. `property` *(String)*: The property name to pluck from the object.
 
-#### Returns
+#### 返回值
 *(Boolean)*: `true` if equal; else `false`.
 
 #### 例 
