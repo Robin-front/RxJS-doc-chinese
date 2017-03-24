@@ -1,15 +1,15 @@
 ## [`Rx.helpers.defaultSubComparer(x, y)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/headers/basicheader.js#L9)
 
-The default comparer to determine whether one object is greater, less than or equal to another.
+默认比较器，返回一个对象是否大于，小于或等于另一个。
 
-#### Arguments
-1. `x` *(Any)*: The first value to compare
-2. `y` *(Any)*: The second value to compare
+#### 参数
+1. `x` *(任意)*: 第一个比较值
+2. `y` *(任意)*: 第二个比较值
 
-#### Returns
-*(Number)*: Returns `1` if `x` is greater than `y`, `-1` if `y` is greater than `x`, and `0` if the objects are equal.
+#### 返回值
+*(Number类型)*: 返回 `1` 如果 `x` 大于 `y`, `-1` 表示 `y` 大于 `x`, and `0` 表示相等.
 
-#### Example 
+#### 例
 
 ```js
 var comparer = Rx.helpers.defaultSubcomparer;
