@@ -2,7 +2,7 @@
 
 A function which does nothing
 
-#### Example 
+#### 例 
 
 ```js
 var noop = Rx.helpers.noop;

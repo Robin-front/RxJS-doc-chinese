@@ -2,13 +2,13 @@
 
 A function which returns its value unmodified.
 
-#### Arguments
+#### 参数
 1. `x` *(Any)*: The value to return.
 
 #### Returns
 *(Any)*: The value given as the parameter.
 
-#### Example 
+#### 例 
 
 ```js
 var identity = Rx.helpers.identity;

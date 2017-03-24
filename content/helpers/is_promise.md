@@ -2,13 +2,13 @@
 
 A function which determines whether the object is a `Promise`.
 
-#### Arguments
+#### 参数
 1. `p` *(Any)*: The object to determine whether it is a promise.
 
 #### Returns
 *(Boolean)*: `true` if the object is a `Promise` else `false`
 
-#### Example 
+#### 例 
 
 ```js
 var isPromise = Rx.helpers.isPromise;

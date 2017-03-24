@@ -2,13 +2,13 @@
 
 A function which takes an argument and returns a function, when invoked, returns the argument.
 
-#### Arguments
+#### 参数
 1. `value` *(Any)*: The value to return.
 
 #### Returns
 *(Function)*: A function, when invoked, returns the value.
 
-#### Example 
+#### 例 
 
 ```js
 var just = Rx.helpers.just;

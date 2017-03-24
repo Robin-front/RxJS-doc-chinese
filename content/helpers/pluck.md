@@ -2,13 +2,13 @@
 
 Plucks a property from the object.
 
-#### Arguments
+#### 参数
 1. `property` *(String)*: The property name to pluck from the object.
 
 #### Returns
 *(Boolean)*: `true` if equal; else `false`.
 
-#### Example 
+#### 例 
 
 ```js
 var pluck = Rx.helpers.pluck;
