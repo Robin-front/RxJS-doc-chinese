@@ -1,14 +1,14 @@
 ## [`Rx.helpers.isPromise(p)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/headers/basicheader.js#L12)
 
-A function which determines whether the object is a `Promise`.
+确定对象是否为`Promise`对象的函数。
 
 #### 参数
-1. `p` *(Any)*: The object to determine whether it is a promise.
+1. `p` *(Any)*: 需要判定是否为 `Promise`对象的对象.
 
 #### 返回值
-*(Boolean)*: `true` if the object is a `Promise` else `false`
+*(Boolean)*: 如果传入对象是 `Promise` 对象，则返回`true` ，否则 `false`
 
-#### 例 
+#### 例
 
 ```js
 var isPromise = Rx.helpers.isPromise;
