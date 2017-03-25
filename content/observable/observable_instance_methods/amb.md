@@ -5,13 +5,13 @@
 <rx-marbles key="amb"></rx-marbles>
 
 
-传播的可观察序列或Promise的最先返回值。“amb”代表[ambiguous](http://blogs.msdn.com/b/jeffva/archive/2009/11/18/amb-materialize-and-dematerialize.aspx)。
+从一系列流中，订阅最先发射的值的可观察对象并忽略其他的可观察对象。“amb”代表[ambiguous](http://blogs.msdn.com/b/jeffva/archive/2009/11/18/amb-materialize-and-dematerialize.aspx)。
 
 #### 参数
 1. `rightSource` *(`Observable`)*: 第二个可观察序列.
 
 #### 返回值
-*(`Observable`)*: 一个可观察的序列，其表面为任何给定的序列，无论哪个首先返回。
+*(`Observable`)*: 返回首先返回值的可观察对象
 
 #### 例
 
@@ -37,3 +37,8 @@ var subscription = source.subscribe(
 ```
 
 [](http://jsbin.com/joviwu/1/embed?js,console)
+
+
+#### 应用
+
+由于只取最先返回值的可观察对象。所以可以应用于任何抢答、秒杀等一对多竞态应用。
