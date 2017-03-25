@@ -12,15 +12,15 @@
 
 Determines whether an observable collection contains values.
 
-#### Arguments
+#### 参数
 1. `condition` *(`Function`)*: The condition which determines if the thenSource or elseSource will be run.
 2. `thenSource` *(`Observable`)*: thenSource The observable sequence that will be run if the condition function returns true.
 3. `[elseSource]` *(Observable|Scheduler)*: The observable sequence that will be run if the condition function returns false. If this is not provided, it defaults to Rx.Observabe.Empty with the specified scheduler.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The generated sequence.
 
-#### Example
+#### 例
 
 ##### This uses and only then source
 

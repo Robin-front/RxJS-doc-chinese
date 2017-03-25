@@ -23,13 +23,13 @@ Rx.Observable.prototype.buffer(bufferClosingSelector);
 
 Returns an Observable that emits buffers of items it collects from the source `Observable`. The resulting `Observable` emits connected, non-overlapping buffers. It emits the current buffer and replaces it with a new buffer whenever the `Observable` produced by the specified `bufferClosingSelector` emits an item.
 
-#### Arguments
+#### 参数
 1. `bufferClosingSelector` *(`Function`)*: A function invoked to define the closing of each produced window.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of windows.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/peyeni/1/embed?js,console)
 
@@ -43,10 +43,10 @@ This version of `buffer` monitors an `Observable`, `bufferOpenings`, that emits 
 1. `bufferOpenings` *(`Observable`)*: Observable sequence whose elements denote the creation of new windows.
 2. `bufferClosingSelector` *(`Function`)*: A function invoked to define the closing of each produced window.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of windows.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/meqizo/1/embed?js,console)
 
@@ -57,12 +57,12 @@ Rx.Observable.prototype.buffer(bufferBoundaries);
 
 Returns an `Observable` that emits non-overlapping buffered items from the source `Observable` each time the specified boundary `Observable` emits an item.
 
-#### Arguments
+#### 参数
 1. `bufferBoundaries` *(`Observable`)*: Sequence of buffer boundary markers. The current buffer is closed and a new buffer is opened upon receiving a boundary marker.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of windows.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/jacapa/1/embed?js,console)

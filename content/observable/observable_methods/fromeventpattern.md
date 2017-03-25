@@ -2,15 +2,15 @@
 
 Creates an observable sequence by using the addHandler and removeHandler functions to add and remove the handlers, with an optional selector function to project the event arguments.
 
-#### Arguments
+#### 参数
 1. `addHandler` *(`Function`)*: The DOMElement, NodeList or EventEmitter to attach a listener.
 2. `removeHandler` *(`Function`)*: The optional function to remove a handler from an emitter.
 3. `[selector]` *(`Function`)*: A selector which takes the arguments from the event handler to produce a single item to yield on next.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of events from the specified element and the specified event.
 
-#### Example
+#### 例
 
 Wrapping an event from [jQuery](http://jquery.com)
 

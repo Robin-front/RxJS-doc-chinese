@@ -2,14 +2,14 @@
 
 Converts an ES6 iterable into an Observable sequence.
 
-#### Arguments
+#### 参数
 1. `iterable` *(Iterable)*: Either a generator function or iterable such as Set, Map, etc.
 2. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: Scheduler to run the function on. If not specified, defaults to `Rx.Scheduler.currentThread`.
 
-#### Returns
+#### 返回值
 *(`Function`)*: The observable sequence whose elements are pulled from the given generator sequence.
 
-#### Example
+#### 例
 ```js
 // Using a Set
 var source = Rx.Observable.fromIterable(new Set([1,2,3]));

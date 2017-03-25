@@ -12,14 +12,14 @@
 
 Subscribes a function to invoke upon exceptional termination of the observable sequence.
 
-#### Arguments
+#### 参数
 1. `onError` *(`Function`)*: Function to invoke upon exceptional termination of the observable sequence.
 2. `[thisArg]` *(`Any`)*: Object to use as this when executing callback.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The source sequence whose subscriptions and unsubscriptions happen on the specified scheduler.
 
-#### Example
+#### 例
 
 ##### Using functions
 

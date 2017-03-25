@@ -5,10 +5,10 @@ Returns an observable sequence with a single notification.
 ### Arguments
 1. `[scheduler = Rx.Scheduler.immediate]` *(Scheduler)*: Scheduler to send out the notification calls on.
 
-#### Returns
+#### 返回值
 *(Observable)*: The observable sequence that surfaces the behavior of the notification upon subscription.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

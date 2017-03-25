@@ -2,7 +2,7 @@
 
 Creates a notification callback from an observer.
 
-#### Returns
+#### 返回值
 *(Function)*: The function that forwards its input notification to the underlying observer.
 
 {% if book.isPdf %}
@@ -28,7 +28,7 @@ notifier(Rx.Notification.createOnCompleted());
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/cugigu/2/embed?js,console)
 
 {% endif %}

@@ -2,10 +2,10 @@
 
 Triggers on the second and subsequent triggerings of the input observable. The Nth triggering of the input observable passes the arguments from the N-1th and Nth triggering as a pair.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable that triggers on successive pairs of observations from the input observable as an array.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/yovebu/1/embed?js,console)
 

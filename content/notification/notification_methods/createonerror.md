@@ -5,7 +5,7 @@ Creates an object that represents an OnError notification to an observer.
 ### Arguments
 1. `exception` *(Any)*: The exception contained in the notification.
 
-#### Returns
+#### 返回值
 *(Notification)*: The OnError notification containing the exception.
 
 {% if book.isPdf %}
@@ -29,7 +29,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/capiq/2/embed?js,console)
 

@@ -23,15 +23,15 @@ Rx.Observable.prototype.window(windowOpenings, windowClosingSelector);
 Rx.Observable.prototype.window(windowBoundaries);
 ```
 
-#### Arguments
+#### 参数
 1. `[windowOpenings]` *(`Observable`)*: Observable sequence whose elements denote the creation of new windows 
 2.`[windowBoundaries]` *(`Observable`)*: Sequence of window boundary markers. The current window is closed and a new window is opened upon receiving a boundary marker. 
 3. `windowClosingSelector` *(`Function`)*: A function invoked to define the closing of each produced window.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of windows.
 
-#### Example
+#### 例
 
 ##### With window boundaries
 

@@ -12,14 +12,14 @@
 
 Returns an observable sequence that contains only distinct contiguous elements according to the keySelector and the comparer.
 
-#### Arguments
+#### 参数
 1. `[keySelector]` *(`Function`)*: A function to compute the comparison key for each element.
 2. `[comparer]` *(`Function`)*: Equality comparer for computed key values. If not provided, defaults to an equality comparer function.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence only containing the distinct elements, based on a computed key value, from the source sequence.
 
-#### Example
+#### 例
 ```js
 /* Without key selector */
 var source = Rx.Observable.fromArray([

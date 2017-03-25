@@ -12,12 +12,12 @@
 
 Records the timestamp for each value in an observable sequence.
 
-#### Arguments
+#### 参数
 1. `[scheduler=Rx.Observable.timeout]` *(`Scheduler`)*: Scheduler used to compute timestamps. If not specified, the timeout scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with timestamp information on values.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/kadup/1/embed?js,console)

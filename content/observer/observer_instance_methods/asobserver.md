@@ -2,7 +2,7 @@
 
 Hides the identity of an observer.
 
-#### Returns
+#### 返回值
 *(Observer)*: An observer that hides the identity of the specified observer.
 
 {% if book.isPdf %}
@@ -54,7 +54,7 @@ console.log(source === sampleObserver);
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/zivar/2/embed?js,console)
 
 {% endif %}

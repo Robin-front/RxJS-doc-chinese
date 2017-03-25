@@ -14,9 +14,9 @@ Returns an observable sequence that shares a single subscription to the underlyi
    
 This operator is a specialization of `publishValue` which creates a subscription when the number of observers goes from zero to one, then shares that subscription with all subsequent observers until the number of observers returns to zero, at which point the subscription is disposed.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements of a sequence produced by multicasting the source sequence.
  
-#### Example
+#### 例
 
 [](http://jsbin.com/pebufu/1/embed?js,console)

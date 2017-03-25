@@ -3,7 +3,7 @@
 
 Creates a hot observable for an Ajax request with either a settings object with url, headers, etc or a string for a URL.
 
-#### Arguments
+#### 参数
 1. `url` *(String)*: A string of the URL to make the Ajax call.
 1. `settings` *(Object)*: An object with the following properties
   	
@@ -12,10 +12,10 @@ Creates a hot observable for an Ajax request with either a settings object with 
   		- `async` *(Boolean)*: Whether the request is async
   		- `headers` *(Object)*: Optional headers
 
-#### Returns
+#### 返回值
 *(Observable)*: An observable sequence containing the `XMLHttpRequest`.
 
-#### Example 
+#### 例 
 
 The following example uses a simple URL to retrieve a list of products. 
 ```js

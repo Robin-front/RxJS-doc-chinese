@@ -12,7 +12,7 @@
 
 Returns the first element of an observable sequence that satisfies the condition in the predicate, or a default value if no such element exists.  If no default value is given, then `onError` will be called.
 
-#### Arguments
+#### 参数
 
 `Rx.Observable.prototype.first([predicate], [thisArg], [defaultValue])`
 
@@ -33,10 +33,10 @@ Returns the first element of an observable sequence that satisfies the condition
     - `[thisArg]` *(`Any`)*: Object to use as `this` when executing the predicate.
     - `[defaultValue]` *(`Any`)*: Default value if no such element exists.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains elements from the input sequence that satisfy the condition.
 
-#### Example
+#### 例
 
 ##### No Match
 

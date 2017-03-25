@@ -12,7 +12,7 @@
 
 Generates an observable sequence by iterating a state from an initial state until the condition fails.
 
-#### Arguments
+#### 参数
 1. `initialState` *(`Any`)*: Initial state.
 2. `condition` *(`Function`)*: Condition to terminate generation (upon returning false).
 3. `iterate` *(`Function`)*: Iteration step function.
@@ -20,9 +20,9 @@ Generates an observable sequence by iterating a state from an initial state unti
 5. `timeSelector` *(`Function`)*: Time selector function to control the speed of values being produced each iteration, returning integer values denoting milliseconds.
 6. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler on which to run the generator loop. If not provided, defaults to Scheduler.timeout.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The generated sequence.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/jisopo/1/embed?js,console)

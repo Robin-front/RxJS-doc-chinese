@@ -2,14 +2,14 @@
 
 Convert an object into an observable sequence of [key, value] pairs using an optional `Scheduler` to enumerate the object.
 
-#### Arguments
+#### 参数
 1. `obj` *(Object)*: The object to inspect and turn into an Observable sequence.
 2. `[scheduler]` *(`Scheduler`)*: Scheduler to run the enumeration of the input sequence on. If not specified, defaults to `Rx.Scheduler.currentThread`
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of [key, value] pairs from the object.
 
-#### Example
+#### 例
 ```js
 // Using Standard JavaScript
 var obj = {

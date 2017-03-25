@@ -18,9 +18,9 @@ This is an alias for `just`.
 1. `value` *(`Any`)*: Single element in the resulting observable sequence.
 2. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler to send the single element on. If not specified, defaults to Scheduler.immediate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with the single element.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/yupil/1/embed?js,console)

@@ -8,13 +8,13 @@ This behaves like `Observable.prototype.mergeAll` except that if any of the merg
 error via the Observer's `onError`, `mergeDelayError` will refrain from propagating that
 error notification until all of the merged Observables have finished emitting items.
 
-#### Arguments
+#### 参数
 1. `args` *(Array|arguments)*: Arguments or an array of Observable sequences to merge.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An Observable that emits all of the items emitted by the Observables emitted by the Observable
 
-#### Example
+#### 例
 ```js
 var source1 = Rx.Observable.of(1,2,3);
 var source2 = Rx.Observable.throwError(new Error('woops'));

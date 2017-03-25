@@ -12,16 +12,16 @@
 
 Computes the sum of a sequence of values that are obtained by invoking an optional transform function on each element of the input sequence, else if not specified computes the sum on each item in the sequence.
 
-#### Arguments
+#### 参数
 1. `[keySelector]` *(`Scheduler`)*:  A transform function to apply to each element.  The callback is called with the following information:
     1. the value of the element
     2. the index of the element
     3. the Observable object being subscribed
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element with the sum of the values in the source sequence.
  
-#### Example
+#### 例
 
 ##### Without a selector
 

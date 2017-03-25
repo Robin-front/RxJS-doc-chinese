@@ -14,14 +14,14 @@ Merges the specified observable sequences or Promises into one observable sequen
 
 The last element in the arguments must be a function to invoke for each series of elements at corresponding indexes in the sources.
 
-#### Arguments
+#### 参数
 1. `args` *(`Arguments` | `Array`)*: Arguments or an array of observable sequences.
 2. `[resultSelector]` *(`Any`)*: Function to invoke for each series of elements at corresponding indexes in the sources, used only if the first parameter is not an array.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the result of combining elements of the sources using the specified result selector function. 
 
-#### Example
+#### 例
 
 ##### Using arguments
 

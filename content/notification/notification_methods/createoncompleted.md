@@ -2,7 +2,7 @@
 
 Creates an object that represents an OnCompleted notification to an observer.
 
-#### Returns
+#### 返回值
 *(Notification)*: The OnCompleted notification.
 
 {% if book.isPdf %}
@@ -27,7 +27,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/gifoh/2/embed?js,console)
 

@@ -3,10 +3,10 @@
 
 Creates a factory for using RxJS.
 
-#### Returns
+#### 返回值
 *(Rx)*: The root of RxJS
 
-#### Example
+#### 例
 ```js
 angular.module('example', ['rx'])
     .controller('AppCtrl', function($scope, rx) {

@@ -13,7 +13,7 @@ Uses selector to determine which source in sources to use.  There is an alias `s
 2. `sources` *(`Object`)*: A object which has keys which correspond to the case statement labels.
 3. `[elseSource|scheduler]` *(`Observable` | `Scheduler`)*: The observable sequence that will be run if the sources are not matched. If this is not provided, it defaults to `Rx.Observabe.empty` with the specified scheduler.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence which is determined by a case statement. 
 
 {% if book.isPdf %}
@@ -44,7 +44,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/ladamu/2/embed?js,console)
 
 {% endif %}

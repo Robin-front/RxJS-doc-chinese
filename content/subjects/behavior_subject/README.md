@@ -54,10 +54,10 @@ subject.onCompleted();
 
 Initializes a new instance of the `Rx.BehaviorSubject` class which creates a subject that caches its last value and starts with the specified value.
 
-#### Arguments
+#### 参数
 1. `initialValue` *(Any)*: Initial value sent to observers when no other value has been received by the subject yet.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.BehaviorSubject(56);
 
@@ -96,7 +96,7 @@ subject.onCompleted();
 
 Unsubscribe all observers and release resources.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.BehaviorSubject();
 
@@ -139,10 +139,10 @@ try {
 
 Indicates whether the subject has observers subscribed to it.
 
-#### Returns
+#### 返回值
 *(Boolean)*: Returns `true` if the Subject has observers, else `false`.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.BehaviorSubject();
 

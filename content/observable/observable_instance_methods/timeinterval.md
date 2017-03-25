@@ -12,12 +12,12 @@
 
 Records the time interval between consecutive values in an observable sequence.
 
-#### Arguments
+#### 参数
 1. `[scheduler=Rx.Observable.timeout]` *(`Scheduler`)*: Scheduler used to compute time intervals. If not specified, the timeout scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with time interval information on values.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/ragoq/1/embed?js,console)

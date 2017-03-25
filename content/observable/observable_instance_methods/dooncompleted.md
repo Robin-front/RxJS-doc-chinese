@@ -14,14 +14,14 @@ Invokes an action upon graceful termination of the observable sequence.
 
 This method can be used for debugging, logging, etc. of query behavior by intercepting the message stream to run arbitrary actions for messages on the pipeline.
 
-#### Arguments
+#### 参数
 1. `oncompleted` *(`Function`)*: Function to invoke upon graceful termination of the observable sequence. 
 2. [`thisArg`] *(Any)*: Object to use as this when executing callback.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The source sequence with the side-effecting behavior applied.
 
-#### Example
+#### 例
 
 ##### Using a function
 

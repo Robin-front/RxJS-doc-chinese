@@ -8,10 +8,10 @@ Invokes the delegate corresponding to the notification or the observer's method 
 2. `[onError]` *(Function)*: Function to invoke for an OnError notification.
 2. `[onError]` *(Function)*: Function to invoke for an OnCompleted notification.
 
-#### Returns
+#### 返回值
 *(Any)*: Result produced by the observation.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

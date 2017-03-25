@@ -12,16 +12,16 @@
 
 Converts an array to an observable sequence, using an optional scheduler to enumerate the array.
 
-#### Arguments
+#### 参数
 1. `initialState` *(`Any`)*: Initial state.
 2. `condition` *(`Function`)*: Condition to terminate generation (upon returning false).
 3. `iterate` *(`Function`)*: Iteration step function.
 4. `resultSelector` *(`Function`)*: Selector function for results produced in the sequence.
 5. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: Scheduler on which to run the generator loop. If not provided, defaults to Scheduler.currentThread.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The generated sequence.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/vemibe/1/embed?js,console)

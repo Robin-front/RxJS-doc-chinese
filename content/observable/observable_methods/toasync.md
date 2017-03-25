@@ -17,9 +17,9 @@ Converts the function into an asynchronous function. Each invocation of the resu
 2. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the function on. If not specified, defaults to Scheduler.timeout.
 3. `[context]` *(`Any`)*: The context for the func parameter to be executed.  If not specified, defaults to undefined.
 
-#### Returns
+#### 返回值
 *(`Function`)*: Asynchronous function.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/zokawu/1/embed?js,console)

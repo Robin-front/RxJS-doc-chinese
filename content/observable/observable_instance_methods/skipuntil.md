@@ -12,12 +12,12 @@
 
 Returns the values from the source observable sequence only after the other observable sequence produces a value.
 
-#### Arguments
+#### 参数
 1. `other` *(`Observable` | `Promise`)*: The observable sequence or Promise that triggers propagation of elements of the source sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the elements of the source sequence starting from the point the other sequence triggered propagation.    
 
-#### Example
+#### 例
 
 [](http://jsbin.com/senon/1/embed?js,console)

@@ -57,7 +57,7 @@ var subscription = subject.subscribe(
 
 Creates a subject that can only receive one value and that value is cached for all future observations.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.AsyncSubject();
 
@@ -92,7 +92,7 @@ var subscription = subject.subscribe(
 
 Unsubscribe all observers and release resources.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.AsyncSubject();
 
@@ -135,10 +135,10 @@ try {
 
 Indicates whether the subject has observers subscribed to it.
 
-#### Returns
+#### 返回值
 *(Boolean)*: Returns `true` if the AsyncSubject has observers, else `false`.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.AsyncSubject();
 

@@ -4,7 +4,7 @@ Checks access to the observer for grammar violations. This includes checking for
 
 If a violation is detected, an Error is thrown from the offending observer method call.
 
-#### Returns
+#### 返回值
 *(Observer)*: An observer that checks callbacks invocations against the observer grammar and, if the checks pass, forwards those to the specified observer.
  
 {% if book.isPdf %}
@@ -31,7 +31,7 @@ checked.onNext(42);
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/vikam/2/embed?js,console)
 
 {% endif %} 

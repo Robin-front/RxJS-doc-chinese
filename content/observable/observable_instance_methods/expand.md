@@ -12,13 +12,13 @@
 
 Expands an observable sequence by recursively invoking selector.
 
-#### Arguments
+#### 参数
 1. `selector` *(`Function`)*: Selector function to invoke for each produced element, resulting in another sequence to which the selector will be invoked recursively again.
 2. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler on which to perform the expansion. If not provided, this defaults to the immediate scheduler.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element determining whether all elements in the source sequence pass the test in the specified predicate.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/xeyuf/1/embed?js,console)

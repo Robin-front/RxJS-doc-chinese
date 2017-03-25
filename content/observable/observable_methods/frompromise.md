@@ -2,13 +2,13 @@
 
 Converts a Promises/A+ spec compliant Promise and/or ES2015 compliant Promise to an Observable sequence.
 
-#### Arguments
+#### 参数
 1. `promise` *(`Promise`)*: Promises/A+ spec compliant Promise to an Observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An Observable sequence which wraps the existing promise success and failure.
 
-#### Example
+#### 例
 
 ##### Create a promise which resolves 42
 

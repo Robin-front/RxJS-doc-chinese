@@ -5,14 +5,14 @@
 
 Handles an event from the given EventEmitter as an observable sequence.  
 
-#### Arguments
+#### 参数
 1. `eventEmitter` *(EventEmitter)*: The EventEmitter to subscribe to the given event.
 2. `eventName` *(String)*: The event name to subscribe.
 
-#### Returns
+#### 返回值
 *(Observable)*: An observable sequence generated from the named event from the given EventEmitter.
 
-#### Example
+#### 例
 ```js
 var EventEmitter = require('events').EventEmitter;
 var Rx = require('Rx');

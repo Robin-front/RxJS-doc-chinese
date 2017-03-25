@@ -2,7 +2,7 @@
 
 Gets the exception from the OnError notification.
 
-#### Returns
+#### 返回值
 *(Any)*: The Exception from the OnError notification.
 
 {% if book.isPdf %}
@@ -18,7 +18,7 @@ console.log(notification.exception);
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/labura/2/embed?js,console)
 

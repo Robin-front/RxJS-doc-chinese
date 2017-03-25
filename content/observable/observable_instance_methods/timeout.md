@@ -12,15 +12,15 @@
 
 Returns the source observable sequence or the other observable sequence if dueTime elapses.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Date | Number)*: Absolute (specified as a Date object) or relative time (specified as an integer denoting milliseconds) when a timeout occurs.
 2. `[other]` *(`Observable`)*: Sequence or Promise to return in case of a timeout. If not specified, a timeout error throwing sequence will be used.
 3. `[scheduler=Rx.Observable.timeout]` *(`Scheduler`)*: Scheduler to run the timeout timers on. If not specified, the timeout scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with time interval information on values.
 
-#### Example
+#### 例
 
 ##### With no other
 

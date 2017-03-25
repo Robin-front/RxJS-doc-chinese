@@ -14,14 +14,14 @@ Applies an accumulator function over an observable sequence and returns each int
 
 For aggregation behavior with no intermediate results, see `Rx.Observable.aggregate`.
 
-#### Arguments
+#### 参数
 1. `[seed]` *(`Any`)*: The initial accumulator value.
 2. `accumulator` *(`Function`)*: An accumulator function to be invoked on each element.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence which results from the comonadic bind operation.
 
-#### Example
+#### 例
 
 ##### Without a seed
 

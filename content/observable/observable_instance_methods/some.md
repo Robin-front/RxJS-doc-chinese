@@ -12,16 +12,16 @@
 
 Determines whether any element of an observable sequence satisfies a condition if present, else if any items are in the sequence.  There is an alias to this method called `any`.
 
-#### Arguments
+#### 参数
 1. `predicate` *(`Function`)*: A function to test each source element for a condition. The callback is called with the following information:
     1. the value of the element
     2. the index of the element
     3. the Observable object being subscribed
 2. `[thisArg]` *(`Any`)*: Object to use as this when executing callback.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element determining whether all elements in the source sequence pass the test in the specified predicate. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/sekud/1/embed?js,console)

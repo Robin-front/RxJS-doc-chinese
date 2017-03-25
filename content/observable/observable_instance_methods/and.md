@@ -12,12 +12,12 @@
 
 Propagates the observable sequence that reacts first.
 
-#### Arguments
+#### 参数
 1. `right` *(`Observable`)*: Observable sequence to match with the current sequence.
 
-#### Returns
+#### 返回值
 *(`Pattern`)*: Pattern object that matches when both observable sequences have an available value.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/boyane/1/embed?js,console)

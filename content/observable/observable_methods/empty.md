@@ -11,10 +11,10 @@
 
 Returns an empty observable sequence, using the specified scheduler to send out the single OnCompleted message.
 
-#### Arguments
+#### 参数
 1. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler to send the termination call on.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with no elements.
 
 {% if book.isPdf %}
@@ -34,7 +34,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/kizosi/2/embed?js,console)
 

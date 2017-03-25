@@ -12,9 +12,9 @@
 
 Creates a list from an observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element with a list containing all the elements of the source sequence.  
 
-#### Example
+#### 例
 
 [](http://jsbin.com/cobaq/1/embed?js,console)

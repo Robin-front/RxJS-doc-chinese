@@ -44,7 +44,7 @@ serialDisposable.dispose();
 
 Initializes a new instance of the `Rx.SerialDisposable` class.
 
-#### Example
+#### 例
 ```js
 var serialDisposable = new Rx.SerialDisposable();
 
@@ -65,7 +65,7 @@ console.log(serialDisposable.isDisposed);
 
 Disposes the underlying disposable as well as all future replacements.
 
-#### Example
+#### 例
 
 ```js
 var serialDisposable = new Rx.SerialDisposable();
@@ -93,10 +93,10 @@ var d2 = Rx.Disposable.create(() => console.log('two'));
 
 Gets the underlying disposable.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The underlying disposable.
 
-#### Example
+#### 例
 
 ```js
 var serialDisposable = new Rx.SerialDisposable();
@@ -121,10 +121,10 @@ console.log(d === disposable);
 
 Sets the underlying disposable.
 
-#### Arguments
+#### 参数
 1. `value` *(Disposable)*: The new underlying disposable.
 
-#### Example
+#### 例
 
 ```js
 var serialDisposable = new Rx.SerialDisposable();
@@ -155,7 +155,7 @@ serialDisposable.setDisposable(d2);
 
 Gets a value that indicates whether the object is disposed.
 
-#### Example
+#### 例
 ```js
 var serialDisposable = new Rx.SerialDisposable();
 

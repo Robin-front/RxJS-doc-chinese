@@ -15,9 +15,9 @@ Continues an observable sequence that is terminated normally or by an exception 
 ### Arguments
 1. `args` *(Array|arguments)*: Observable sequences to concatenate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that concatenates the source sequences, even if a sequence terminates exceptionally. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/zewox/1/embed?js,console)

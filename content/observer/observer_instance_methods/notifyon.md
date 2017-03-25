@@ -2,10 +2,10 @@
 
 Schedules the invocation of observer methods on the given scheduler.
 
-#### Arguments
+#### 参数
 1. `scheduler` *(Scheduler)*: Scheduler to schedule observer messages on.
 
-#### Returns
+#### 返回值
 *(Observer)*: Observer whose messages are scheduled on the given scheduler.
 
 {% if book.isPdf %}
@@ -27,7 +27,7 @@ timeoutObserver.onNext(42);
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/quwavu/3/embed?js,console)
 
 {% endif %} 

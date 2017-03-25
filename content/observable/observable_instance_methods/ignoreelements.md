@@ -12,9 +12,9 @@
 
 Ignores all elements in an observable sequence leaving only the termination messages.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An empty observable sequence that signals termination, successful or exceptional, of the source sequence.    
 
-#### Example
+#### 例
 
 [](http://jsbin.com/dekug/1/embed?js,console)

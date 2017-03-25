@@ -12,13 +12,13 @@
 
 Concatenates all the observable sequences.  This takes in either an array or variable arguments to concatenate.
 
-#### Arguments
+#### 参数
 1. `args` *(`arguments` | `Array`)*: An array or arguments of Observable sequences.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements of each given sequence, in sequential order. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/coyapo/1/embed?js,console)
 

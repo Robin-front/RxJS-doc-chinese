@@ -55,12 +55,12 @@ subject.onNext('d');
 
 Initializes a new instance of the `Rx.ReplaySubject` class with the specified buffer size, window and scheduler.
 
-#### Arguments
+#### 参数
 1. `[bufferSize = Number.MAX_VALUE]` *(Number)*: Maximum element count of the replay buffer.
 2. `[windowSize = NUMBER.MAX_VALUE]` *(Number)*: Maximum time length of the replay buffer.
 3. `[scheduler = Rx.Scheduler.currentThread]` *(Scheduler)*: Scheduler the observers are invoked on.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.ReplaySubject(
     2 /* buffer size */,
@@ -102,7 +102,7 @@ subject.onNext('d');
 
 Unsubscribe all observers and release resources.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.ReplaySubject();
 
@@ -145,10 +145,10 @@ try {
 
 Indicates whether the subject has observers subscribed to it.
 
-#### Returns
+#### 返回值
 *(Boolean)*: Returns `true` if the Subject has observers, else `false`.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.ReplaySubject();
 

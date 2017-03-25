@@ -7,14 +7,14 @@ Creates an observable sequence from an Ajax POST Request with the body.  This me
 ```js
 Rx.DOM.Request.post(url, body);
 ```
-#### Arguments
+#### 参数
 1. `url` *(String)*: A string of the URL to make the Ajax call.
 2. `[body]` *(Object)*: The body to post
 
-#### Returns
+#### 返回值
 *(Observable)*: The observable sequence which contains the response from the Ajax POST.
 
-#### Example
+#### 例
 ```js
 Rx.DOM.Request.post('/test')
 	.subscribe(

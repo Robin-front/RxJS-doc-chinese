@@ -8,13 +8,13 @@
 
 Creates an observable sequence from a specified subscribe method implementation.  This is an alias for the `createWithDisposable` method
 
-#### Arguments
+#### 参数
 1. `subscribe` *(`Function`)*: Implementation of the resulting observable sequence's subscribe method, optionally returning a function that will be wrapped in a disposable object.  This could also be a disposable object.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence with the specified implementation for the subscribe method.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

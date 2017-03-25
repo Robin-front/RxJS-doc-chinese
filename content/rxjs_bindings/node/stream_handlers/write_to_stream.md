@@ -5,15 +5,15 @@
 
 Writes an observable sequence to a stream.
 
-#### Arguments
+#### 参数
 1. `observable` *(Obsesrvable)*: Observable sequence to write to a stream.
 2. `stream` *(Stream)*: The stream to write to.
 3. `[encoding]` *(String)*: The encoding of the item to write.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The subscription handle.
 
-#### Example
+#### 例
 ```js
 var Rx = require('Rx');
 

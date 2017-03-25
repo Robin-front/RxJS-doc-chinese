@@ -12,9 +12,9 @@
 
 Dematerializes the explicit notification values of an observable sequence as implicit notifications.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence exhibiting the behavior corresponding to the source sequence's notification values.
   
-#### Example
+#### 例
 
 [](http://jsbin.com/yusem/1/embed?js,console)

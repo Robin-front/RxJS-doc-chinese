@@ -2,7 +2,7 @@
 
 Gets the value from the OnNext notification.
 
-#### Returns
+#### 返回值
 *(Any)*: The value from the OnNext notification.
 
 {% if book.isPdf %}
@@ -18,7 +18,7 @@ console.log(notification.value);
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/cubive/2/embed?js,console)
 

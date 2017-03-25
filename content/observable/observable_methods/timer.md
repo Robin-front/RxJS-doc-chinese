@@ -18,9 +18,9 @@ relative time is supported.
 2. `[period|scheduler=Rx.Scheduler.timeout]` *(Number|Scheduler)*: Period to produce subsequent values (specified as an integer denoting milliseconds), or the scheduler to run the timer on. If not specified, the resulting timer is not recurring.
 3. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the timer on. If not specified, the timeout scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that produces a value after due time has elapsed and then each period.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/peleyayike/1/edit?html,js,console)

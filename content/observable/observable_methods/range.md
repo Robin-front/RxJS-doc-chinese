@@ -17,9 +17,9 @@ Generates an observable sequence of integral numbers within a specified range, u
 2. `count` *(`Number`)*: The number of sequential integers to generate.
 3. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: Scheduler to run the generator loop on. If not specified, defaults to Scheduler.currentThread.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains a range of sequential integral numbers. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/bapay/1/embed?js,console)

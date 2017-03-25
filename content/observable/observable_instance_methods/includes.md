@@ -2,14 +2,14 @@
 
 Determines whether an observable sequence includes a specified element with an optional from index.
 
-#### Arguments
+#### 参数
 1. `searchElement` *(`Any`)*: The value to locate in the source sequence.
 2. `[fromIndex]` *(`Number`)*: The index to start the search.  If not specified, defaults to 0.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element determining whether the source sequence includes an element that has the specified value with an optional from index.
 
-#### Example
+#### 例
 ```js
 /* Without an index */
 var source = Rx.Observable.of(42)

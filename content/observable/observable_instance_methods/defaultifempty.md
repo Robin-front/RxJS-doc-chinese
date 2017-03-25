@@ -12,13 +12,13 @@
 
 Returns the elements of the specified sequence or the specified value in a singleton sequence if the sequence is empty.
 
-#### Arguments
+#### 参数
 1. `[defaultValue=null]` *(`Any`)*: The value to return if the sequence is empty. If not provided, this defaults to null.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the specified default value if the source is empty; otherwise, the elements of the source itself. 
   
-#### Example
+#### 例
 
 ##### Without a default value
 

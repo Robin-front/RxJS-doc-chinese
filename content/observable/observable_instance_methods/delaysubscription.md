@@ -6,14 +6,14 @@ This operator is more efficient than `delay` but postpones all side-effects of s
 
 The side-effects of subscribing to the source sequence will be run on the specified scheduler. Observer callbacks will not be affected.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(`Number | Date`)*: Relative (Number) or Absolute (Date) time shift of the subscription.
 2. `[scheduler]` *(`Scheduler`)*: Scheduler to run the subscription delay timer on. If not specified, the default scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: Time-shifted sequence.
 
-#### Example
+#### 例
 ```js
 var start = Date.now()
 

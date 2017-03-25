@@ -63,13 +63,13 @@ var disposable = Rx.Scheduler.timeout.scheduleWithState(
 
 Initializes a new instance of the `Rx.Scheduler`.  This is meant for Scheduler implementers and not normal usage.
 
-#### Arguments
+#### 参数
 1. `now` *(Function)*: Function which gets the current time according to the local machine's system clock.
 2. `schedule` *(Function)*: Function to schedule an action immediately.
 3. `scheduleRelative` *(Function)*: Function used to schedule an action in relative time.
 4. `scheduleAbsolute` *(Function)*: Function used to schedule an action in absolute time.
 
-#### Example
+#### 例
 ```js
 // Used for scheduling immediately
 function schedule(state, action) {
@@ -141,13 +141,13 @@ var handle = timeoutScheduler.schedule(function () {
 
 Returns a scheduler that wraps the original scheduler, adding exception handling for scheduled actions.  There is an alias of `catchException` for browsers < IE9.
 
-#### Arguments
+#### 参数
 1. `handler` *(Function)*: Handler that's run if an exception is caught. The exception will be rethrown if the handler returns `false`.
 
-#### Returns
+#### 返回值
 *(Scheduler)*: Wrapper around the original scheduler, enforcing exception handling.
 
-#### Example
+#### 例
 
 ```js
 function inherits (ctor, superCtor) {
@@ -196,10 +196,10 @@ var d2 = catchScheduler.schedule(function () {
 
 Gets the current time according to the Scheduler implementation.
 
-#### Returns
+#### 返回值
 *(Number)*: The current time according to the Scheduler implementation.
 
-#### Example
+#### 例
 
 ```js
 var now = Rx.Scheduler.timeout.now();
@@ -221,13 +221,13 @@ console.log(now);
 
 Schedules an action to be executed.
 
-#### Arguments
+#### 参数
 1. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.immediate.schedule(function () {
@@ -251,14 +251,14 @@ disposable.dispose();
 
 Schedules an action to be executed with state.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.immediate.scheduleWithState('world', function (x) {
@@ -282,14 +282,14 @@ disposable.dispose();
 
 Schedules an action to be executed at the specified absolute due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Number)*: Absolute time at which to execute the action.
 2. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.scheduleWithAbsolute(
@@ -313,15 +313,15 @@ var disposable = Rx.Scheduler.timeout.scheduleWithAbsolute(
 
 Schedules an action to be executed at the specified absolute due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `dueTime` *(Number)*: Absolute time at which to execute the action.
 3. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.scheduleWithAbsolute(
@@ -346,14 +346,14 @@ var disposable = Rx.Scheduler.timeout.scheduleWithAbsolute(
 
 Schedules an action to be executed after the specified relative due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Number)*: Relative time at which to execute the action.
 2. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.scheduleWithRelative(
@@ -377,15 +377,15 @@ var disposable = Rx.Scheduler.timeout.scheduleWithRelative(
 
 Schedules an action to be executed at the specified relative due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `dueTime` *(Number)*: Relative time at which to execute the action.
 3. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.scheduleWithAbsolute(
@@ -412,13 +412,13 @@ var disposable = Rx.Scheduler.timeout.scheduleWithAbsolute(
 
 Schedules an action to be executed recursively.
 
-#### Arguments
+#### 参数
 1. `action` *(Function)*: Action to execute recursively. The parameter passed to the action is used to trigger recursive scheduling of the action.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var i = 0;
@@ -448,14 +448,14 @@ var disposable = Rx.Scheduler.immediate.scheduleRecursive(
 
 Schedules an action to be executed with state.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `action` *(Function)*: Action to execute recursively. The last parameter passed to the action is used to trigger recursive scheduling of the action, passing in recursive invocation state.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.immediate.scheduleRecursiveWithState(
@@ -484,14 +484,14 @@ var disposable = Rx.Scheduler.immediate.scheduleRecursiveWithState(
 
 Schedules an action to be executed recursively at a specified absolute due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Number)*: Absolute time at which to execute the action for the first time.
 2. `action` *(Function)*: Action to execute recursively. The parameter passed to the action is used to trigger recursive scheduling of the action at the specified absolute time.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var i = 0;
@@ -523,15 +523,15 @@ var disposable = Rx.Scheduler.timeout.scheduleRecursiveWithAbsolute(
 
 Schedules an action to be executed recursively at a specified absolute due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `dueTime` *(Number)*: Absolute time at which to execute the action for the first time.
 3. `action` *(Function)*: Action to execute recursively. The last parameter passed to the action is used to trigger recursive scheduling of the action, passing in the recursive due time and invocation state.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.scheduleRecursiveWithAbsoluteAndState(
@@ -562,14 +562,14 @@ var disposable = Rx.Scheduler.timeout.scheduleRecursiveWithAbsoluteAndState(
 
 Schedules an action to be executed recursively at a specified relative due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Number)*: Relative time at which to execute the action for the first time.
 2. `action` *(Function)*: Action to execute recursively. The parameter passed to the action is used to trigger recursive scheduling of the action at the specified relative time.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var i = 0;
@@ -601,15 +601,15 @@ var disposable = Rx.Scheduler.timeout.scheduleRecursiveWithRelative(
 
 Schedules an action to be executed recursively at a specified relative due time. Note this only works with the built-in `Rx.Scheduler.timeout` scheduler, as the rest will throw an exception as the framework does not allow for blocking.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `dueTime` *(Number)*: Relative time at which to execute the action for the first time.
 3. `action` *(Function)*: Action to execute recursively. The last parameter passed to the action is used to trigger recursive scheduling of the action, passing in the recursive due time and invocation state.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.scheduleRecursiveWithRelativeAndState(
@@ -642,14 +642,14 @@ var disposable = Rx.Scheduler.timeout.scheduleRecursiveWithRelativeAndState(
 
  Schedules a periodic piece of work by dynamically discovering the scheduler's capabilities. The periodic task will be scheduled using `window.setInterval` for the base implementation.
 
-#### Arguments
+#### 参数
 1. `period` *(Number)*: Period for running the work periodically in ms.
 1. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var i = 0;
@@ -682,15 +682,15 @@ var disposable = Rx.Scheduler.timeout.schedulePeriodic(
 
 Schedules a periodic piece of work by dynamically discovering the scheduler's capabilities. The periodic task will be scheduled using `window.setInterval` for the base implementation.
 
-#### Arguments
+#### 参数
 1. `state` *(Any)*: State passed to the action to be executed.
 2. `period` *(Number)*: Period for running the work periodically in ms.
 2. `action` *(Function)*: Action to execute.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Scheduler.timeout.schedulePeriodicWithState(
@@ -726,13 +726,13 @@ var disposable = Rx.Scheduler.timeout.schedulePeriodicWithState(
 
 Normalizes the specified time span value to a positive value.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Number)*: The time span value to normalize.
 
-#### Returns
+#### 返回值
 *(Number)*: The specified time span value if it is zero or positive; otherwise, 0
 
-#### Example
+#### 例
 
 ```js
 var r1 = Rx.Scheduler.normalize(-1);
@@ -757,7 +757,7 @@ console.log(r1);
 
 Gets a scheduler that schedules work as soon as possible on the current thread.  This implementation does not support relative and absolute scheduling due to thread blocking required.
 
-#### Example
+#### 例
 ```js
 var scheduler = Rx.Scheduler.currentThread;
 
@@ -781,7 +781,7 @@ var disposable = scheduler.scheduleWithState(
 
 Gets a scheduler that schedules work immediately on the current thread.
 
-#### Example
+#### 例
 ```js
 var scheduler = Rx.Scheduler.immediate;
 
@@ -818,7 +818,7 @@ For all schedule calls, it defaults to:
 
 For all relative and absolute scheduling, it defaults to using `window.setTimeout`.
 
-#### Example
+#### 例
 ```js
 var scheduler = Rx.Scheduler.timeout;
 

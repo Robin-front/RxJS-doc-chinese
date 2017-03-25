@@ -24,11 +24,11 @@ Records information about subscriptions to and unsubscriptions from observable s
 
 Creates a new subscription object with the given virtual subscription and unsubscription time.
 
-#### Arguments
+#### 参数
 1. `subscribe` *(Number)*: Virtual time at which the subscription occurred.
 2. `[unsubscribe = Number.MAX_VALUE]` *(Number)*: Virtual time at which the unsubscription occurred.
 
-#### Example
+#### 例
 ```js
 var subscription = new Rx.Subscription(200, 1000);
 
@@ -52,13 +52,13 @@ console.log(recorded.unsubscribe);
 
 Checks whether the given subscription is equal to the current instance.
 
-#### Arguments
+#### 参数
 1. `other` *(Subscription)*: Subscription object to check for equality.
 
-#### Returns
+#### 返回值
 *(Boolean)*: Returns `true` if the Subscription equals the other, else `false`.
 
-#### Example
+#### 例
 
 ```js
 var s1 = new Subscription(201, 500);
@@ -83,10 +83,10 @@ console.log(s1.equals(s3));
 
 Returns a string representation of the current Subscription value.
 
-#### Returns
+#### 返回值
 *(String)*: String representation of the current Subscription value.
 
-#### Example
+#### 例
 
 ```js
 var s1 = new Subscription(201);
@@ -112,10 +112,10 @@ console.log(s2.toString());
 
 Gets the subscription virtual time.
 
-#### Returns
+#### 返回值
 *(Number)*: The subscription virtual time.
 
-#### Example
+#### 例
 
 ```js
 var s1 = new Subscription(201);
@@ -135,10 +135,10 @@ console.log(s1.subscribe);
 
 Gets the unsubscription virtual time.
 
-#### Returns
+#### 返回值
 *(Number)*: The unsubscription virtual time.
 
-#### Example
+#### 例
 
 ```js
 var s1 = new Subscription(201, 500);

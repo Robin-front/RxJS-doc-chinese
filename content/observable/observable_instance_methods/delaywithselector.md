@@ -12,14 +12,14 @@
 
 Time shifts the observable sequence by dueTime. The relative time intervals between the values are preserved.
 
-#### Arguments
+#### 参数
 1. `[subscriptionDelay]` *(`Observable`)*: Sequence indicating the delay for the subscription to the source. 
 2. `delayDurationSelector` *(`Function`)*: Selector function to retrieve a sequence indicating the delay for each given element.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: Time-shifted sequence.
   
-#### Example
+#### 例
 
 ##### With subscriptionDelay
 

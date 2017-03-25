@@ -14,14 +14,14 @@ Returns an observable sequence that shares a single subscription to the underlyi
 
 This operator is a specialization of `replay` that connects to the connectable observable sequence when the number of observers goes from zero to one, and disconnects when there are no more observers.
 
-#### Arguments
+#### 参数
 1. `[bufferSize]` *(`Number`)*: Maximum element count of the replay buffer.
 2. `[window]` *(`Number`)*: Maximum time length of the replay buffer in milliseconds.
 3. `[scheduler]` *(`Scheduler`)*: Scheduler where connected observers within the selector function will be invoked on.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements of a sequence produced by multicasting the source sequence within a selector function.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/cihow/1/embed?js,console)

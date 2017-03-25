@@ -14,12 +14,12 @@ Wraps the source sequence in order to run its subscription and unsubscription lo
 
 This only performs the side-effects of subscription and unsubscription on the specified scheduler. In order to invoke observer callbacks on a scheduler, use `observeOn`.
 
-#### Arguments
+#### 参数
 1. `scheduler` *(`Scheduler`)*:  Scheduler to notify observers on.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The source sequence whose observations happen on the specified scheduler. 
  
-#### Example
+#### 例
 
 [](http://jsbin.com/socik/1/embed?js,console)

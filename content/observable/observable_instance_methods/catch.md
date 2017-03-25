@@ -12,14 +12,14 @@
 
 Continues an observable sequence that is terminated by an exception with the next observable sequence.  There is an alias for this method `catchException` for browsers <IE9
 
-#### Arguments
+#### 参数
 1. `second` *(`Observable`)*: A second observable sequence used to produce results when an error occurred in the first sequence.
 1. `handler` *(`Function`)*: Exception handler function that returns an observable sequence given the error that occurred in the first sequence
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the first sequence's elements, followed by the elements of the handler sequence in case an exception occurred.
 
-#### Example
+#### 例
 
 ##### Using a second observable
 

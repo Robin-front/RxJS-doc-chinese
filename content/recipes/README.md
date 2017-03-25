@@ -41,7 +41,7 @@ Rx.Observable.create(o => {
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/pizomo/3/embed?js,console)
 
 {% endif %}

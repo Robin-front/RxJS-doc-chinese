@@ -15,9 +15,9 @@ Invokes the asynchronous function, surfacing the result through an observable se
 ### Arguments
 1. `functionAsync` *(`Function`)*: Asynchronous function which returns a Promise to run.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence exposing the function's Promises's value or error.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/jucoh/1/embed?js,console)

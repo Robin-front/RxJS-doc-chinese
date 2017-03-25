@@ -33,14 +33,14 @@ source.selectConcat(Rx.Observable.fromArray([1,2,3]));
 source.selectConcat(Promise.resolve(42));
  ```
 
-#### Arguments
+#### 参数
 1. `selector` *(`Function`)*:  A transform function to apply to each element or an observable sequence to project each element from the source sequence onto.
 2. `[resultSelector]` *(`Function`)*: A transform function to apply to each element of the intermediate sequence.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence whose elements are the result of invoking the one-to-many transform function collectionSelector on each element of the input sequence and then mapping each of those sequence elements and their corresponding source element to a result element.   
 
-#### Example
+#### 例
 
 ##### Using without a promise
 

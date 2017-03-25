@@ -17,7 +17,7 @@ Time shifts the observable sequence by dueTime. The relative time intervals betw
 
 Time shifts the observable sequence based on a subscription delay and a delay selector function for each element.
 
-#### Arguments
+#### 参数
 
 For delays with an absolute or relative time:
 1. `dueTime` *(Date | Number)*: Absolute (specified as a Date object) or relative time (specified as an integer denoting milliseconds) by which to shift the observable sequence.
@@ -27,10 +27,10 @@ For delays with a delay selector function:
 1. `[subscriptionDelay]` *(`Observable`)*: Sequence indicating the delay for the subscription to the source.
 2. `delayDurationSelector` *(`Function`)*: Selector function to retrieve a sequence indicating the delay for each given element.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: Time-shifted sequence.
   
-#### Example
+#### 例
 
 ##### Using an absolute time to delay by a second
 

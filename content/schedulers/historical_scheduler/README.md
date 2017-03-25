@@ -92,11 +92,11 @@ Unit Tests:
 
 Creates a new historical scheduler with the specified initial clock value.
 
-#### Arguments
+#### 参数
 1. [`initialClock`] *(Function)*: Initial value for the clock.
 2. [`comparer`] *(Function)*: Comparer to determine causality of events based on absolute time.
 
-#### Example
+#### 例
 ```js
 function comparer (x, y) {
   if (x > y) { return 1; }

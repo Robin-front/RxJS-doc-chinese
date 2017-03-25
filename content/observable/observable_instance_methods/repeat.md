@@ -12,12 +12,12 @@
 
 Repeats the observable sequence a specified number of times. If the repeat count is not specified, the sequence repeats indefinitely.
  
-#### Arguments
+#### 参数
 1. `repeatCount` *(`Number`)*:  Number of times to repeat the sequence. If not provided, repeats the sequence indefinitely.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence producing the elements of the given sequence repeatedly.  
 
-#### Example
+#### 例
 
 [](http://jsbin.com/raqico/1/embed?js,console)

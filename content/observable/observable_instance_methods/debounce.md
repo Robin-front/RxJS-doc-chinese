@@ -6,7 +6,7 @@ Emits an item from the source Observable after a particular timespan has passed 
 
 Ignores values from an observable sequence which are followed by another value within a computed debounced duration.
 
-#### Arguments
+#### 参数
 
 If using a relative due time:
 1. `dueTime` *(`Number`)*: Duration of the throttle period for each value (specified as an integer denoting milliseconds).
@@ -15,10 +15,10 @@ If using a relative due time:
 If using the duration selector function:
 1. `durationSelector` *(`Function`)*: Selector function to retrieve a sequence indicating the throttle duration for each given element.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The debounced sequence.
 
-#### Example
+#### 例
 ```js
 var times = [
     { value: 0, time: 100 },

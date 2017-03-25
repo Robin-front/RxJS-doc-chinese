@@ -2,7 +2,7 @@
 
 Notifies the observer of a new element in the sequence.
 
-#### Arguments
+#### 参数
 1. `value` *(Any)*: Next element in the sequence. 
 
 {% if book.isPdf %}
@@ -21,7 +21,7 @@ observer.onNext(42);
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/navivu/2/embed?js,console)
 
 {% endif %}

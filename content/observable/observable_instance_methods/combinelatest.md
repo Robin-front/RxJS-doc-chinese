@@ -12,14 +12,14 @@
 
 Merges the specified observable sequences into one observable sequence by using the selector function whenever any of the observable sequences produces an element. This can be in the form of an argument list of observables or an array. If the result selector is omitted, a list with the elements will be yielded.
 
-#### Arguments
+#### 参数
 1. `args` *(arguments | Array)*: An array or arguments of Observable sequences.
 1. `[resultSelector]` *(`Function`)*: Function to invoke whenever either of the sources produces an element. If omitted, a list with the elements will be yielded.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the result of combining elements of the sources using the specified result selector function. 
 
-#### Examples
+#### 例s
 
 {% if book.isPdf %}
 
@@ -57,7 +57,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-##### Example
+##### 例
 
 [](http://jsbin.com/divopa/1/embed?js,console)
 
@@ -94,7 +94,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-##### Example
+##### 例
 
 [](http://jsbin.com/divopa/1/embed?js,console)
 

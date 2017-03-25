@@ -12,10 +12,10 @@
 
 Propagates the observable sequence or Promise that reacts first. "amb" stands for [ambiguous](http://blogs.msdn.com/b/jeffva/archive/2009/11/18/amb-materialize-and-dematerialize.aspx).
 
-#### Arguments
+#### 参数
 1. `rightSource` *(`Observable`)*: Second observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that surfaces either of the given sequences, whichever reacted first.
 
 {% if book.isPdf %}
@@ -45,7 +45,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/joviwu/1/embed?js,console)
 

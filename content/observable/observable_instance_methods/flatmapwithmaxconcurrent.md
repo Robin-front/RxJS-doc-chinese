@@ -26,7 +26,7 @@ source.flatMapWithMaxConcurrent(1, Promise.resolve(42));
 source.flatMapWithMaxConcurrent(1, [1,2,3]);
  ```
 
-#### Arguments
+#### 参数
 1. `maxConcurrent` *(`Number`)*: Maximum number of inner observable sequences being subscribed to concurrently.
 2. `selector` *(`Function` | `Iterable` | `Promise`)*:  An Object to project to the sequence or a transform function to apply to each element or an observable sequence to project each element from the source sequence onto.  The selector is called with the following information:
     1. the value of the element
@@ -41,10 +41,10 @@ source.flatMapWithMaxConcurrent(1, [1,2,3]);
 
 4. `[thisArg]` *(`Any`)*: If `resultSelector` is not `Function`, Object to use as `this` when executing `selector`.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence whose elements are the result of invoking the one-to-many transform function collectionSelector on each element of the input sequence and then mapping each of those sequence elements and their corresponding source element to a result element.
 
-#### Example
+#### 例
 ```js
 var source = Rx.Observable.range(0, 5)
   .flatMapWithMaxConcurrent(2, function (x, i) {

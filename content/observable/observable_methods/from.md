@@ -11,16 +11,16 @@
 
 This method creates a new Observable sequence from an array-like or iterable object.
 
-#### Arguments
+#### 参数
 1. `iterable` *(`Array` | `Arguments` | `Iterable`)*: An array-like or iterable object to convert to an Observable sequence.
 2. `[mapFn]` *(`Function`)*: Map function to call on every element of the array.
 3. `[thisArg]` *(`Any`)*: The context to use calling the mapFn if provided.
 4. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: Scheduler to run the enumeration of the input sequence on.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence whose elements are pulled from the given iterable sequence.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

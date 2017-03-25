@@ -2,14 +2,14 @@
 
 Merges the specified observable sequences into one observable sequence by using the selector function only when the source observable sequence (the instance) produces an element. The other observables can be in the form of an argument list of observables or an array.
 
-#### Arguments
+#### 参数
 1. `args` *(arguments | Array)*: An array or arguments of Observable sequences.
 1. `resultSelector` *(`Function`)*: Function to invoke when the instance source observable produces an element.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the result of combining elements of the sources using the specified result selector function.
 
-#### Example
+#### 例
 ```js
 /* Have staggering intervals */
 var source1 = Rx.Observable.interval(140)

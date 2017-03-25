@@ -24,13 +24,13 @@ This class contains test utility methods such as create notifications for testin
 
 Factory method for an OnCompleted notification record at a given time.
 
-#### Arguments
+#### 参数
 1. `ticks` *(Number)*: Recorded virtual time the OnCompleted notification occurs.
 
-#### Returns
+#### 返回值
 *(Recorded)*: OnCompleted notification.
 
-#### Example
+#### 例
 ```js
 var onCompleted = Rx.ReactiveTest.onCompleted;
 
@@ -61,14 +61,14 @@ collectionAssert(res, [
 
 Factory method for an OnError notification record at a given time with a given error.
 
-#### Arguments
+#### 参数
 1. `ticks` *(Number)*: Recorded virtual time the OnError notification occurs.
 2. `exception` *(Error | Function)*: Recorded exception stored in the OnError notification or a predicate
 
-#### Returns
+#### 返回值
 *(Recorded)*: Recorded OnError notification.
 
-#### Example
+#### 例
 
 ```js
 var ex = new Error('woops');
@@ -104,14 +104,14 @@ collectionAssert(res, [
 
 Factory method for an OnNext notification record at a given time with a given error.
 
-#### Arguments
+#### 参数
 1. `ticks` *(Number)*: Recorded virtual time the OnNext notification occurs.
 2. `value` *(Any | Function)*: Recorded exception stored in the OnNext notification or a predicate
 
-#### Returns
+#### 返回值
 *(Recorded)*: Recorded OnNext notification.
 
-#### Example
+#### 例
 
 ```js
 var ex = new Error('woops');
@@ -149,7 +149,7 @@ collectionAssert(res, [
 
 Default virtual time used for creation of observable sequences in unit tests.  This has a value of `100`.
 
-#### Example
+#### 例
 
 ```js
 var scheduler = new Rx.TestScheduler();
@@ -179,7 +179,7 @@ var res = scheduler.startWithTiming(
 
 Default virtual time used to dispose subscriptions in unit tests.  This has a value of `1000`.
 
-#### Example
+#### 例
 
 ```js
 var scheduler = new Rx.TestScheduler();
@@ -209,7 +209,7 @@ var res = scheduler.startWithTiming(
 
 Default virtual time used to subscribe to observable sequences in unit tests.  This has a value of `200`.
 
-#### Example
+#### 例
 
 ```js
 var scheduler = new Rx.TestScheduler();

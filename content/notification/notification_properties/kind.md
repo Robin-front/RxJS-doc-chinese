@@ -2,7 +2,7 @@
 
 Gets the kind from the notification which denotes 'N' for OnNext, 'E' for OnError and 'C' for OnCompleted.
 
-#### Returns
+#### 返回值
 *(String)*: The kind from the notification which denotes 'N' for OnNext, 'E' for OnError and 'C' for OnCompleted.
 
 {% if book.isPdf %}
@@ -18,7 +18,7 @@ console.log(notification.kind);
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/midaci/2/embed?js,console)
 

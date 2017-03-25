@@ -8,10 +8,10 @@ When all subscriptions to the returned observable have completed, the source obs
 
 The first subscription after disposal starts again, subscribing one time to the source observable, then sharing that subscription with each subsequent simultaneous subscription.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that stays connected to the source as long as there is at least one subscription to the observable sequence.
 
-#### Example
+#### 例
 ```js
 var interval = Rx.Observable.interval(1000);
 

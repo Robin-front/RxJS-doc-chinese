@@ -91,7 +91,7 @@ collectionAssert.assertEqual(xs.subscriptions, [
 
 Creates a new virtual time test scheduler.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext,
     onCompleted = Rx.ReactiveTest.onCompleted;
@@ -140,10 +140,10 @@ Creates a cold observable using the specified timestamped notification messages.
 ### Arguments
 1. `args` *(Arguments)*: An arguments array of Recorded objects from `Rx.ReactiveTest.onNext`, `Rx.ReactiveTest.onError`, and `Rx.ReactiveTest.onCompleted` methods.
 
-#### Returns
+#### 返回值
 *(Observable)*: Cold observable sequence that can be used to assert the timing of subscriptions and notifications.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext,
     onCompleted = Rx.ReactiveTest.onCompleted;
@@ -189,10 +189,10 @@ Creates a hot observable using the specified timestamped notification messages.
 ### Arguments
 1. `args` *(Arguments)*: An arguments array of Recorded objects from `Rx.ReactiveTest.onNext`, `Rx.ReactiveTest.onError`, and `Rx.ReactiveTest.onCompleted` methods.
 
-#### Returns
+#### 返回值
 *(Observable)*: Hot observable sequence that can be used to assert the timing of subscriptions and notifications.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext,
     onCompleted = Rx.ReactiveTest.onCompleted;
@@ -236,10 +236,10 @@ collectionAssert.assertEqual(xs.subscriptions, [
 
 Creates an observer that records received notification messages and timestamps those.
 
-#### Returns
+#### 返回值
 *(Observer)*: Observer that can be used to assert the timing of received notifications.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext;
 
@@ -283,10 +283,10 @@ Starts the test scheduler and uses default virtual times to invoke the factory f
 ### Arguments
 1. `create` *(Function)*: Factory method to create an observable sequence.
 
-#### Returns
+#### 返回值
 *(Observer)*: Observer with timestamped recordings of notification messages that were received during the virtual time window when the subscription to the source sequence was active.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext,
     onCompleted = Rx.ReactiveTest.onCompleted;
@@ -334,10 +334,10 @@ Default virtual times are used for factory invocation and sequence subscription.
 1. `create` *(Function)*: Factory method to create an observable sequence.
 2. `disposed` *(Number)*: Virtual time at which to dispose the subscription.
 
-#### Returns
+#### 返回值
 *(Observer)*: Observer with timestamped recordings of notification messages that were received during the virtual time window when the subscription to the source sequence was active.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext,
     onCompleted = Rx.ReactiveTest.onCompleted;
@@ -389,10 +389,10 @@ Starts the test scheduler and uses the specified virtual times to invoke the fac
 3. `subscribed` *(Number)*: Virtual time at which to subscribe to the created observable sequence.
 4. `disposed` *(Number)*: Virtual time at which to dispose the subscription.
 
-#### Returns
+#### 返回值
 *(Observer)*: Observer with timestamped recordings of notification messages that were received during the virtual time window when the subscription to the source sequence was active.
 
-#### Example
+#### 例
 ```js
 var onNext = Rx.ReactiveTest.onNext,
     onCompleted = Rx.ReactiveTest.onCompleted;

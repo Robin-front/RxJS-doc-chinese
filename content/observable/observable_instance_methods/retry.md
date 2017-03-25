@@ -12,12 +12,12 @@
 
 Projects each element of an observable sequence into a new form by incorporating the element's index.  This is an alias for the `select` method.
 
-#### Arguments
+#### 参数
 1. `[retryCount]` *(`Number`)*:  Number of times to retry the sequence. If not provided, retry the sequence indefinitely.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence producing the elements of the given sequence repeatedly until it terminates successfully. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/hixenu/1/embed?js,console)

@@ -18,7 +18,7 @@ observer.onCompleted();
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/yuqade/2/embed?js,console)
 
 {% endif %}

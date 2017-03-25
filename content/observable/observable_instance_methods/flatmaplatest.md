@@ -14,17 +14,17 @@ Transform the items emitted by an Observable into Observables, and mirror those 
 
 The `flatMapLatest` operator is similar to the `flatMap` and `concatMap` methods described above, however, rather than emitting all of the items emitted by all of the Observables that the operator generates by transforming items from the source `Observable`, `switchMap` instead emits items from each such transformed `Observable` only until the next such `Observable` is emitted, then it ignores the previous one and begins emitting items emitted by the new one.
 
-#### Arguments
+#### 参数
 1. `selector` *(`Function`)*:  A transform function to apply to each source element.  The callback has the following information:
     1. the value of the element
     2. the index of the element
     3. the Observable object being subscribed
 2. `[thisArg]` *(`Any`)*: Object to use as `this` when executing the predicate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence which transforms the items emitted by an Observable into Observables, and mirror those items emitted by the most-recently transformed Observable.
 
-#### Example
+#### 例
 ```js
 var source = Rx.Observable
   .range(1, 3)

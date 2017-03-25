@@ -2,14 +2,14 @@
 
 Repeats the source observable sequence on error when the notifier emits a next value. If the source observable errors and the notifier completes, it will complete the source sequence
 
-#### Arguments
+#### 参数
 1. `notificationHandler` *(`Function`)*: A handler that is passed an observable sequence of errors raised by the source observable and returns
 and observable that either continues, completes or errors. This behavior is then applied to the source observable.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence producing the elements of the given sequence repeatedly until it terminates successfully or is notified to error or complete.
 
-#### Example: delayed retry
+#### 例: delayed retry
 ```js
 var count = 0;
 
@@ -47,7 +47,7 @@ var subscription = source.subscribe(
 // => Error: 'ex'
 ```
 
-#### Example: Erroring an observable after 2 failures
+#### 例: Erroring an observable after 2 failures
 ```js
 var count = 0;
 
@@ -85,7 +85,7 @@ var subscription = source.subscribe(
 // => Error: 'ex'
 ```
 
-#### Example: Completing an observable after 2 failures
+#### 例: Completing an observable after 2 failures
 ```js
 var count = 0;
 

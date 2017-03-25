@@ -103,11 +103,11 @@ console.log(scheduler.clock);
 
 Creates a new virtual time scheduler with the specified initial clock value and absolute time comparer.
 
-#### Arguments
+#### 参数
 1. `initialClock` *(Function)*: Initial value for the clock.
 2. `comparer` *(Function)*: Comparer to determine causality of events based on absolute time.
 
-#### Example
+#### 例
 ```js
 function comparer (x, y) {
     if (x > y) { return 1; }
@@ -134,10 +134,10 @@ var scheduler = new Rx.VirtualTimeScheduler(
 
 Advances the scheduler's clock by the specified relative time, running all work scheduled for that timespan.
 
-#### Arguments
+#### 参数
 1. `time` *(Any)*: Relative time to advance the scheduler's clock by.
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     200 /* initial time */
@@ -165,10 +165,10 @@ console.log(scheduler.clock);
 
 Advances the scheduler's clock to the specified time, running all work till that point.
 
-#### Arguments
+#### 参数
 1. `time` *(Any)*: Absolute time to advance the scheduler's clock to.
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -201,14 +201,14 @@ console.log(scheduler.clock);
 
 Schedules an action to be executed at dueTime.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Any)*: Absolute time at which to execute the action.
 2. `action` *(Function)*: Action to be executed.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -241,15 +241,15 @@ console.log(scheduler.clock);
 
 Schedules an action to be executed at dueTime.
 
-#### Arguments
+#### 参数
 1. `state`: *(Any)*: State passed to the action to be executed.
 1. `dueTime` *(Any)*: Absolute time at which to execute the action.
 2. `action` *(Function)*: Action to be executed.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -282,14 +282,14 @@ console.log(scheduler.clock);
 
 Schedules an action to be executed at dueTime.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(Any)*: Relative time after which to execute the action.
 2. `action` *(Function)*: Action to be executed.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     100 /* initial time */
@@ -322,15 +322,15 @@ console.log(scheduler.clock);
 
 Schedules an action to be executed at dueTime.
 
-#### Arguments
+#### 参数
 1. `state`: *(Any)*: State passed to the action to be executed.
 1. `dueTime` *(Any)*: Relative time after which to execute the action.
 2. `action` *(Function)*: Action to be executed.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object used to cancel the scheduled action (best effort).
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -363,10 +363,10 @@ console.log(scheduler.clock);
 
 Advances the scheduler's clock by the specified relative time.
 
-#### Arguments
+#### 参数
 1. `time` *(Any)*: Relative time to advance the scheduler's clock by.
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -389,7 +389,7 @@ console.log(scheduler.clock);
 
 Starts the virtual time scheduler.
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -422,7 +422,7 @@ console.log(scheduler.clock);
 
 Stops the virtual time scheduler.
 
-#### Example
+#### 例
 ```js
 var scheduler = new MyVirtualScheduler(
     0 /* initial time */
@@ -461,10 +461,10 @@ Adds a relative time value to an absolute time value.  This method is used in se
 1. `absolute` *(Any)*: Absolute virtual time value.
 2. `relative` *(Any)*: Relative virtual time value.
 
-#### Returns
+#### 返回值
 *(Any)*: Resulting absolute virtual time sum value.
 
-#### Example
+#### 例
 
 One possible implementation could be as simple as the following:
 
@@ -488,10 +488,10 @@ Converts an absolute time to a number.  This is used directly in the `now` metho
 ### Arguments
 1. `absolute` *(Any)*: The absolute time to convert.
 
-#### Returns
+#### 返回值
 *(Number)*: The absolute time in ms.
 
-#### Example
+#### 例
 
 One possible implementation could be as simple as the following:
 
@@ -516,10 +516,10 @@ Converts the time span number/Date to a relative virtual time value.
 ### Arguments
 1. `timeSpan` *(Any)*: The time span number value to convert.  This is used directly in `scheduleWithRelativeAndState` and `scheduleWithAbsoluteAndState`.
 
-#### Returns
+#### 返回值
 *(Number)*: Corresponding relative virtual time value.
 
-#### Example
+#### 例
 
 One possible implementation could be as simple as the following:
 

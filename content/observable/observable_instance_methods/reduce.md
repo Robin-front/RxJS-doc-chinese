@@ -14,13 +14,13 @@ Applies an accumulator function over an observable sequence, returning the resul
 
 For aggregation behavior with incremental intermediate results, see the `scan` method.
 
-#### Arguments
+#### 参数
 1. `accumulator` *(`Function`)*:  An accumulator function to be invoked on each element.
 2. `[seed]` *(`Any`)*: The initial accumulator value.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element with the final accumulator value.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/jocin/1/embed?js,console)

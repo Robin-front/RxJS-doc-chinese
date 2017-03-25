@@ -12,14 +12,14 @@
 
 Converts the observable sequence to a Map if it exists.  Note that this only works in an ES6 environment or polyfilled.
 
-#### Arguments
+#### 参数
 1. `keySelector` *(`Function`)*: A function which produces the key for the Map.
 2. `[elementSelector]` *(`Function`)*: An optional function which produces the element for the Map. If not present, defaults to the value from the observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with a single value of a Map containing the values from the observable sequence.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/vukig/1/embed?js,console)
 

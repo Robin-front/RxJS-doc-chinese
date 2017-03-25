@@ -12,13 +12,13 @@
 
 Determines whether all elements of an observable sequence satisfy a condition.
 
-#### Arguments
+#### 参数
 1. `predicate` *(`Function`)*: A function to test each element for a condition.
 2. `[thisArg]` *(`Function`)*: Object to use as this when executing callback.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element determining whether all elements in the source sequence pass the test in the specified predicate.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/kaxifo/1/embed?js,console)

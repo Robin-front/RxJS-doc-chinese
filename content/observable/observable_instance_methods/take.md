@@ -12,13 +12,13 @@
 
 Returns a specified number of contiguous elements from the start of an observable sequence, using the specified scheduler for the edge case of `take(0)`.
   
-#### Arguments
+#### 参数
 1. `count` *(`Number`)*: The number of elements to return.
 2. `[schduler]` *(`Scheduler`)*: Scheduler used to produce an onCompleted message in case `count` is set to 0.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements that occur after the specified index in the input sequence.   
 
-#### Example
+#### 例
 
 [](http://jsbin.com/ticoya/1/embed?js,console)

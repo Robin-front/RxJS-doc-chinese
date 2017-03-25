@@ -12,14 +12,14 @@
 
 Runs all observable sequences in parallel and collect their last elements.
 
-#### Arguments
+#### 参数
 1. `args`: *(`Arguments` | `Array`)* - An array or arguments of Observable sequences or Promises to collect the last elements for.
 2. `resultSelector`: *(`Function`)* - The result selector from all the values produced. If not specified, `forkJoin` will return the results as an array.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence with an array collecting the last elements of all the input sequences or the result of the result selector if specified.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/vezova/1/embed?js,console)
 

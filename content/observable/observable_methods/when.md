@@ -15,9 +15,9 @@ A series of plans (specified as an Array of as a series of arguments) created by
 ### Arguments
 1. `args` *(`arguments`|`Array`)*: A series of plans (specified as an Array of as a series of arguments) created by use of the then operator on patterns.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: Observable sequence with the results form matching several patterns. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/vobuh/1/embed?js,console)

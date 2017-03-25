@@ -2,7 +2,7 @@
 
 Determines whether the Notification has a value.  Returns `true` for OnNext Notifications, and `false` for OnError and OnCompleted Notifications.
 
-#### Returns
+#### 返回值
 *(Bool)*: Returns `true` for OnNext Notifications, and `false` for OnError and OnCompleted Notifications.
 
 {% if book.isPdf %}
@@ -23,7 +23,7 @@ console.log(onCompleted.hasValue);
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/cicixi/3/embed?js,console)
 

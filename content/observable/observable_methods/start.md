@@ -17,9 +17,9 @@ Invokes the specified function asynchronously on the specified scheduler, surfac
 2. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the function on. If not specified, defaults to Scheduler.timeout.
 3. `[context]` *(`Any`)*: The context for the func parameter to be executed.  If not specified, defaults to undefined.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence exposing the function's result value, or an exception.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/xitili/1/embed?js,console)

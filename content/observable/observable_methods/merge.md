@@ -12,13 +12,13 @@
 
 Merges all the observable sequences and Promises into a single observable sequence.  
 
-#### Arguments
+#### 参数
 1. `[scheduler]` *(Scheduler=Rx.Scheduler.timeout)*: Scheduler to run the timer on. If not specified, Rx.Scheduler.immediate is used.
 1. `args` *(Array|arguments)*: Observable sequences to merge into a single sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that produces a value after each period.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/yicit/1/embed?js,console)

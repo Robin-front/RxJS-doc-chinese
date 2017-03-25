@@ -6,14 +6,14 @@
 Converts the given observable sequence to an event emitter with the given event name. 
 The errors are handled on the 'error' event and completion on the 'end' event.
 
-#### Arguments
+#### 参数
 1. `observable` *(Obsesrvable)*: The observable sequence to convert to an EventEmitter.
 2. `eventName` *(String)*: The event name to subscribe.
 
-#### Returns
+#### 返回值
 *(EventEmitter)*: An EventEmitter which emits the given eventName for each onNext call in addition to 'error' and 'end' events.
 
-#### Example
+#### 例
 ```js
 var Rx = require('Rx');
 

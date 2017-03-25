@@ -12,12 +12,12 @@
 
 Returns an array with the specified number of contiguous elements from the end of an observable sequence.
 
-#### Arguments
+#### 参数
 1. `count` *(`Number`)*: Number of elements to bypass at the end of the source sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single array with the specified number of elements from the end of the source sequence.
      
-#### Example
+#### 例
 
 [](http://jsbin.com/kafiv/1/embed?js,console)

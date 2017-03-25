@@ -5,13 +5,13 @@
 
 Converts a flowing writeable stream to an Observable sequence.
 
-#### Arguments
+#### 参数
 1. `stream` *(Stream)*: A stream to convert to a observable sequence.
 
-#### Returns
+#### 返回值
 *(Observable)*: An observable sequence which fires on each 'data' event as well as handling 'error' and 'finish' events.
 
-#### Example
+#### 例
 ```js
 var Rx = require('rx');
 

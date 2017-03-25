@@ -2,7 +2,7 @@
 
 Notifies the observer that an exception has occurred.
 
-#### Arguments
+#### 参数
 1. `error` *(Any)*: The error that has occurred. 
 
 {% if book.isPdf %}
@@ -21,7 +21,7 @@ observer.onError(new Error('error!!'));
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/nulan/3/embed?js,console)
 
 {% endif %}

@@ -12,12 +12,12 @@
 
 Pauses the underlying observable sequence based upon the observable sequence which yields true/false, and yields the values that were buffered while paused. Note that this only works on hot observables.
 
-#### Arguments
+#### 参数
 1. `pauser` *(Rx.Subject)*: The observable sequence used to pause the underlying sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence which is paused based upon the pauser.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/nekey/1/embed?js,console)

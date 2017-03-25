@@ -17,9 +17,9 @@ Generates an observable sequence that repeats the given element the specified nu
 2. `[repeatCount=-1]` *(`Number`)*:Number of times to repeat the element. If not specified, repeats indefinitely.
 3. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler to run the producer loop on. If not specified, defaults to Scheduler.immediate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that repeats the given element the specified number of times.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/hezux/1/embed?js,console)

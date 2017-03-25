@@ -7,13 +7,13 @@ Creates a Web Worker with a given URL as a Subject.
 ```js
 Rx.DOM.fromWebWorker(url);
 ```	
-#### Arguments
+#### 参数
 1. `url` *(String)*: The URL of the Web Worker.
 
-#### Returns
+#### 返回值
 *(Subject)*: A Subject which wraps a Web Worker.
 
-#### Example
+#### 例
 ```js
 var worker = Rx.DOM.fromWebWorker('worker.js');
 

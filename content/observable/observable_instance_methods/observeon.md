@@ -15,12 +15,12 @@ Wraps the source sequence in order to run its observer callbacks on the specifie
 
 This only invokes observer callbacks on a scheduler. In case the subscription and/or unsubscription actions have side-effects that require to be run on a scheduler, use subscribeOn.
 
-#### Arguments
+#### 参数
 1. `scheduler` *(`Scheduler`)*:  Scheduler to notify observers on.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The source sequence whose observations happen on the specified scheduler. 
  
-#### Example
+#### 例
 
 [](http://jsbin.com/hehov/1/embed?js,console)

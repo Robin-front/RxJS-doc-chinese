@@ -39,7 +39,7 @@ singleDisposable.dispose();
 
 Initializes a new instance of the `Rx.SingleAssignmentDisposable` class.
 
-#### Example
+#### 例
 ```js
 var singleDisposable = new Rx.SingleAssignmentDisposable();
 
@@ -60,7 +60,7 @@ console.log(singleDisposable.isDisposed);
 
 Disposes the underlying disposable.
 
-#### Example
+#### 例
 
 ```js
 var singleDisposable = new Rx.SingleAssignmentDisposable();
@@ -90,10 +90,10 @@ console.log(singleDisposable.isDisposed);
 
 Gets the underlying disposable. After disposal, the result of getting this method is undefined.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The underlying disposable.
 
-#### Example
+#### 例
 
 ```js
 var singleDisposable = new Rx.SingleAssignmentDisposable();
@@ -118,10 +118,10 @@ console.log(d === disposable);
 
 Sets the underlying disposable.
 
-#### Arguments
+#### 参数
 1. `value` *(Disposable)*: The new underlying disposable.
 
-#### Example
+#### 例
 
 ```js
 var singleDisposable = new Rx.SingleAssignmentDisposable();
@@ -154,7 +154,7 @@ try {
 
 Gets a value that indicates whether the object is disposed.
 
-#### Example
+#### 例
 ```js
 var singleDisposable = new Rx.SingleAssignmentDisposable();
 

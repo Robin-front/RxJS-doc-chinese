@@ -3,17 +3,17 @@
 
 Creates a factory which allows the user to observe a property on a given scope to check for old and new values.
 
-#### Arguments
+#### 参数
 1. `scope` *(Scope)*: The scope to apply the watch function.
 2. `watchExpression`: Expression that is evaluated on each `$digest` cycle. A change in the return value triggers a call to the listener.
     - `string`: Evaluated as expression
     - `function(scope)`: called with current scope as a parameter.
 3. `[objectEquality]`: *(Function)*: Compare object for equality rather than for reference.
 
-#### Returns
+#### 返回值
 *(Rx)*: The root of RxJS
 
-#### Example
+#### 例
 ```js
 angular.module('observeOnScopeApp', ['rx'])
     .controller('AppCtrl', function($scope, observeOnScope) {

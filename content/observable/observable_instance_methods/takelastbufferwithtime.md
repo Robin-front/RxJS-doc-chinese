@@ -14,13 +14,13 @@ Returns an array with the elements within the specified duration from the end of
 
 This operator accumulates a queue with a length enough to store elements received during the initial duration window. As more elements are received, elements older than the specified duration are taken from the queue and produced on the result sequence. This causes elements to be delayed with duration.  
  
-#### Arguments
+#### 参数
 1. `duration` *(`Number`)*: Duration for taking elements from the end of the sequence.
 2. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the timer on. If not specified, defaults to timeout scheduler.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single array with the elements taken during the specified duration from the end of the source sequence.
  
-#### Example
+#### 例
 
 [](http://jsbin.com/komepa/1/embed?js,console)

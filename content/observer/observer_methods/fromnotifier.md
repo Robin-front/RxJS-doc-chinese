@@ -2,10 +2,10 @@
 
 Creates an observer from a notification callback.
 
-#### Arguments
+#### 参数
 1. `handler` *(Function)*: Function that handles a notification.
 
-#### Returns
+#### 返回值
 *(Observer)*: The observer object that invokes the specified handler using a notification corresponding to each message it receives.
 
 {% if book.isPdf %}
@@ -42,7 +42,7 @@ Rx.Observer.fromNotifier(handler).onCompleted();
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/difobe/3/embed?js,console)
 
 {% endif %}

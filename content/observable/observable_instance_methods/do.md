@@ -16,16 +16,16 @@ This method can be used for debugging, logging, etc. of query behavior by interc
 
 There is an alias to this method `doAction` for browsers <IE9 and `tap` as well.
 
-#### Arguments
+#### 参数
 1. `[observer]` *(Observer)*: An observer to invoke for each element in the observable sequence.
 1. `[onNext]` *(`Function`)*: Function to invoke for each element in the observable sequence.
 2. `[onError]` *(`Function`)*: Function to invoke upon exceptional termination of the observable sequence. Used if only the first parameter is also a function.
 3. `[oncompleted]` *(`Function`)*: Function to invoke upon graceful termination of the observable sequence. Used if only the first parameter is also a function.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The source sequence with the side-effecting behavior applied.
 
-#### Example
+#### 例
 
 ##### Using a function
 

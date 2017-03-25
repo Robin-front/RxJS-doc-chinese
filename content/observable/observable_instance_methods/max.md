@@ -12,13 +12,13 @@
 
 Returns the maximum value in an observable sequence according to the specified comparer.
 
-#### Arguments
+#### 参数
 1. `[comparer]` *(`Function`)*:  Comparer used to compare elements.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element with the maximum element in the source sequence.
 
-#### Example
+#### 例
 
 ##### Without comparer
 

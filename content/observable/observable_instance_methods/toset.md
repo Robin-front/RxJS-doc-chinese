@@ -12,9 +12,9 @@
 
 Creates an observable sequence with a single item of a Set created from the observable sequence.  Note that this only works in an ES6 environment or polyfilled.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element with a Set containing all the elements of the source sequence.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/biyaj/1/embed?js,console)

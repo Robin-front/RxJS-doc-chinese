@@ -14,12 +14,12 @@ Returns an observable sequence that is the result of invoking the selector on a 
    
 This operator is a specialization of `multicast` using a `Rx.BehaviorSubject`.
 
-#### Arguments
+#### 参数
 1. `[selector]` *(`Function`)*: Selector function which can use the multicasted source sequence as many times as needed, without causing multiple subscriptions to the source sequence. Subscribers to the given source will receive immediately receive the initial value, followed by all notifications of the source from the time of the subscription on.
  
-#### Returns
+#### 返回值
 *(ConnectableObservable)*: An observable sequence that contains the elements of a sequence produced by multicasting the source sequence within a selector function.
  
-#### Example
+#### 例
 
 [](http://jsbin.com/butol/1/embed?js,console)

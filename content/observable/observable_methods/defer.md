@@ -12,13 +12,13 @@
 
 Returns an observable sequence that invokes the specified factory function whenever a new observer subscribes.
 
-#### Arguments
+#### 参数
 1. `observableFactory` *(`Function`)*: Observable factory function to invoke for each observer that subscribes to the resulting sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence whose observers trigger an invocation of the given observable factory function.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

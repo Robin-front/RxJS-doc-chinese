@@ -7,15 +7,15 @@
 
 Converts a Node.js callback style function to an observable sequence.  This must be in function (err, ...) format.
 
-#### Arguments
+#### 参数
 1. `func` *(Function)*: Callback function which must be in function (err, ...) format.
 2. `[scheduler = Rx.Scheduler.timeout]` *(Scheduler)*: Scheduler used to execute the callback.
 3. `[context]` *(Any)*: The context to execute the callback.
 
-#### Returns
+#### 返回值
 *(Function)*: An function which when applied, returns an observable sequence with the callback arguments as an array.
 
-#### Example
+#### 例
 ```js
 var fs = require('fs');
 var Rx = require('Rx');

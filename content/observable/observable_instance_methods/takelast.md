@@ -14,12 +14,12 @@ Returns a specified number of contiguous elements from the end of an observable 
   
 This operator accumulates a buffer with a length enough to store elements count elements. Upon completion of the source sequence, this buffer is drained on the result sequence. This causes the elements to be delayed.
 
-#### Arguments
+#### 参数
 1. `count` *(`Number`)*: Number of elements to bypass at the end of the source sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the source sequence elements except for the bypassed ones at the end.   
   
-#### Example
+#### 例
 
 [](http://jsbin.com/pulit/1/embed?js,console)

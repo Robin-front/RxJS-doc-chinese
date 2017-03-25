@@ -5,7 +5,7 @@ Creates an object that represents an OnNext notification to an observer.
 ### Arguments
 1. `value` *(Any)*: The value contained in the notification.
 
-#### Returns
+#### 返回值
 *(Notification)*: The OnNext notification containing the value.
 
 {% if book.isPdf %}
@@ -31,7 +31,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 
 [](http://jsbin.com/pigaku/2/embed?js,console)
 

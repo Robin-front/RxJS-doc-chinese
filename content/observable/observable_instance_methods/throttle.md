@@ -12,13 +12,13 @@
 
 Ignores values from an observable sequence which are followed by another value before dueTime.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(`Number`)*: Duration of the throttle period for each value (specified as an integer denoting milliseconds).
 2. `[scheduler=Rx.Scheduler.timeout]` *(`Any`)*: Scheduler to run the throttle timers on. If not specified, the timeout scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The throttled sequence. 
     
-#### Example
+#### 例
 
 [](http://jsbin.com/zatav/1/embed?js,console)

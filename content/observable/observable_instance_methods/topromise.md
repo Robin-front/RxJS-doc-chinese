@@ -2,13 +2,13 @@
 
 Converts an existing observable sequence to an ES6 Compatible Promise.
 
-#### Arguments
+#### 参数
 1. `promiseCtor` *(`Function`)*: The constructor of the promise. If not provided, it looks for it in Rx.config.Promise.
 
-#### Returns
+#### 返回值
 *(`Promise`)*: An ES6 compatible promise with the last value from the observable sequence.
 
-#### Example
+#### 例
 
 ```js
 var promise = Rx.Observable.return(42).toPromise(RSVP.Promise);
@@ -18,7 +18,7 @@ promise.then(console.log.bind(console));
 // => 42
 ```
 
-#### Example with config
+#### 例 with config
 
 ```js
 Rx.config.Promise = RSVP.Promise;

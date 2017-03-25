@@ -16,9 +16,9 @@
 1. `resourceFactory` *(`Function`)*: Factory function to obtain a resource object.
 2. `observableFactory` *(`Scheduler`)*: Factory function to obtain an observable sequence that depends on the obtained resource.
 
-#### Returns
+#### 返回值
 *(`Function`)*: An observable sequence whose lifetime controls the lifetime of the dependent resource object.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/yewaf/1/embed?js,console)

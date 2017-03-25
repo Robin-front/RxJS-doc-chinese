@@ -12,7 +12,7 @@
 Concatenates the observable sequences or Promises obtained by running the specified result selector for each element in source.
 There is an alias for this method called `forIn` for browsers <IE9
 
-#### Arguments
+#### 参数
 1. `sources` *(Array)*: An array of values to turn into an observable sequence.
 2. `resultSelector` *(`Function`)*: A function to apply to each item in the sources array to turn it into an observable sequence. The resultSelector is called with the following information:
     1. the value of the element
@@ -21,10 +21,10 @@ There is an alias for this method called `forIn` for browsers <IE9
 
 3. `[thisArg]` *(`Any`)*: Object to use as `this` when executing `resultSelector`.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence from the concatenated observable sequences or Promises.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

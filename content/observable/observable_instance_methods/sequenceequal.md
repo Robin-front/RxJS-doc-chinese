@@ -12,13 +12,13 @@
 
 Determines whether two sequences are equal by comparing the elements pairwise using a specified equality comparer.
 
-#### Arguments
+#### 参数
 1. `second` *(`Observable` | `Promise` | `Array`)*:  Second observable sequence, Promise or array to compare.
 2. `[comparer]` *(`Function`)*: Comparer used to compare elements of both sequences.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains a single element which indicates whether both sequences are of equal length and their corresponding elements are equal according to the specified equality comparer.   
 
-#### Example
+#### 例
 
 [](http://jsbin.com/feyos/1/embed?js,console)

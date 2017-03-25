@@ -2,13 +2,13 @@
 
 Wrap the given generator fn into a function that returns an Observable.
 
-#### Arguments
+#### 参数
 1. `fn` *(`Function`)*: A generator function to wrap.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: A function once executed, returns an Observable.
 
-#### Example
+#### 例
 ```js
 var Rx = require('rx');
 

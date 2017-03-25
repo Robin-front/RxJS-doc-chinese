@@ -12,14 +12,14 @@
 
 Groups the elements of an observable sequence according to a specified key selector function and comparer and selects the resulting elements by using a specified function.
 
-#### Arguments
+#### 参数
 1. `keySelector` *(`Function`)*: A function to extract the key for each element.
 2. `[elementSelector]` *(`Function`)*: A function to map each source element to an element in an observable group.
 3. `[comparer]` *(`Any`)*: Used to compare objects. If not specified, the default comparer is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: A sequence of observable groups, each of which corresponds to a unique key value, containing all elements that share that same key value.  
 
-#### Example
+#### 例
 
 [](http://jsbin.com/yijuy/1/embed?js,console)

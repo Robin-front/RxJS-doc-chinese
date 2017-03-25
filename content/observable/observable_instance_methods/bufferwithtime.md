@@ -12,15 +12,15 @@
 
 Projects each element of an observable sequence into zero or more buffers which are produced based on timing information.
 
-#### Arguments
+#### 参数
 1. `timeSpan` *(`Number`)*: Length of each buffer (specified as an integer denoting milliseconds).
 2. `[timeShift]` *(`Number`)*: Interval between creation of consecutive buffers (specified as an integer denoting milliseconds).
 3. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run buffer timers on. If not specified, the timeout scheduler is used.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of buffers. 
 
-#### Example
+#### 例
 
 ##### Without a skip
 

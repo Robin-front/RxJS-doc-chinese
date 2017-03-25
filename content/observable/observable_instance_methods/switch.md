@@ -12,9 +12,9 @@
 
 Transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.  There is an alias for this method called `switchLatest` for browsers <IE9.
   
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence that at any point in time produces the elements of the most recent inner observable sequence that has been received.  
  
-#### Example
+#### 例
 
 [](http://jsbin.com/gojar/1/embed?js,console)

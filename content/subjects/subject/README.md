@@ -60,7 +60,7 @@ subject.onCompleted();
 
 Creates a subject.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.Subject();
 
@@ -95,14 +95,14 @@ subject.onCompleted();
 
 Creates a subject from the specified observer and observable.
 
-#### Arguments
+#### 参数
 1. `observer` *(Observer)*: The observer used to send messages to the subject.
 2. `observable` *(Observable)*: The observable used to subscribe to messages sent from the subject.
 
-#### Returns
+#### 返回值
 *(Subject)*: Subject implemented using the given observer and observable.
 
-#### Example
+#### 例
 
 ```js
 /* Using a Web Worker to send and receive data via an Rx.Subject */
@@ -169,7 +169,7 @@ subject.onNext(42);
 
 Unsubscribe all observers and release resources.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.Subject();
 
@@ -212,10 +212,10 @@ try {
 
 Indicates whether the subject has observers subscribed to it.
 
-#### Returns
+#### 返回值
 *(Boolean)*: Returns `true` if the Subject has observers, else `false`.
 
-#### Example
+#### 例
 ```js
 var subject = new Rx.Subject();
 

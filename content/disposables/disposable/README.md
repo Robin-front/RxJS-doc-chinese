@@ -33,13 +33,13 @@ disposable.dispose();
 
 Creates a disposable object that invokes the specified action when disposed.
 
-#### Arguments
+#### 参数
 1. `action` *(Function)*: Function to run during the first call to `dispose`. The action is guaranteed to be run at most once.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable object that runs the given action upon disposal.
 
-#### Example
+#### 例
 ```js
 var disposable = Rx.Disposable.create(() => console.log('disposed'));
 
@@ -60,10 +60,10 @@ disposable.dispose();
 
 Gets the disposable that does nothing when disposed.
 
-#### Returns
+#### 返回值
 *(Disposable)*: The disposable that does nothing when disposed.
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Disposable.empty;
@@ -84,7 +84,7 @@ disposable.dispose(); // Does nothing
 
 Performs the task of cleaning up resources.
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Disposable.create(() => console.log('disposed'));

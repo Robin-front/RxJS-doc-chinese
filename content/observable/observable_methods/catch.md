@@ -8,10 +8,10 @@
 
 Continues an observable sequence that is terminated by an exception with the next observable sequence.
 
-#### Arguments
+#### 参数
 1. `args` *(`Array` | `arguments`)*: Observable sequences to catch exceptions for.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing elements from consecutive source sequences until a source sequence terminates successfully.
 
 {% if book.isPdf %}
@@ -35,7 +35,7 @@ var subscription = source.subscribe(
 
 {% else %}
 
-#### Example
+#### 例
 [](http://jsbin.com/qagidu/2/embed?js,console)
 
 {% endif %}

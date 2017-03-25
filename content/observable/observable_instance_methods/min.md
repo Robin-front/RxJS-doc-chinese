@@ -12,13 +12,13 @@
 
 Returns the minimum element in an observable sequence according to the optional comparer else a default greater than less than check.
 
-#### Arguments
+#### 参数
 1. `[comparer]` *(`Function`)*:  Comparer used to compare elements.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element with the minimum element in the source sequence.
  
-#### Example
+#### 例
 
 ##### Without comparer
 

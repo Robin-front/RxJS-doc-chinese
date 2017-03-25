@@ -12,15 +12,15 @@
 
 Returns the source observable sequence, switching to the other observable sequence if a timeout is signaled.
 
-#### Arguments
+#### 参数
 1. `[firstTimeout=Rx.Observable.never()]` *(`Observable`)*: Observable sequence that represents the timeout for the first element. If not provided, this defaults to `Rx.Observable.never()`.
 2. `timeoutDurationSelector` *(`Function`)*: Selector to retrieve an observable sequence that represents the timeout between the current element and the next element.
 3. `[other=Rx.Observable.throw]` *(`Scheduler`)*:Sequence to return in case of a timeout. If not provided, this is set to `Observable.throw`
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The source sequence switching to the other sequence in case of a timeout.
 
-#### Example
+#### 例
 
 ##### Without a first timeout
 

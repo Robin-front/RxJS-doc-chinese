@@ -47,6 +47,6 @@ Schedulers
 - [`Rx.Schedulers.requestAnimationFrame`](#rxschedulerrequestanimationframescheduler)
 - [`Rx.Schedulers.mutationObserver`](#rxschedulermutationobserverscheduler)
 
-##### Example
+##### 例
 
 [](http://jsbin.com/qemah/1/embed?js,output)

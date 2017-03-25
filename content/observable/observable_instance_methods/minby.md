@@ -12,13 +12,13 @@
 
 Returns the elements in an observable sequence with the minimum key value according to the specified comparer.
 
-#### Arguments
+#### 参数
 1. `keySelector` *(`Function`)*: Key selector function.
 2. `[comparer]` *(`Function`)*:  Comparer used to compare elements.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a list of zero or more elements that have a minimum key value.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/hejov/1/embed?js,console)

@@ -12,12 +12,12 @@
 
 Bypasses a specified number of elements in an observable sequence and then returns the remaining elements.
 
-#### Arguments
+#### 参数
 1. `count` *(`Number`)*: The number of elements to skip before returning the remaining elements.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements that occur after the specified index in the input sequence.   
 
-#### Example
+#### 例
 
 [](http://jsbin.com/povos/1/embed?js,console)

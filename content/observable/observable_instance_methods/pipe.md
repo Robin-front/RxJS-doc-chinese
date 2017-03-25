@@ -2,10 +2,10 @@
 
 Pipes the existing Observable sequence into a Node.js Stream.
 
-#### Arguments
+#### 参数
 1. `dest` *(`Stream`)*: dest The destination Node.js stream.
  
-#### Returns
+#### 返回值
 *(`Stream`)*: The destination stream.
 
-#### Example
+#### 例

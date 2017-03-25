@@ -49,10 +49,10 @@ console.log(refCountDisposable.isDisposed);
 
 Initializes a new instance of the `Rx.RefCountDisposable` class with the specified disposable
 
-#### Arguments
+#### 参数
 1. `disposable` *(Disposable)*: Underlying disposable.
 
-#### Example
+#### 例
 ```js
 var disposable = Rx.Disposable.create(() => console.log('disposed'));
 
@@ -75,7 +75,7 @@ console.log(refCountDisposable.isDisposed);
 
 Disposes the underlying disposable only when all dependent disposables have been disposed.
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Disposable.create(() => console.log('disposed'));
@@ -110,10 +110,10 @@ console.log(refCountDisposable.isDisposed);
 
 Returns a dependent disposable that when disposed decreases the refcount on the underlying disposable.
 
-#### Returns
+#### 返回值
 *(Disposable)*: A dependent disposable contributing to the reference count that manages the underlying disposable's lifetime.
 
-#### Example
+#### 例
 
 ```js
 var disposable = Rx.Disposable.create(() => console.log('disposed'));
@@ -149,7 +149,7 @@ console.log(refCountDisposable.isDisposed);
 
 Gets a value that indicates whether the object is disposed.
 
-#### Example
+#### 例
 ```js
 var disposable = Rx.Disposable.create(() => console.log('disposed'));
 

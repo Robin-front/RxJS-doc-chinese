@@ -2,6 +2,6 @@
 
 Gets a scheduler that schedules schedules work on the [`window.MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) for immediate actions.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/lolufu/1/embed?js,console)

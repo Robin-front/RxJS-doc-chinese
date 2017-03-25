@@ -12,9 +12,9 @@
 
 Concatenates a sequence of observable sequences or promises into a single observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence that merges the elements of the inner sequences. 
  
-#### Example
+#### 例
 
 [](http://jsbin.com/rigut/1/embed?js,console)

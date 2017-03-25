@@ -2,7 +2,7 @@
   
 Materializes the implicit notifications of an observable sequence as explicit notification values.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the materialized notification values from the source sequence.
 
-#### Example
+#### 例

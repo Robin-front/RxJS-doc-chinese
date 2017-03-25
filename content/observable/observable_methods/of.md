@@ -12,12 +12,12 @@
 
 Converts arguments to an observable sequence.
 
-#### Arguments
+#### 参数
 1. `args` *(Arguments)*: A list of arguments to turn into an Observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence whose elements are pulled from the given arguments.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/sibiy/1/embed?js,console)

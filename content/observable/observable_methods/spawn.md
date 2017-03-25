@@ -2,13 +2,13 @@
 
 Spawns a generator function which allows for Promises, Observable sequences, Arrays, Objects, Generators and functions.
 
-#### Arguments
+#### 参数
 1. `fn` *(`Function`)*: The spawning function.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An Observable with the final result.
 
-#### Example
+#### 例
 ```js
 var Rx = require('rx');
 

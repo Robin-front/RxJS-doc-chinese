@@ -14,9 +14,9 @@
 
 Merges an observable sequence of observable sequences into an observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence that merges the elements of the inner sequences. 
  
-#### Example
+#### 例
 
 [](http://jsbin.com/zatet/1/embed?js,console)

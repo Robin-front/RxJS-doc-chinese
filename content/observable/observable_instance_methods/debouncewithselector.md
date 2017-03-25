@@ -2,13 +2,13 @@
 
 Ignores values from an observable sequence which are followed by another value within a computed debounced duration.
 
-#### Arguments
+#### 参数
 1. `durationSelector` *(`Function`)*: Selector function to retrieve a sequence indicating the throttle duration for each given element.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The throttled sequence.
 
-#### Example
+#### 例
 ```js
 var array = [
     800,

@@ -12,13 +12,13 @@
 
 Comonadic bind operator.
 
-#### Arguments
+#### 参数
 1. `selector` *(`Function`)*: A transform function to apply to each element.
 2. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler used to execute the operation. If not specified, defaults to the `Rx.Scheduler.immediate` scheduler.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence which results from the comonadic bind operation.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/yaxav/1/embed?js,console)

@@ -2,9 +2,9 @@
 
 Hides the identity of an observable sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that hides the identity of the source sequence.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/nirudu/1/embed?js,console)

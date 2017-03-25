@@ -12,12 +12,12 @@
 
 Projects each element of an observable sequence into a new form by incorporating the element's index.
 
-#### Arguments
+#### 参数
 1. `property` *(`String`)*: The property to pluck.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: Returns a new Observable sequence of property values.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/wigiy/1/embed?js,console)

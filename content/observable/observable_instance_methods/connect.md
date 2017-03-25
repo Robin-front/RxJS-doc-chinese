@@ -12,9 +12,9 @@
 
 Connects the observable wrapper to its source. All subscribed observers will receive values from the underlying observable sequence as long as the connection is established.
 
-#### Returns
+#### 返回值
 *(Disposable)*: Disposable object used to disconnect the observable wrapper from its source, causing subscribed observer to stop receiving values from the underlying observable sequence.
  
-#### Example
+#### 例
 
 [](http://jsbin.com/timob/1/embed?js,console)

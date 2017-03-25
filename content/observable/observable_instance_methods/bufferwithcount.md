@@ -12,14 +12,14 @@
 
 Projects each element of an observable sequence into zero or more buffers which are produced based on element count information.
 
-#### Arguments
+#### 参数
 1. `count` *(`Function`)*: Length of each buffer.
 2. `[skip]` *(`Function`)*: Number of elements to skip between creation of consecutive buffers. If not provided, defaults to the count.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence of buffers. 
 
-#### Example
+#### 例
 
 ##### Without a skip
 

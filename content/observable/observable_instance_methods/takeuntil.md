@@ -12,12 +12,12 @@
 
 Returns the values from the source observable sequence until the other observable sequence or Promise produces a value.
 
-#### Arguments
+#### 参数
 1. `other` *(`Observable` | `Promise`)*: Observable sequence or Promise that terminates propagation of elements of the source sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing the elements of the source sequence up to the point the other sequence or Promise interrupted further propagation.    
 
-#### Example
+#### 例
 
 [](http://jsbin.com/zahor/1/embed?js,console)

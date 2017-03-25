@@ -24,12 +24,12 @@ Record of a value including the virtual time it was produced on.
 
 Creates a new object recording the production of the specified value at the given virtual time.
 
-#### Arguments
+#### 参数
 1. `time` *(Number)*: Virtual time the value was produced on.
 2. `value` *(Any)*: Value that was produced
 3. `[comparer]` *(Function)*: Optional comparer function.
 
-#### Example
+#### 例
 ```js
 var recorded = new Rx.Recorded(200, 'value');
 
@@ -53,13 +53,13 @@ console.log(recorded.value);
 
 Checks whether the given recorded object is equal to the current instance.
 
-#### Arguments
+#### 参数
 1. `other` *(Recorded)*: Recorded object to check for equality.
 
-#### Returns
+#### 返回值
 *(Boolean)*: Returns `true` if the Recorded equals the other, else `false`.
 
-#### Example
+#### 例
 
 ```js
 var r1 = new Recorded(201, 'foo');
@@ -84,10 +84,10 @@ console.log(r1.equals(r3));
 
 Returns a string representation of the current Recorded value.
 
-#### Returns
+#### 返回值
 *(String)*: String representation of the current Recorded value.
 
-#### Example
+#### 例
 
 ```js
 var r1 = new Recorded(201, 'foo');
@@ -109,10 +109,10 @@ console.log(r1.toString());
 
 Gets the virtual time the value was produced on.
 
-#### Returns
+#### 返回值
 *(Number)*: The virtual time the value was produced on.
 
-#### Example
+#### 例
 
 ```js
 var r1 = new Recorded(201, 'foo');
@@ -132,10 +132,10 @@ console.log(r1.time);
 
 Gets the recorded value.
 
-#### Returns
+#### 返回值
 *(Number)*: The recorded value.
 
-#### Example
+#### 例
 
 ```js
 var r1 = new Recorded(201, 'foo');

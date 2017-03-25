@@ -4,17 +4,17 @@ Transform the items emitted by an Observable into Observables, and mirror those 
 
 The `flatMapFirst` operator is similar to the `flatMap` and `concatMap` methods described above, however, rather than emitting all of the items emitted by all of the Observables that the operator generates by transforming items from the source `Observable`, `flatMapFirst` instead propagates the first `Observable` exclusively until it completes before it begins subscribes to the next `Observable`.  Observables that come before the current `Observable` completes will be dropped and will not propagate.
 
-#### Arguments
+#### 参数
 1. `selector` *(`Function`)*:  A transform function to apply to each source element.  The callback has the following information:
     1. the value of the element
     2. the index of the element
     3. the Observable object being subscribed
 2. `[thisArg]` *(`Any`)*: Object to use as `this` when executing the predicate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An Observable sequence that is the result of concatenating non-overlapping items emitted by an Observable of Observables.
 
-#### Example
+#### 例
 ```js
 //Generate an event every 100 milliseconds
 var source = Rx.Observable.generateWithRelativeTime(

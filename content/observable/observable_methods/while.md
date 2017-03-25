@@ -16,9 +16,9 @@ Repeats source as long as condition holds emulating a while loop.  There is an a
 1. `condition` *(`Function`)*: The condition which determines if the source will be repeated.
 2. `source` *(`Observable`)*: The observable sequence that will be run if the condition function returns true.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence which is repeated as long as the condition holds. 
 
-#### Example
+#### 例
 
 [](http://jsbin.com/serat/1/embed?js,console)

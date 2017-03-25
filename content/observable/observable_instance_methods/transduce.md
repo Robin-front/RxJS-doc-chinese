@@ -27,10 +27,10 @@ return {
 ### Arguments
 1. `transducer` *(`Transducer`)*: A transducer to execute.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that results from the transducer execution.
 
-#### Example
+#### 例
 
 Below is an example using [transducers-js](https://github.com/cognitect-labs/transducers-js).
 ```js

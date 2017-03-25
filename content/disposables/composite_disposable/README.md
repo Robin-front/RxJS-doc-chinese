@@ -45,10 +45,10 @@ disposables.dispose();
 
 Initializes a new instance of the `Rx.CompositeDisposable` class from a group of disposables.
 
-#### Arguments
+#### 参数
 1. `args` *(Array|arguments)*: Disposables that will be disposed together.
 
-#### Example
+#### 例
 ```js
 var d1 = Rx.Disposable.create(() => console.log('one'));
 
@@ -75,10 +75,10 @@ disposables.dispose();
 
 Adds a disposable to the CompositeDisposable or disposes the disposable if the CompositeDisposable is disposed.
 
-#### Arguments
+#### 参数
 1. `item` *(Disposable)*: Disposable to add.
 
-#### Example
+#### 例
 
 ```js
 var disposables = new Rx.CompositeDisposable();
@@ -102,7 +102,7 @@ disposables.dispose();
 
 Removes and disposes all disposables from the CompositeDisposable, but does not dispose the CompositeDisposable.
 
-#### Example
+#### 例
 
 ```js
 var d1 = Rx.Disposable.create(() => console.log('one'));
@@ -130,13 +130,13 @@ console.log(disposables.length);
 
 Determines whether the CompositeDisposable contains a specific disposable.
 
-#### Arguments
+#### 参数
 1. `item` *(Disposable)*: Disposable to search for.
 
-#### Returns
+#### 返回值
 *(Boolean)*: `true` if the disposable was found; otherwise, `false`.
 
-#### Example
+#### 例
 
 ```js
 var disposables = new Rx.CompositeDisposable();
@@ -160,7 +160,7 @@ console.log(disposables.contains(d1));
 
 Disposes all disposables in the group and removes them from the group.
 
-#### Example
+#### 例
 
 ```js
 var d1 = Rx.Disposable.create(() => console.log('one'));
@@ -188,13 +188,13 @@ console.log(disposables.length);
 
 Removes and disposes the first occurrence of a disposable from the CompositeDisposable.
 
-#### Arguments
+#### 参数
 1. `item` *(Disposable)*: Disposable to remove.
 
-#### Returns
+#### 返回值
 *(Boolean)*: `true` if the disposable was found and disposed; otherwise, `false`.
 
-#### Example
+#### 例
 
 ```js
 var disposables = new Rx.CompositeDisposable();
@@ -218,10 +218,10 @@ console.log(disposables.remove(d1));
 
 Converts the existing CompositeDisposable to an array of disposables
 
-#### Returns
+#### 返回值
 *(Array)*: An array of disposable objects.
 
-#### Example
+#### 例
 
 ```js
 var d1 = Rx.Disposable.create(() => console.log('one'));
@@ -249,7 +249,7 @@ console.log(array.length);
 
 Gets a value that indicates whether the object is disposed.
 
-#### Example
+#### 例
 ```js
 var disposables = new Rx.CompositeDisposable();
 
@@ -278,7 +278,7 @@ console.log(disposables.isDisposed);
 
 Gets the number of disposables in the CompositeDisposable.
 
-#### Example
+#### 例
 ```js
 var disposables = new Rx.CompositeDisposable();
 

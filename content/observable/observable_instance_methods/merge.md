@@ -13,14 +13,14 @@
 Merges an observable sequence of observable sequences into an observable sequence, limiting the number of concurrent subscriptions to inner sequences.
 Or merges two observable sequences into a single observable sequence.
 
-#### Arguments
+#### 参数
 1. `maxConcurrent` *(`Function`)*: Maximum number of inner observable sequences being subscribed to concurrently.
 1. `other` *(`Observable`)*:  The second observable sequence to merge into the first.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: The observable sequence that merges the elements of the inner sequences. 
  
-#### Example
+#### 例
 
 #### Merge two sequences
 

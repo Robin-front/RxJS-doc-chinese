@@ -2,8 +2,8 @@
 
 Matches when the observable sequence has an available value and projects the value.
 
-#### Arguments
+#### 参数
 1. `selector` *(Function)*: A function that will be invoked for values in the source sequence.
 
-#### Returns
+#### 返回值
 *(Plan)*: Plan that produces the projected values, to be fed (with other plans) to the when operator.

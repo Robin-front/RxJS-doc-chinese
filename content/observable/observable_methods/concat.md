@@ -8,13 +8,13 @@
 
 Concatenates all of the specified observable sequences, as long as the previous observable sequence terminated successfully.
 
-#### Arguments
+#### 参数
 1. `args` *(`Array` | `arguments`)*: Observable sequences or Promises to concatenate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements of each given sequence, in sequential order.
 
-#### Example
+#### 例
 
 {% if book.isPdf %}
 

@@ -14,12 +14,12 @@ Returns an observable sequence that is the result of invoking the selector on th
 
 This operator allows for a fluent style of writing queries that use the same sequence multiple times.  There is an alias of `letBind` for browsers older than IE 9.
 
-#### Arguments
+#### 参数
 1. `func` *(`Function`)*: Selector function which can use the source sequence as many times as needed, without sharing subscriptions to the source sequence.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains the elements of a sequence produced by multicasting the source sequence within a selector function.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/jetido/1/embed?js,console)

@@ -12,12 +12,12 @@
 
 Attaches a controller to the observable sequence with the ability to queue.
 
-#### Arguments
+#### 参数
 1. `[enableQueue]` *(Boolean)*: Whether to enable queueing.  If not specified, defaults to true.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence which can be used to request values from the sequence.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/liraw/1/embed?js,console)

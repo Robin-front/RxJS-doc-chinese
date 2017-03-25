@@ -12,14 +12,14 @@
 
 Returns the element at a specified index in a sequence.  If the specified index is out of bounds and no default value was given `onError` will be called with an error, however, if a default value has been specified, that value will be returned via an `onNext` call.
 
-#### Arguments
+#### 参数
 1. `index` *(`Number`)*: The zero-based index of the element to retrieve.
 2. `[defaultValue]` *(`Any`)*: Default value if no such element exists.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that produces the element at the specified position in the source sequence. If the specified index is out of bounds and no default value was given `onError` will be called with an error, however, if a default value has been specified, that value will be returned via an `onNext` call.
 
-#### Example
+#### 例
 
 ##### Finds an index
 

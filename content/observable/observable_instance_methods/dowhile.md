@@ -12,12 +12,12 @@
 
 Repeats source as long as condition holds emulating a do while loop.
 
-#### Arguments
+#### 参数
 1. `condition` *(`Function`)*: The condition which determines if the source will be repeated.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence whose observers trigger an invocation of the given observable factory function.
 
-#### Example
+#### 例
 
 [](http://jsbin.com/tizad/1/embed?js,console)

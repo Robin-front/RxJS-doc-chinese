@@ -12,10 +12,10 @@
 
 Determines whether an observable sequence is empty.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element determining whether the source sequence is empty.
 
-#### Example
+#### 例
 
 ##### Not empty
 

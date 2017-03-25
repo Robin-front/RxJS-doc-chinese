@@ -3,13 +3,13 @@
 
 Creates an observable sequence from JSON from an Ajax request.
 
-#### Arguments
+#### 参数
 1. `url` *(String)*: A string of the URL to make the Ajax call.
 
-#### Returns
+#### 返回值
 *(Observable)*: The observable sequence which contains the parsed JSON.
 
-#### Example
+#### 例
 ```js
 Rx.DOM.Request.get('/products')
 	.subscribe(
