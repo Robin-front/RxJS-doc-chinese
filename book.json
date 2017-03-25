@@ -9,6 +9,7 @@
       "jsbin",
       "anchors",
       "video",
+      "ga",
       "toggle-chapters",
       "editlink",
       "include-codeblock",
@@ -18,14 +19,19 @@
       "todo",
       "quiz",
       "include-highlight",
-      "tonic",
-      "ace"
+      "tonic"
   ],
   "theme": "theme",
   "pluginsConfig": {
+      "theme-default": {
+        "showLevel": true
+      },
       "fontSettings": {
           "theme": "white",
           "family": "sans"
+      },
+      "ga": {
+        "token": "UA-74634898-2"
       },
       "editlink": {
           "base": "https://github.com/Robin-front/RxJS-doc-chinese/edit/master",

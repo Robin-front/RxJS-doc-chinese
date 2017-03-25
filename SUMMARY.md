@@ -1,13 +1,15 @@
 
 # Summary
 
+## 入门指南
+
 * [为什么选择 RxJS](why_rxjs.md)
-* [RxJS 设计指南](content/guidelines/README.md)
-  * [简介](content/guidelines/introduction/README.md)
-  * [什么时候该用 RxJS](content/guidelines/when/README.md)
-  * [RxJS的约定](content/guidelines/contract/README.md)
-  * [使用 RxJS](content/guidelines/using/README.md)
-  * [操作实践](content/guidelines/implementations/README.md)
+* [RxJS 设计指南](content/guidelines/readme.md)
+  * [简介](content/guidelines/introduction.md)
+  * [什么时候该用 RxJS](content/guidelines/when.md)
+  * [RxJS的约定](content/guidelines/contract.md)
+  * [使用 RxJS](content/guidelines/using.md)
+  * [操作实践](content/guidelines/implementations.md)
 * [开始 RxJS](content/getting_started_with_rxjs/README.md)
   * [什么是 Reactive Extensions?](content/getting_started_with_rxjs/what_are_the_reactive_extensions.md)
   * [探索RxJS的主要概念](content/getting_started_with_rxjs/exploring_major_concepts_in_rxjs.md)
@@ -34,6 +36,9 @@
 * [映射RxJS到不同的类库](content/mappingr_rxjs_from_different_libraries/README.md)
   * [对于Bacon.js用户](content/mappingr_rxjs_from_different_libraries/bacon/README.md)
   * [对于Async.js用户](content/mappingr_rxjs_from_different_libraries/async/README.md)
+
+## API
+
 * [config](content/config/README.md)
   * [Promise](content/config/promise.md)
   * [useNativeEvents](content/config/usenativeevents.md)
@@ -42,10 +47,8 @@
   * [defaultSubComparer](content/helpers/default_sub_comparer.md)
   * [defaultError](content/helpers/default_error.md)
   * [identity](content/helpers/identity.md)
-  * [just](content/helpers/just.md)
   * [isPromise](content/helpers/is_promise.md)
   * [noop](content/helpers/noop.md)
-  * [pluck](content/helpers/pluck.md)
 * [Observable](content/observable/README.md)
   * [Observable 方法](content/observable/observable_methods/README.md)
     * [amb](content/observable/observable_methods/amb.md)
@@ -319,7 +322,9 @@
       * [fromWritableStream](content/rxjs_bindings/node/stream_handlers/from_writable_stream.md)
       * [fromTransformStream](content/rxjs_bindings/node/stream_handlers/from_transform_stream.md)
       * [writeToStream](content/rxjs_bindings/node/stream_handlers/write_to_stream.md)
-{% if book.isPdf==false %}
+
+## 资源
+
 * [资源](content/resources/README.md)
   * [文章](content/resources/articles/README.md)   
   * [反应式编辑类库](content/resources/reactive_libraries/README.md)
@@ -332,9 +337,7 @@
     * [Most](content/resources/reactive_libraries/most.md)
   * [演讲](content/resources/presentations/README.md)
   * [视频](content/resources/video/README.md)
-{% endif %}
 * [Recipes](content/recipes/README.md)
-{% if false %}
 * [Methods By Libraries](content/methods_by_libraries/README.md)
   * [rx.aggregates](content/methods_by_libraries/rx.aggregates.md)
   * [rx.async](content/methods_by_libraries/rx.async.md)
@@ -350,7 +353,6 @@
   * [rx.testing](content/methods_by_libraries/rx.testing.md)
   * [rx.time](content/methods_by_libraries/rx.time.md)
   * [rx.virtualtime](content/methods_by_libraries/rx.virtualtime.md)
-{% endif %}
 * [Which Operator do I use?](content/which_operator_do_i_use/README.md)
   * [Creation Operators](content/which_operator_do_i_use/creation_operators.md)
   * [Instance Operators](content/which_operator_do_i_use/instance_operators.md)

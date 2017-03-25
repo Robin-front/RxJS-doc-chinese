@@ -13,8 +13,8 @@ RxJS没有依赖性，它与同步数据流（例如JavaScript中的可迭代对
     <thead>
         <tr>
             <th></th>
-            <th>Single return value</th>
-            <th>Mutiple return values</th>
+            <th>单个返回值</th>
+            <th>多个返回值</th>
         </tr>
     </thead>
     <tbody>
