@@ -2,7 +2,7 @@
 
 ![catch](http://reactivex.io/documentation/operators/images/Catch.png)
 
-继续一个可观察到的序列，该序列由下一个观察序列的结束。
+一个可观察对象异常时，继续订阅其他的可观察对象的结果。
 
 #### 参数
 1. `args` *(`Array` | `arguments`)*: 捕捉异常的可观察序列。
@@ -26,4 +26,19 @@ var subscription = source.subscribe(
 
 // => onNext: 42
 // => onCompleted
+```
+
+#### 联想与应用
+
+可用于稳定系统，比如pm2, 我们经常会开启多个node进程，结合 nginx， 当一个node进程挂掉重启时，还能保证有另一个node进程被正常访问。
+
+```
+var service1 = Observable.create("node进程#1");
+var service2 = Observable.create("node进程#2");
+
+Observable.catch(service1, service2).subscribe({
+    res =>console.log('succeed'),
+    e => console.log('所有服务均不可用')
+    ()=>console.log('completed')
+})
 ```

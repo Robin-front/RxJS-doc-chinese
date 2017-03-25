@@ -35,3 +35,22 @@ var subscription = source.subscribe(
 //=> onNext: 42
 //=> onCompleted
 ```
+
+#### 联想与应用
+
+case 用于判断，可以用于客服系统，如淘宝店小二，微信机器人自动分类客服。
+
+```
+var config = {
+    "国际机票客服": Observable.return("国际机票客服"),
+    "国内机票客服": Observable.return("国际机票客服"),
+    "其他客服": Observable.return("其他客服")
+};
+Observable.case(()=>'国际机票客服', config, Observable.return("默认客服"))
+    .subscribe(() => {
+        // 连接国际机票客服
+    })
+Observable.case(()=>'国内机票客服', config, Observable.empty())
+    .subscribe(() => {
+        // 连线国内机票客服
+    })
