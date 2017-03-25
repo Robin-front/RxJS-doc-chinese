@@ -1,22 +1,16 @@
 ## [`Rx.Observable.case(selector, sources, [elseSource|scheduler])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/case.js)
 
-{% if book.isPdf==true %}
-
 ![case](http://reactivex.io/documentation/operators/images/case.png)
 
-{% endif %}
+使用选择器来决定要使用源列表的哪个源。IE9浏览器以下有一个别名`switchCase`。
 
-Uses selector to determine which source in sources to use.  There is an alias `switchCase` for browsers <IE9.
-
-### Arguments
-1. `selector` *(`Function`)*: The function which extracts the value for to test in a case statement.
-2. `sources` *(`Object`)*: A object which has keys which correspond to the case statement labels.
-3. `[elseSource|scheduler]` *(`Observable` | `Scheduler`)*: The observable sequence that will be run if the sources are not matched. If this is not provided, it defaults to `Rx.Observabe.empty` with the specified scheduler.
+#### 参数
+1. `selector` *(`Function`)*: 其提取用于在case语句来测试值的函数。
+2. `sources` *(`Object`)*: 一个包含 key-value 的源列表的对象。
+3. `[elseSource|scheduler]` *(`Observable` | `Scheduler`)*: 如果源列表不匹配时，将要运行的可观察序列。如果不提供，则默认为`Rx.Observabe.empty`。
 
 #### 返回值
-*(`Observable`)*: An observable sequence which is determined by a case statement. 
-
-{% if book.isPdf %}
+*(`Observable`)*: 这是由一个case语句确定的可观察序列。
 
 #### [Example](http://jsbin.com/ladamu/2/edit?js,console)
 
@@ -38,13 +32,6 @@ var subscription = source.subscribe(
   e => console.log(`onError: ${e}`),
   () => console.log('onCompleted'));
 
-//=> onNext: 42 
+//=> onNext: 42
 //=> onCompleted
 ```
-
-{% else %}
-
-#### 例
-[](http://jsbin.com/ladamu/2/embed?js,console)
-
-{% endif %}

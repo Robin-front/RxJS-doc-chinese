@@ -2,7 +2,7 @@
 
 Returns an observable sequence with a single notification.
 
-### Arguments
+#### 参数
 1. `[scheduler = Rx.Scheduler.immediate]` *(Scheduler)*: Scheduler to send out the notification calls on.
 
 #### 返回值

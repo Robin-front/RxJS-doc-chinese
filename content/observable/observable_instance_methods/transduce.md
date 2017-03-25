@@ -24,7 +24,7 @@ return {
 };
 ```
 
-### Arguments
+#### 参数
 1. `transducer` *(`Transducer`)*: A transducer to execute.
 
 #### 返回值

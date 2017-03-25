@@ -12,7 +12,7 @@
 
 A series of plans (specified as an Array of as a series of arguments) created by use of the Then operator on patterns.
 
-### Arguments
+#### 参数
 1. `args` *(`arguments`|`Array`)*: A series of plans (specified as an Array of as a series of arguments) created by use of the then operator on patterns.
 
 #### 返回值

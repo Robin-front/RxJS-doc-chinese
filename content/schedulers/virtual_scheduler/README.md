@@ -457,7 +457,7 @@ scheduler.start();
 
 Adds a relative time value to an absolute time value.  This method is used in several methods including `scheduleRelativeWithState`, `advanceBy` and `sleep`.
 
-### Arguments
+#### 参数
 1. `absolute` *(Any)*: Absolute virtual time value.
 2. `relative` *(Any)*: Relative virtual time value.
 
@@ -485,7 +485,7 @@ scheduler.add = function (absolute, relative) {
 
 Converts an absolute time to a number.  This is used directly in the `now` method on the `Rx.Scheduler`
 
-### Arguments
+#### 参数
 1. `absolute` *(Any)*: The absolute time to convert.
 
 #### 返回值
@@ -513,7 +513,7 @@ scheduler.toDateTimeOffset = function (absolute) {
 
 Converts the time span number/Date to a relative virtual time value.
 
-### Arguments
+#### 参数
 1. `timeSpan` *(Any)*: The time span number value to convert.  This is used directly in `scheduleWithRelativeAndState` and `scheduleWithAbsoluteAndState`.
 
 #### 返回值

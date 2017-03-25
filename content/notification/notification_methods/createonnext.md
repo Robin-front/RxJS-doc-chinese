@@ -2,7 +2,7 @@
 
 Creates an object that represents an OnNext notification to an observer.
 
-### Arguments
+#### 参数
 1. `value` *(Any)*: The value contained in the notification.
 
 #### 返回值

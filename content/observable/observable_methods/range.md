@@ -12,7 +12,7 @@
 
 Generates an observable sequence of integral numbers within a specified range, using the specified scheduler to send out observer messages.
 
-### Arguments
+#### 参数
 1. `start` *(`Number`)*: The value of the first integer in the sequence.
 2. `count` *(`Number`)*: The number of sequential integers to generate.
 3. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: Scheduler to run the generator loop on. If not specified, defaults to Scheduler.currentThread.

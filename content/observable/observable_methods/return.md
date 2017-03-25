@@ -14,7 +14,7 @@ Returns an observable sequence that contains a single element, using the specifi
 
 This is an alias for `just`.
 
-### Arguments
+#### 参数
 1. `value` *(`Any`)*: Single element in the resulting observable sequence.
 2. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler to send the single element on. If not specified, defaults to Scheduler.immediate.
 

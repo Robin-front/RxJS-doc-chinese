@@ -2,7 +2,7 @@
 
 Creates an object that represents an OnError notification to an observer.
 
-### Arguments
+#### 参数
 1. `exception` *(Any)*: The exception contained in the notification.
 
 #### 返回值

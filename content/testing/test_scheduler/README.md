@@ -137,7 +137,7 @@ collectionAssert.assertEqual(xs.subscriptions, [
 
 Creates a cold observable using the specified timestamped notification messages.
 
-### Arguments
+#### 参数
 1. `args` *(Arguments)*: An arguments array of Recorded objects from `Rx.ReactiveTest.onNext`, `Rx.ReactiveTest.onError`, and `Rx.ReactiveTest.onCompleted` methods.
 
 #### 返回值
@@ -186,7 +186,7 @@ collectionAssert.assertEqual(xs.subscriptions, [
 
 Creates a hot observable using the specified timestamped notification messages.
 
-### Arguments
+#### 参数
 1. `args` *(Arguments)*: An arguments array of Recorded objects from `Rx.ReactiveTest.onNext`, `Rx.ReactiveTest.onError`, and `Rx.ReactiveTest.onCompleted` methods.
 
 #### 返回值
@@ -280,7 +280,7 @@ collectionAssert.assertEqual(res.messages, [
 
 Starts the test scheduler and uses default virtual times to invoke the factory function, to subscribe to the resulting sequence, and to dispose the subscription.
 
-### Arguments
+#### 参数
 1. `create` *(Function)*: Factory method to create an observable sequence.
 
 #### 返回值
@@ -330,7 +330,7 @@ collectionAssert.assertEqual(xs.subscriptions, [
 Starts the test scheduler and uses the specified virtual time to dispose the subscription to the sequence obtained through the factory function.
 Default virtual times are used for factory invocation and sequence subscription.
 
-### Arguments
+#### 参数
 1. `create` *(Function)*: Factory method to create an observable sequence.
 2. `disposed` *(Number)*: Virtual time at which to dispose the subscription.
 
@@ -383,7 +383,7 @@ collectionAssert.assertEqual(xs.subscriptions, [
 
 Starts the test scheduler and uses the specified virtual times to invoke the factory function, subscribe to the resulting sequence, and dispose the subscription.
 
-### Arguments
+#### 参数
 1. `create` *(Function)*: Factory method to create an observable sequence.
 2. `created` *(Number)*: Virtual time at which to invoke the factory to create an observable sequence.
 3. `subscribed` *(Number)*: Virtual time at which to subscribe to the created observable sequence.

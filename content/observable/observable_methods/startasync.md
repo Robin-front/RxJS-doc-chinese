@@ -12,7 +12,7 @@
 
 Invokes the asynchronous function, surfacing the result through an observable sequence.
 
-### Arguments
+#### 参数
 1. `functionAsync` *(`Function`)*: Asynchronous function which returns a Promise to run.
 
 #### 返回值

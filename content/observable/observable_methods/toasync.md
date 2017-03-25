@@ -12,7 +12,7 @@
 
 Converts the function into an asynchronous function. Each invocation of the resulting asynchronous function causes an invocation of the original synchronous function on the specified scheduler.
 
-### Arguments
+#### 参数
 1. `func` *(`Function`)*: Function to convert to an asynchronous function.
 2. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the function on. If not specified, defaults to Scheduler.timeout.
 3. `[context]` *(`Any`)*: The context for the func parameter to be executed.  If not specified, defaults to undefined.

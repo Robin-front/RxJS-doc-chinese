@@ -12,7 +12,7 @@
 
 Continues an observable sequence that is terminated normally or by an exception with the next observable sequence or Promise.
 
-### Arguments
+#### 参数
 1. `args` *(Array|arguments)*: Observable sequences to concatenate.
 
 #### 返回值
