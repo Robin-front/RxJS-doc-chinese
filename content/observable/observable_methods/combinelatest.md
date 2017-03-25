@@ -1,21 +1,15 @@
 ## [`Rx.Observable.combineLatest(...args, [resultSelector])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/combinelatest.js)
 
-{% if book.isPdf==true %}
-
 ![combineLatest](http://reactivex.io/documentation/operators/images/combineLatest.png)
 
-{% endif %}
-
-Merges the specified observable sequences into one observable sequence by using the selector function whenever any of the observable sequences produces an element. This can be in the form of an argument list of observables or an array. If the result selector is omitted, a list with the elements will be yielded.
+当任一可观察对象返回值时，使用指定的函数将指定的可观察对象合并为一个可观察对象。这可以是参数列表或数组的形式。如果省略了第三个参数，则将直接生成包含最新返回值的列表。
 
 #### 参数
-1. `args` *(arguments | Array)*: An array or arguments of Observable sequences.
-1. `[resultSelector]` *(`Function`)*: Function to invoke whenever either of the sources produces an element. If omitted, a list with the elements will be yielded.
+1. `args` *(arguments | Array)*: 一个数组或是可观察对象列表
+1. `[resultSelector]` *(`Function`)*: 最新结果的处理函数，如果省略，则直接返回结果列表。
 
 #### 返回值
-*(`Observable`)*: An observable sequence containing the result of combining elements of the sources using the specified result selector function.
-
-{% if book.isPdf %}
+*(`Observable`)*: 由传入的可观察序列的结果，经过处理函数合并后，组成的可观察序列。
 
 #### [Example](http://jsbin.com/kewig/4/edit?js,console)
 
@@ -44,15 +38,6 @@ var subscription = source.subscribe(
 // => onNext: First: 2, Second: 1
 // => onCompleted
 ```
-
-{% else %}
-
-#### 例
-[](http://jsbin.com/kewig/4/embed?js,console)
-
-{% endif %}
-
-{% if book.isPdf %}
 
 #### [Example](http://jsbin.com/kewig/2/edit?js,console)
 
@@ -89,9 +74,8 @@ var subscription = source.subscribe(
 // => Completed
 ```
 
-{% else %}
 
-#### 例
-[](http://jsbin.com/kewig/2/embed?js,console)
+#### 联想与应用
 
-{% endif %}
+看到 `combine` ，估计用过 `redux` 的童鞋都要跳起来了，这特么不就可以用于返回最新 `store`么。
+每当有任一流返回最新值，都返回全部流的最新值，并通过处理函数合并。
