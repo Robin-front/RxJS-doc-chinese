@@ -51,8 +51,11 @@ var subscription = source.subscribe(
 ```
 
 > 下面是 jsbin 例子，无法查看可能是因为浏览器阻止
+
 ##### Using Observable sequences
 [](http://jsbin.com/vanaci/3/embed?js,console)
 
 ##### Using Promises and Observables
 [](http://jsbin.com/bukag/2/embed?js,console)
+
+<iframe src="http://jsbin.com/bukag/2/embed?js,console"></iframe>
