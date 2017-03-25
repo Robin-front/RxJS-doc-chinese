@@ -1,20 +1,15 @@
 ## [`Rx.Observable.catch(...args)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/catch.js)
 
-{% if book.isPdf==true %}
-
 ![catch](http://reactivex.io/documentation/operators/images/Catch.png)
 
-{% endif %}
-
-Continues an observable sequence that is terminated by an exception with the next observable sequence.
+继续一个可观察到的序列，该序列由下一个观察序列的结束。
 
 #### 参数
-1. `args` *(`Array` | `arguments`)*: Observable sequences to catch exceptions for.
+1. `args` *(`Array` | `arguments`)*: 捕捉异常的可观察序列。
 
 #### 返回值
-*(`Observable`)*: An observable sequence containing elements from consecutive source sequences until a source sequence terminates successfully.
+*(`Observable`)*: 包含连续源序列的元素的观察序列，直到源序列成功结束。
 
-{% if book.isPdf %}
 
 #### [Example](http://jsbin.com/qagidu/2/edit?js,console)
 
@@ -32,10 +27,3 @@ var subscription = source.subscribe(
 // => onNext: 42
 // => onCompleted
 ```
-
-{% else %}
-
-#### 例
-[](http://jsbin.com/qagidu/2/embed?js,console)
-
-{% endif %}
