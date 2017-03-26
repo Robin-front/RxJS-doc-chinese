@@ -8,7 +8,7 @@
 * [什么时候该用RxJS](when/readme.md)
   * [使用RxJS来编排异步和基于事件的计算](when/readme.md#use-rxjs-for-orchestrating-asynchronous-and-event-based-computations)
   * [使用RxJS处理异步数据队列](when/readme.md#use-rxjs-to-deal-with-asynchronous-sequences-of-data)
-* [RxJS约定](contract/readme.md)
+* [RxJS规范](contract/readme.md)
   * [RxJS语法](contract/readme.md#assume-the-rxjs-grammar)
   * [假定在一个`onError`或多个`onCompleted`消息之后资源将被回收](contract/readme.md#assume-resources-are-cleaned-up-after-an-onerror-or-oncompleted-message)
   * [当取消订阅时将会智能地消毁所有未执行的程序](contract/readme.md#assume-a-best-effort-to-stop-all-outstanding-work-on-unsubscribe)
