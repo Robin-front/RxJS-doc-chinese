@@ -18,24 +18,24 @@ var dictionarySuggest = userInput.throttle(250).flatMap(input => serverCall(inpu
 
 如果你感觉你已经可以很熟练地编写出你想要的流，你可以省去画珠宝图这一步。不管怎样，就算是 Rx 团队的成员在写代码的时候也仍然会先画一画珠宝图。
 
-### Consider passing multiple arguments to `subscribe` ###
+### 调用 `subscribe` 时传递多个参数 ###
 
-For convenience, Rx provides an overload to the `subscribe` method that takes functions instead of an Observer argument.
+为了方便， Rx 提供一个`subscribe`方法来加载观察者的回调函数。
 
-The Observer object would require implementing all three methods (`onNext`, `onError` & `onCompleted`). The extensions to the `subscribe` method allow developers to use defaults chosen for each of these methods.
+观察者只需要实现这三个方法（`onNext`, `onError` & `onCompleted`）。 `subscribe`方法的扩展允许开发人员使用这些方法的默认选项。
 
-E.g. when calling the `subscribe` method that only has an `onNext` argument, the `onError` behavior will be to rethrow the exception on the thread that the message comes out from the observable sequence. The `onCompleted` behavior in this case is to do nothing.
+比如： 当调用`subscribe`方法时只有一个`onNext`参数，`onError`将捕获来自事件流的异常。`onCompleted`在这里什么也不会做。
 
-In many situations, it is important to deal with the exception (either recover or abort the application gracefully).
+大部分情况下，处理异常是很重要的（不管是对于恢复还是中断应用程序）。
 
-Often it is also important to know that the observable sequence has completed successfully. For example, the application notifies the user that the operation has completed.
+知道事件流是否完成也经常是很重要的。举个例子，告诉用户他的操作是否完成了。
 
-Because of this, it is best to provide all 3 arguments to the subscribe function.
+所以，最好提供完整的三个参数给 `subscribe` 操作符。
 
-RxJS also provides three convenience methods which only subscribe to the part of the sequence that is desired. The other handlers will default to their original behaviors. There are three of such functions:
-- `subscribeOnNext`: for `onNext` messages only
-- `subscribeOnError`: for `onError` messages only
-- `subscribeOnCompleted`: for `onCompleted` messages only.
+Rxjs还提供了三个简便的方法只订阅可观察对象所需的部分。 其他操作都会是默认的。这有三个方法：
+- `subscribeOnNext`: 对应 `onNext` messages only
+- `subscribeOnError`: 对应 `onError` messages only
+- `subscribeOnCompleted`: 对应 `onCompleted` messages only.
 
 #### 何时忽略这条指南 ####
 
