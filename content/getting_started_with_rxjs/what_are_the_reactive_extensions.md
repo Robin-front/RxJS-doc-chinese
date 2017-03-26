@@ -1,32 +1,32 @@
-# What are the Reactive Extensions for JavaScript (RxJS)? #
+# JavaScript 的 Reactive Extensions(RxJS)到底是什么? #
 
-The Reactive Extensions for JavaScript (RxJS) is a library for composing asynchronous and event-based programs using observable sequences and [LINQ-style query operators](http://en.wikipedia.org/wiki/LINQ). Using RxJS, developers *__represent__* asynchronous data streams with [Observables](content/observable/index.html), *__query__* asynchronous data streams using [LINQ operators](http://msdn.microsoft.com/en-us/library/hh242983.aspx), and *__parameterize__* the concurrency in the asynchronous data streams using [Schedulers](http://msdn.microsoft.com/en-us/library/hh242963.aspx). Simply put, Rx = Observables + LINQ + Schedulers.
+The Reactive Extensions for JavaScript (RxJS) 是构成使用观察序列和异步和基于事件的程序库[LINQ风格的集成查询操作](http://en.wikipedia.org/wiki/LINQ)。使用RxJS，开发者用异步数据流 *__表示__* 可观察者，*__查询__* 使用异步数据流[LINQ操作](http://msdn.microsoft.com/en-us/library/hh242983.aspx)，和 *__参数__* 并发在使用异步数据流的[调度程序](http://msdn.microsoft.com/en-us/library/hh242963.aspx)。简单地说，的Rx = 可观察者 + LINQ + 调度程序。
 
-Whether you are authoring a web-based application or server-side applications with [Node.js](http://nodejs.org), you have to deal with asynchronous and event-based programming constantly. Web applications and Node.js applications have I/O operations and computationally expensive tasks that might take a long time to complete and potentially block the main thread. Furthermore, handling exceptions, cancellation, and synchronization is difficult and error-prone.
+无论您是创作基于Web的应用程序或用[Node.js](http://nodejs.org)创建服务器端应用程序，你必须不断地处理异步和基于事件的编程。Web应用程序和Node.js的应用程序在I / O操作和计算量上有大量的任务，可能需要很长的时间才能完成，可能阻塞主线程。此外，处理异常，取消和同步是困难的并且容易出错。
 
-Using RxJS, you can represent multiple asynchronous data streams (that come from diverse sources, e.g., stock quote, tweets, computer events, web service requests, etc.), and subscribe to the event stream using the [`Observer`](../observer/index.html) object. The [`Observable`](../observable/index.html) object notifies the subscribed [`Observer`](../observer/index.html) object whenever an event occurs.
+使用RxJS，你可以代表多个异步数据流（即来自不同的来源，例如，股票报价，tweets，计算机事件，Web服务请求等），并使用[`Observer`](../observer/index.html)订阅事件流。每当发生事件时，[`Observable`](../observable/index.html)通知该订阅[`Observer`](../observer/index.html)。
 
-Because observable sequences are data streams, you can query them using standard query operators implemented by the Observable extension methods. Thus you can filter, project, aggregate, compose and perform time-based operations on multiple events easily by using these standard query operators. In addition, there are a number of other reactive stream specific operators that allow powerful queries to be written.  Cancellation, exceptions, and synchronization are also handled gracefully by using the extension methods provided by Rx.
+由于可观察序列是数据流，可以使用实现的可观察对象的扩展方法对它们进行查询。因此，你可以筛选，管理，汇总，撰写，非常容易使用这些标准查询操作对多个事件进行基于时间的操作。此外，还有一些其他特定的反应流的允许写入功能强大的查询。取消，异常和同步是也可以通过使用以Rx提供的扩展方法正常处理。
 
-RxJS complements and interoperates smoothly with both synchronous data streams such as Arrays, Sets and Maps and single-value asynchronous computations such as Promises as the following diagram shows:
+RxJS与同步数据流之间平滑兼容，例如数组，`Sets`、`Maps`和单值异步计算诸如`Promises`如下面的图：
 
 <table style="display: table">
-   <th></th><th>Single return value</th><th>Mutiple return values</th>
+   <th></th><th>返回单个值</th><th>返回多个值</th>
    <tr>
-      <td>Pull/Synchronous/Interactive</td>
-      <td>Object</td>
+      <td>拉/同步/交互式</td>
+      <td>对象</td>
       <td>Iterables (Array | Set | Map | Object)</td>
    </tr>
    <tr>
-      <td>Push/Asynchronous/Reactive</td>
+      <td>推/异步/反应式</td>
       <td>Promise</td>
       <td>Observable</td>
    </tr>
 </table>
 
-## Pushing vs. Pulling Data ##
+## 数据的 `推`与`拉` ##
 
-In interactive programming, the application actively polls a data source for more information by retrieving data from a sequence that represents the source. Such behavior is represented by the iterator pattern of JavaScript Arrays, Objects, Sets, Maps, etc. In interactive programming, one must get the next item by either getting an item by an index in an Array, or through [ES6 iterators](http://wiki.ecmascript.org/doku.php?id=harmony:iterators).
+在交互式编程中, the application actively polls a data source for more information by retrieving data from a sequence that represents the source. Such behavior is represented by the iterator pattern of JavaScript Arrays, Objects, Sets, Maps, etc. In interactive programming, one must get the next item by either getting an item by an index in an Array, or through [ES6 iterators](http://wiki.ecmascript.org/doku.php?id=harmony:iterators).
 
 The application is active in the data retrieval process: it decides about the pace of the retrieval by calling `next` at its own convenience. This enumeration pattern is synchronous, which means your application might be blocked while polling the data source. Such pulling pattern is similar to visiting your library and checking out a book. After you are done with the book, you pay another visit to check out another one.
 
