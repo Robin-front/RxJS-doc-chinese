@@ -1,6 +1,6 @@
-# Operator implementations
+# 操作流的技巧
 
-### Implement new operators by composing existing operators ###
+### 通过组合现有的流产生新的流 ###
 
 Many operations can be composed from existing operators. This will lead to smaller, easier to maintain code. The Rx team has put a lot of effort in dealing with all corner cases in the base operators. By reusing these operators you’ll get all that work for free in your operator.
 
@@ -17,7 +17,7 @@ In this sample, the `flatMap` operator uses two existing operators: [`map`](../.
 - No appropriate set of base operators is available to implement this operator.
 - Performance analysis proves that the implementation using existing operators has performance issues.  Such can be caused by [`materialize`](../../observable/observable_instance_methods/materialize.html).
 
-### Implement custom operators using [`Observable.create`](../../observable/observable_methods/create.html) ###
+### 使用 [`Observable.create`](../../observable/observable_methods/create.html)创建新的流 ###
 
 When it is not possible to follow guideline 5.1, use the Observable.Create(WithDisposable) method to create an observable sequence as it provides several protections make the observable sequence follow the RxJS contract.
 

@@ -12,7 +12,7 @@
   * [RxJS语法](contract.md#assume-the-rxjs-grammar)
   * [假定在一个`onError`或`onCompleted`消息之后资源将被回收](contract.md#assume-resources-are-cleaned-up-after-an-onerror-or-oncompleted-message)
   * [当取消订阅时将会智能地消毁所有未执行的程序](contract.md#assume-a-best-effort-to-stop-all-outstanding-work-on-unsubscribe)
-* [使用 RxJS](using.md)
+* [使用 Rx 的技巧](using.md)
 * [实践操作](implementations.md)
 
 <!-- 1. Introduction

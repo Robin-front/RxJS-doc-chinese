@@ -1,4 +1,4 @@
-# 使用 Rx
+# 使用 Rx 的技巧
 
 ### 尝试画珠宝图 ###
 
@@ -32,28 +32,28 @@ var dictionarySuggest = userInput.throttle(250).flatMap(input => serverCall(inpu
 
 所以，最好提供完整的三个参数给 `subscribe` 操作符。
 
-Rxjs还提供了三个简便的方法只订阅可观察对象所需的部分。 其他操作都会是默认的。这有三个方法：
-- `subscribeOnNext`: 对应 `onNext` messages only
-- `subscribeOnError`: 对应 `onError` messages only
-- `subscribeOnCompleted`: 对应 `onCompleted` messages only.
+RxJS还提供了三种方便的方法，其仅订阅所期望的序列的一部分。其他的处理程序会默认为原来的行为。有三个这样的功能：
+- `subscribeOnNext`: 只对应 `onNext` 消息
+- `subscribeOnError`: 只对应 `onError` 消息
+- `subscribeOnCompleted`: 只对应 `onCompleted` 消息.
 
 #### 何时忽略这条指南 ####
 
-- When the observable sequence is guaranteed not to complete, e.g. an event such as keyup.
-- When the observable sequence is guaranteed not to have `onError` messages (e.g. an event, a  materialized observable sequence etc…).
-- When the default behavior is the desirable behavior.
+- 当流确定不会有完成状态，比如 `keyup`事件。
+- 当流确定不会抛出异常，比如一个事件，一个完全确定的流。
+- 当默认行为是符合预期的时候。
 
-### Consider passing a specific scheduler to concurrency introducing operators ###
+### 考虑通过特定的调度程序并发引入操作符 ###
 
-Rather than using the `observeOn` operator to change the execution context on which the observable sequence produces messages, it is better to create concurrency in the right place to begin with. As operators parameterize introduction of concurrency by providing a scheduler argument overload, passing the right scheduler will lead to fewer places where the ObserveOn operator has to be used.
+相比使用` observeon `操作符来改变可观察序列产生消息的执行上下文，更好的做法是在正确的地方开始创建并发。 通过正确的调度器将会减少 `ObserveOn`操作符的使用。As operators parameterize introduction of concurrency by providing a scheduler argument overload, passing the right scheduler will lead to fewer places where the ObserveOn operator has to be used.
 
-#### Sample ####
+#### 例 ####
 
 ```js
 Rx.Observable.range(0, 90000, Rx.Scheduler.requestAnimationFrame).subscribe(draw);
 ```
 
-In this sample, callbacks from the `range` operator will arrive by calling `window.requestAnimationFrame`.  The default overload of `range` would place the `onNext` call on the `Rx.Scheduler.currentThread` which is used when recursive scheduling is required immediately.  By providing the `Rx.Scheduler.requestAnimationFrame` scheduler, all messages from this observable sequence will originiate on the `window.requestAnimationFrame` callback.
+在这个例子中，来自`range`操作符的回调将会通过`window.requestAnimationFrame`传递。In this sample, callbacks from the `range` operator will arrive by calling .  The default overload of `range` would place the `onNext` call on the `Rx.Scheduler.currentThread` which is used when recursive scheduling is required immediately.  By providing the `Rx.Scheduler.requestAnimationFrame` scheduler, all messages from this observable sequence will originate on the `window.requestAnimationFrame` callback.
 
 #### 何时忽略这条指南 ####
 
