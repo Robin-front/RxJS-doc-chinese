@@ -1,23 +1,22 @@
-# Using Rx
+# 使用 Rx
 
-### Consider drawing a Marble-diagram ###
+### 尝试画珠宝图 ###
 
-Draw a marble-diagram of the observable sequence you want to create. By drawing the diagram, you will get a clearer picture on what operator(s) to use.
+为你想创建的流画一个珠宝图。 通过画珠宝图，你将会很清楚你应该使用哪些操作符。
 
-A marble-diagram is a diagram that shows event occurring over time. A marble diagram contains both input and output sequences(s).
+珠宝图就是每个珠宝表示当前的一个事件或状态。珠宝图需要包含输入和输出流。
 
 <img src="https://raw.githubusercontent.com/Reactive-Extensions/RxJS/master/doc/designguidelines/images/throttleWithTimeout.png" alt="throttleWithSelector">
 
-By drawing the diagram we can see that we will need some kind of delay after the user input, before firing of another asynchronous call. The delay in this sample maps to the `throttle` operator. To create another observable sequence from an observable sequence we will use the `flatMap` or `selectMany` operator. This
-will lead to the following code:
+通过画珠宝图，我们可以看到，我们在异步调用事件回调之前，需要延迟检测用户的输入。在这个例图里展示的是`throttle`操作符的延迟。从一个流创建另一个流，我们会使用 `flatMap` 或 `selectMany` 操作符。然后就有了下面的代码：
 
 ```js
 var dictionarySuggest = userInput.throttle(250).flatMap(input => serverCall(input));
 ```
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
-This guideline can be ignored if you feel comfortable enough with the observable sequence you want to write. However, even the Rx team members will still grab the whiteboard to draw a marble-diagram once in a while.
+如果你感觉你已经可以很熟练地编写出你想要的流，你可以省去画珠宝图这一步。不管怎样，就算是 Rx 团队的成员在写代码的时候也仍然会先画一画珠宝图。
 
 ### Consider passing multiple arguments to `subscribe` ###
 
@@ -38,7 +37,7 @@ RxJS also provides three convenience methods which only subscribe to the part of
 - `subscribeOnError`: for `onError` messages only
 - `subscribeOnCompleted`: for `onCompleted` messages only.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 - When the observable sequence is guaranteed not to complete, e.g. an event such as keyup.
 - When the observable sequence is guaranteed not to have `onError` messages (e.g. an event, a  materialized observable sequence etc…).
@@ -56,7 +55,7 @@ Rx.Observable.range(0, 90000, Rx.Scheduler.requestAnimationFrame).subscribe(draw
 
 In this sample, callbacks from the `range` operator will arrive by calling `window.requestAnimationFrame`.  The default overload of `range` would place the `onNext` call on the `Rx.Scheduler.currentThread` which is used when recursive scheduling is required immediately.  By providing the `Rx.Scheduler.requestAnimationFrame` scheduler, all messages from this observable sequence will originiate on the `window.requestAnimationFrame` callback.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 When combining several events that originate on different execution contexts, use guideline 4.4 to put  all messages on a specific execution context as late as possible.
 
@@ -76,7 +75,7 @@ var result = xs.throttle(1000)
 
 This sample combines many observable sequences running on many different execution contexts. The query filters out a lot of messages. Placing the `observeOn` operator earlier in the query would do extra work on messages that would be filtered out anyway. Calling the `observeOn` operator at the end of the query will create the least performance impact.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Ignore this guideline if your use of the observable sequence is not bound to a specific execution context. In that case do not use the `observeOn` operator.
 
@@ -92,7 +91,7 @@ var result = xs.replay(null, 10000, 1000 * 60 /* 1 hr */).refCount();
 
 In this sample, the `replay` operator creates a buffer. We have limited that buffer to contain at most 10,000 messages and keep these messages around for a maximum of 1 hour.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 When the amount of messages created by the observable sequence that populates the buffer is small or when the buffer size is limited.
 
@@ -117,7 +116,7 @@ In this sample, messages are filtered for failure. The messages are logged befor
 
 As RxJS uses a push model, messages can be sent from different execution contexts. Messages can be in flight while calling unsubscribe. These messages can still come through while the call to unsubscribe is in progress. After control has returned, no more messages will arrive. The unsubscription process can still be in progress on a different context.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Once the `onCompleted` or `onError` method has been received, the RxJS grammar guarantees that the subscription can be considered to be finished.
 
@@ -146,6 +145,6 @@ xs.publish(sharedXs => {
 
 In this sample, xs is an observable sequence that has side-effects (writing to the console). Normally each separate subscription will trigger these side-effects. The `publish` operator uses a single subscription to xs for all subscribers to sharedXs.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Only use the `publish` operator to share side-effects when sharing is required. In most situations you can create separate subscriptions without any problems: either the subscriptions do not have side-effects or the side effects can execute multiple times without any issues.

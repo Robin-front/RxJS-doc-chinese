@@ -12,7 +12,7 @@ Rx.Observable.prototype.flatMap = function(selector) { return this.map(selector)
 
 In this sample, the `flatMap` operator uses two existing operators: [`map`](../../observable/observable_instance_methods/map.html) and [`mergeAll`](../../observable/observable_instance_methods/mergeall.html). The [`map`](../../observable/observable_instance_methods/map.html) operator already deals with any issues around the selector function throwing an exception. The [`mergeAll`](../../observable/observable_instance_methods/mergeall.html) operator already deals with concurrency issues of multiple observable sequences firing at the same time.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 - No appropriate set of base operators is available to implement this operator.
 - Performance analysis proves that the implementation using existing operators has performance issues.  Such can be caused by [`materialize`](../../observable/observable_instance_methods/materialize.html).
@@ -52,7 +52,7 @@ Rx.Observable.prototype.map = function(selector, thisArg) {
 
 In this sample, `map` uses the `Observable.create` operator to return a new instance of the Observable class. This ensures that no matter the implementation of the source observable sequence, the output observable sequence follows the Rx contract . It also ensures that the lifetime of subscriptions is a short as possible.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 - The operator needs to return an observable sequence that doesn’t follow the Rx contract. This should usually be avoided (except when writing tests to see how code behaves when the contract is broken)
 - The object returned needs to implement more than the Observable class (e.g. Subject, or a custom class).
@@ -95,7 +95,7 @@ Rx.Observable.prototype.map = function(selector, thisArg) {
 
 This sample invokes a selector function which is user code. It catches any exception resulting from this call and transfers the exception to the subscribed observer instance through the `onError` call.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Ignore this guideline for calls to user code that are made before creating the observable sequence (outside of the `Observable.create` call). These calls are on the current execution context and are allowed to follow normal control flow.
 
@@ -123,7 +123,7 @@ function readWebSocket(socket) {
 
 In this sample, an error condition is detected in the subscribe method implementation. An error is raised by calling the `onError` method instead of throwing the exception. This allows for proper handling of the exception if `subscribe` is called outside of the execution context of the original call to Subscribe by the user.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 When a catastrophic error occurs that should bring down the whole program anyway.
 
@@ -161,7 +161,7 @@ Rx.Observable.prototype.minimumBuffer = function(bufferSize) {
 
 In this sample, a buffering operator will abandon the observable sequence as soon as the subscription to source encounters an error. The current buffer is not sent to any subscribers, maintain abort semantics.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 There are currently no known cases where to ignore this guideline.
 
@@ -184,7 +184,7 @@ Rx.Observable.just = (value, scheduler) => {
 
 In this sample, the `just` operator parameterizes the level of concurrency the operator has by providing a scheduler argument. It then uses this scheduler to schedule the firing of the `onNext` and `onCompleted` messages.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 - The operator is not in control of creating the concurrency (e.g. in an operator that converts an event into an observable sequence, the source event is in control of firing the messages, not the operator).
 - The operator is in control, but needs to use a specific scheduler for introducing concurrency.
@@ -213,7 +213,7 @@ Rx.Observable.just = (value, scheduler) => {
 
 In this sample, we provided a default scheduler if not provided by the caller.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Ignore this guideline when no good default can be chosen.
 
@@ -239,7 +239,7 @@ Rx.Observable.just = (value, scheduler) => {
 
 In this sample the `return` operator has two parameters, and the scheduler parameter defaults to the immediate scheduler if not provided. As the scheduler argument is the last argument, adding or omitting the argument is clearly visible.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 JavaScript supports rest arguments syntax. With this syntax, the rest arguments has to be the last argument. Make the scheduler the final to last argument in this case.
 
@@ -293,7 +293,7 @@ Rx.Observable.just = (value, scheduler) => {
 
 In this case, the default scheduler for the `just` operator is the immediate scheduler. This scheduler does not introduce concurrency.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Ignore this guideline in situations where introduction of concurrency is an essential part of what the operator does.
 
@@ -373,7 +373,7 @@ Observable.prototype.zip = function() {
 
 In this sample, the operator groups all disposable instances controlling the various subscriptions together and returns the group as the result of subscribing to the outer observable sequence. When a user of this operator subscribes to the resulting observable sequence, he/she will get back a disposable instance that controls subscription to all underlying observable sequences.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 There are currently no known instances where this guideline should be ignored.
 
@@ -391,7 +391,7 @@ Rx.Observable.prototype.sum = function() { return this.reduce((acc, x) => acc + 
 
 In this sample, the `sum` operator has a return type of `Observable<Number>` instead of `Number`. By doing this, the operator does not block. It also allows the result value to be used in further composition.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 There are currently no known instances where this guideline should be ignored.
 
@@ -432,7 +432,7 @@ Rx.Observable.repeat = value => {
 
 The yield iterator pattern ensures that the stack depth does not increase drastically. By returning an infinite generator with the `from` operator can build an infinite observable sequence.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 There are currently no known instances where this guideline should be ignored.
 
@@ -475,7 +475,7 @@ Rx.Observable.prototype.map = function(selector, thisArg) {
 
 In this sample, the arguments are checked for null values before the `Observable.create` operator is called.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Ignore this guideline if some aspect of the argument cannot be checked until the subscription is active.
 
@@ -497,7 +497,7 @@ In this sample, the subscription is disposed twice, the first time the subscript
 
 As the RxJS’s composition makes that subscriptions are chained, so are unsubscriptions. Because of this, any operator can call an unsubscription at any time. Because of this, just throwing an exception will lead to the application crashing unexpectedly. As the observer instance is already unsubscribed, it cannot be used for receiving the exception either. Because of this, exceptions in unsubscriptions should be avoided.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 There are currently no known cases where to ignore this guideline.
 
@@ -505,7 +505,7 @@ There are currently no known cases where to ignore this guideline.
 
 When it is not possible to follow guideline 5.1, the custom implementation of the `Observable` class should still follow the RxJS contract in order to get the right behavior from the RxJS operators.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 Only ignore this guideline when writing observable sequences that need to break the contract on purpose (e.g. for testing).
 
@@ -513,6 +513,6 @@ Only ignore this guideline when writing observable sequences that need to break 
 
 As Rx is a composable API, operator implementations often use other operators for their implementation (see paragraph 5.1). RxJS usage guidelines should be strongly considered when implementing these operators.
 
-#### When to ignore this guideline ####
+#### 何时忽略这条指南 ####
 
 As described in the introduction, only follow a guideline if it makes sense in that specific situation.
