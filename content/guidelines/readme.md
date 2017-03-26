@@ -4,16 +4,16 @@
   src="https://raw.githubusercontent.com/Reactive-Extensions/RxJS/master/doc/designguidelines/images/984368.png"
   alt="RxJS Logo">
 
-* [简介](introduction/readme.md)
-* [什么时候该用RxJS](when/readme.md)
-  * [使用RxJS来编排异步和基于事件的计算](when/readme.md#use-rxjs-for-orchestrating-asynchronous-and-event-based-computations)
-  * [使用RxJS处理异步数据队列](when/readme.md#use-rxjs-to-deal-with-asynchronous-sequences-of-data)
-* [RxJS规范](contract/readme.md)
-  * [RxJS语法](contract/readme.md#assume-the-rxjs-grammar)
-  * [假定在一个`onError`或多个`onCompleted`消息之后资源将被回收](contract/readme.md#assume-resources-are-cleaned-up-after-an-onerror-or-oncompleted-message)
-  * [当取消订阅时将会智能地消毁所有未执行的程序](contract/readme.md#assume-a-best-effort-to-stop-all-outstanding-work-on-unsubscribe)
-* [使用 RxJS](using/readme.md)
-* [实践操作](implementations/readme.md)
+* [简介](introduction.md)
+* [什么时候该用RxJS](when.md)
+  * [使用RxJS来编排异步和基于事件的计算](when.md#use-rxjs-for-orchestrating-asynchronous-and-event-based-computations)
+  * [使用RxJS处理异步数据队列](when.md#use-rxjs-to-deal-with-asynchronous-sequences-of-data)
+* [RxJS规范](contract.md)
+  * [RxJS语法](contract.md#assume-the-rxjs-grammar)
+  * [假定在一个`onError`或`onCompleted`消息之后资源将被回收](contract.md#assume-resources-are-cleaned-up-after-an-onerror-or-oncompleted-message)
+  * [当取消订阅时将会智能地消毁所有未执行的程序](contract.md#assume-a-best-effort-to-stop-all-outstanding-work-on-unsubscribe)
+* [使用 RxJS](using.md)
+* [实践操作](implementations.md)
 
 <!-- 1. Introduction
 2. When to use RxJS
