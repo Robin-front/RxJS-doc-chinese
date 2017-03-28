@@ -1,32 +1,23 @@
 ## [`Rx.Observable.for(sources, resultSelector, [thisArg])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/for.js)
 
-{% if book.isPdf %}
-
 ![for](http://reactivex.io/documentation/operators/images/for.png)
 
-{% else %}
-
-
-{% endif %}
-
-Concatenates the observable sequences or Promises obtained by running the specified result selector for each element in source.
-There is an alias for this method called `forIn` for browsers <IE9
+将`observable`或`Promises`通过运行指定的结果选择为每个元素获得源。这种方法在浏览器IE9以下有一个别名叫做`forIn`。
 
 #### 参数
-1. `sources` *(Array)*: An array of values to turn into an observable sequence.
-2. `resultSelector` *(`Function`)*: A function to apply to each item in the sources array to turn it into an observable sequence. The resultSelector is called with the following information:
-    1. the value of the element
-    2. the index of the element
-    3. the Observable object being subscribed
+1. `sources` *(Array)*: 将值转换为可观察序列的数组。
+2. `resultSelector` *(`Function`)*: 函数，用于将源数组中的每个项将其转换为可观察序列。`resultselector`提供以下信息：
+      - `元素的值`
+      - `元素下标`
+      - `被订阅的可观测对象`
 
-3. `[thisArg]` *(`Any`)*: Object to use as `this` when executing `resultSelector`.
+3. `[thisArg]` *(`Any`)*: 当`resultSelector`函数执行时，使用该对象参数作为 `this`.
 
 #### 返回值
-*(`Observable`)*: An observable sequence from the concatenated observable sequences or Promises.
+*(`Observable`)*: Observable
 
 #### 例
 
-{% if book.isPdf %}
 
 ##### [Using Observables](http://jsbin.com/bocec/2/edit?js,console)
 
@@ -71,15 +62,3 @@ var subscription = source.subscribe(
 // => onNext: 3
 // => onCompleted
 ```
-
-{% else %}
-
-##### Using Observables
-
-[](http://jsbin.com/bocec/2/embed?js,console)
-
-##### Using Promises
-
-[](http://jsbin.com/febuc/2/embed?js,console)
-
-{% endif %}
