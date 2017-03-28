@@ -1,24 +1,21 @@
 ## [`Rx.Observable.concat(...args)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/concat.js)
 
-{% if book.isPdf==true %}
+<rx-marbles key="concat"></rx-marbles>
 
 ![concat](http://reactivex.io/documentation/operators/images/concat.png)
 
-{% endif %}
-
-Concatenates all of the specified observable sequences, as long as the previous observable sequence terminated successfully.
+拼接所有指定可观察序列，创建一个输出Observable，它会按拼接顺序发出所有值。
 
 #### 参数
-1. `args` *(`Array` | `arguments`)*: Observable sequences or Promises to concatenate.
+1. `args` *(`Array` | `arguments`)*: 传入需要拼接的`Observable`(可观察流) 或 `Promises`.
 
 #### 返回值
-*(`Observable`)*: An observable sequence that contains the elements of each given sequence, in sequential order.
+*(`Observable`)*: 返回一个按拼接顺序发出所有值的`Observable`
 
 #### 例
 
-{% if book.isPdf %}
 
-##### [Using Observable sequences](http://jsbin.com/sitiko/2/edit?js,console)
+##### [拼接可观察对象 `Observable` ](http://jsbin.com/sitiko/2/edit?js,console)
 
 ```js
 /* Using Observable sequences */
@@ -37,7 +34,7 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-#### [Using Promises and Observable sequences](http://jsbin.com/topor/2/edit?js,console)
+#### [拼接 `Promises` 和 `Observable`](http://jsbin.com/topor/2/edit?js,console)
 
 ```js
 /* Using Promises and Observable sequences */
@@ -55,16 +52,3 @@ var subscription = source.subscribe(
 // => onNext: 56
 // => onCompleted
 ```
-
-{% else %}
-
-##### Using Observable sequences
-
-[](http://jsbin.com/sitiko/2/embed?js,console)
-
-#### Using Promises and Observable sequences
-
-[](http://jsbin.com/topor/2/embed?js,console)
-
-{% endif %}
-

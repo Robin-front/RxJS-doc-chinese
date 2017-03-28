@@ -1,46 +1,30 @@
 ## [`Rx.Observable.prototype.concat(...args)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/concatproto.js)
 
-{% if book.isPdf %}
+<rx-marbles key="concat"></rx-marbles>
 
 ![concat](http://reactivex.io/documentation/operators/images/concat.png)
 
-{% else %}
-
-<rx-marbles key="concat"></rx-marbles>
-
-{% endif %}
-
-Concatenates all the observable sequences.  This takes in either an array or variable arguments to concatenate.
+拼接所有指定可观察序列，创建一个输出Observable，它会按拼接顺序发出所有值。
 
 #### 参数
-1. `args` *(`arguments` | `Array`)*: An array or arguments of Observable sequences.
+1. `args` *(`arguments` | `Array`)*: 接受一个数组或单个`Observable`参数.
 
 #### 返回值
-*(`Observable`)*: An observable sequence that contains the elements of each given sequence, in sequential order. 
+*(`Observable`)*: 返回一个按拼接顺序发出所有值的`Observable`
 
 #### 例
 
 [](http://jsbin.com/coyapo/1/embed?js,console)
 
 ```js
-/* Using Promises and Observable sequences */
-var source1 = Rx.Observable.return(42);
-var source2 = RSVP.Promise.resolve(56);
+var timer1 = Rx.Observable.interval(1000).take(10);
+var timer2 = Rx.Observable.interval(2000).take(6);
+var timer3 = Rx.Observable.interval(500).take(10);
+var result = timer1.concat(timer2, timer3);
+result.subscribe(x => console.log(x));
 
-var source = Rx.Observable.concat(source1, source2);
-
-var subscription = source.subscribe(
-    function (x) {
-        console.log('Next: ' + x);
-    },
-    function (err) {
-        console.log('Error: ' + err);
-    },
-    function () {
-        console.log('Completed');
-    });
-
-// => Next: 42
-// => Next: 56
-// => Completed
+// 结果如下:
+// -1000ms-> 0 -1000ms-> 1 -1000ms-> ... 9
+// -2000ms-> 0 -2000ms-> 1 -2000ms-> ... 5
+// -500ms-> 0 -500ms-> 1 -500ms-> ... 9
 ```
