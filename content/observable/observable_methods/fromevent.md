@@ -1,34 +1,27 @@
 ## [`Rx.Observable.fromEvent(element, eventName, [selector])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/fromevent.js)
 
-{% if book.isPdf %}
-
 ![fromEvent](http://reactivex.io/documentation/operators/images/fromEvent.png)
 
-{% else %}
-
-
-
-{% endif %}
-
+从DOM事件或Node EventEmitter事件或其他事件创建一个Observable。
 Creates an observable sequence by adding an event listener to the matching DOMElement, jQuery element, Zepto Element, Angular element, Ember.js element or EventEmitter.
 
-Note that this uses the library approaches for jQuery, Zepto, Backbone.Marionette, AngularJS and Ember.js and falls back to native binding if not present. If you are using AMD you may need to include these libraries as dependencies of RxJs in your requirejs configuration file. RxJs will attempt to detect their presence when deciding which library to use.
+请注意，这里使用jQuery，Zepto，Backbone.Marionette，AngularJS和Ember.js库的方法，如果不存在，将会自动使用原生事件绑定。如果使用的是AMD可能需要包含这些库在你requirejs配置文件RxJs的依赖。RxJs将在决定使用哪个库时，试图检测到它们的存在。
 
 #### 参数
-1. `element` *(`Any`)*: The DOMElement, NodeList, jQuery element, Zepto Element, Angular element, Ember.js element or EventEmitter to attach a listener. For Backbone.Marionette this would be the application or an EventAggregator object.
-2. `eventName` *(`String`)*: The event name to attach the observable sequence.
-3. `[selector]` *(`Function`)*: A selector which takes the arguments from the event emitter so that you can return a single object.
+1. `element` *(`Any`)*: DOMElement，事件目标，Node.js EventEmitter，NodeList或HTMLCollection来附加事件处理程序。
+2. `eventName` *(`String`)*: 事件名
+3. `[selector]` *(`Function`)*: 后期处理结果的可选功能。它接受来自事件处理程序的参数，并返回一个值。
 
 #### 返回值
-*(`Observable`)*: An observable sequence of events from the specified element and the specified event.
+*(`Observable`)*: observable
 
 #### 例
 
-Wrapping an event from [jQuery](http://jquery.com)
+通过 [jQuery](http://jquery.com)封装事件
 
 [](http://jsbin.com/kemudu/1/embed?js,console)
 
-Using in Node.js with using an `EventEmitter` with a selector function (which is not required).
+使用Node.js的`EventEmitter`作为选择器函数（这不是必须的）。
 
 ```js
 var EventEmitter = require('events').EventEmitter,
@@ -38,7 +31,7 @@ var eventEmitter = new EventEmitter();
 
 var source = Rx.Observable.fromEvent(
     eventEmitter,
-    'data', 
+    'data',
     function (args) {
         return { foo: args[0], bar: args[1] };
     });
