@@ -1,14 +1,14 @@
 ## [`Rx.Observable.fromEventPattern(addHandler, [removeHandler], [selector])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/fromeventpattern.js)
 
-Creates an observable sequence by using the addHandler and removeHandler functions to add and remove the handlers, with an optional selector function to project the event arguments.
+通过创建使用AddHandler和removeHandler功能添加和删除处理，具有可选的选择功能项目事件参数的观察到的序列。
 
 #### 参数
-1. `addHandler` *(`Function`)*: The DOMElement, NodeList or EventEmitter to attach a listener.
-2. `removeHandler` *(`Function`)*: The optional function to remove a handler from an emitter.
-3. `[selector]` *(`Function`)*: A selector which takes the arguments from the event handler to produce a single item to yield on next.
+1. `addHandler` *(`Function`)*: 一个DOMElement，节点列表或EventEmitter附加的监听器。
+2. `removeHandler` *(`Function`)*: 可选的功能，以从事件发射端移除的处理程序。
+3. `[selector]` *(`Function`)*: 一个选择器，它从事件处理程序中获取参数，以便在下一个项目上生成一个项目。
 
 #### 返回值
-*(`Observable`)*: An observable sequence of events from the specified element and the specified event.
+*(`Observable`)*: 来自指定元素和指定事件的可观察事件序列。
 
 #### 例
 

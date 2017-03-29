@@ -3,7 +3,6 @@
 ![fromEvent](http://reactivex.io/documentation/operators/images/fromEvent.png)
 
 从DOM事件或Node EventEmitter事件或其他事件创建一个Observable。
-Creates an observable sequence by adding an event listener to the matching DOMElement, jQuery element, Zepto Element, Angular element, Ember.js element or EventEmitter.
 
 请注意，这里使用jQuery，Zepto，Backbone.Marionette，AngularJS和Ember.js库的方法，如果不存在，将会自动使用原生事件绑定。如果使用的是AMD可能需要包含这些库在你requirejs配置文件RxJs的依赖。RxJs将在决定使用哪个库时，试图检测到它们的存在。
 
