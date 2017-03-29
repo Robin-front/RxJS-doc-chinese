@@ -2,7 +2,7 @@
 
 ![forkJoin](http://reactivex.io/documentation/operators/images/forkJoin.png)
 
-并行运行所有observable，并收集所有observable最后的返回值。
+并行运行所有observable，并收集所有observable最后的返回值。不管每个流会发射多少值，都只取最后一个返回值。
 
 #### 参数
 1. `args` *(`Arguments` | `Array`)*: 数组 或 Observable 或 Promises
