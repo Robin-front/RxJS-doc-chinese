@@ -16,8 +16,6 @@ Wrapping an event from [jQuery](http://jquery.com)
 
 [](http://jsbin.com/wihiw/1/embed?js,console)
 
-<a class="jsbin-embed" href="http://jsbin.com/mukoqicuku/1/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.41.9"></script>
-
 Wrapping an event from the [Dojo Toolkit](http://dojotoolkit.org)
 
 ```js

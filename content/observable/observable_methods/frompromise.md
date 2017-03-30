@@ -1,12 +1,12 @@
 ## [`Rx.Observable.fromPromise(promise)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/frompromise.js)
 
-Converts a Promises/A+ spec compliant Promise and/or ES2015 compliant Promise to an Observable sequence.
+将一个兼容Promises/A+规范或 ES2015规范的 Promise 转化为 Obseervable
 
 #### 参数
-1. `promise` *(`Promise`)*: Promises/A+ spec compliant Promise to an Observable sequence.
+1. `promise` *(`Promise`)*: 兼容Promises/A+规范或 ES2015规范的 Promise
 
 #### 返回值
-*(`Observable`)*: An Observable sequence which wraps the existing promise success and failure.
+*(`Observable`)*: 一个Observable，封装现有的Promises成功和失败接口。
 
 #### 例
 
