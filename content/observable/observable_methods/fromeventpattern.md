@@ -16,6 +16,8 @@ Wrapping an event from [jQuery](http://jquery.com)
 
 [](http://jsbin.com/wihiw/1/embed?js,console)
 
+[](codepen://Lingyucoder/AsFJh?height=800&theme=0)
+
 Wrapping an event from the [Dojo Toolkit](http://dojotoolkit.org)
 
 ```js

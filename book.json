@@ -6,6 +6,7 @@
       "readme": "intro.md"
   },
   "plugins": [
+      "codepen",
       "jsbin",
       "anchors",
       "video",
