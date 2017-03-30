@@ -1,14 +1,7 @@
 ## [`Rx.Observable.interval(period, [scheduler])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/interval.js)
 
-{% if book.isPdf %}
 
 ![interval](http://reactivex.io/documentation/operators/images/interval.png)
-
-{% else %}
-
-
-
-{% endif %}
 
 Returns an observable sequence that produces a value after each period.
 
