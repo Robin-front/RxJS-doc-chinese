@@ -3,14 +3,14 @@
 ![generateWithAbsoluteTime](http://reactivex.io/documentation/operators/images/generateWithAbsoluteTime.png)
 
 
-生成一个带相对时间控制的Observable,通过迭代一个初始值，直到判定条件返回false.
+生成一个带绝对时间控制的Observable,通过迭代一个初始值，直到判定条件返回false.
 
 #### 参数
 1. `initialState` *(`Any`)*: 初始值.
 2. `condition` *(`Function`)*: 生成判定条件的函数（返回false时终止循环）
 3. `iterate` *(`Function`)*: 迭代函数
 4. `resultSelector` *(`Function`)*: 处理迭代函数的值，返回最终结果
-5. `timeSelector` *(`Function`)*: 间隔时间函数，控制每次迭代产生的值的速度，返回一个时间戳。
+5. `timeSelector` *(`Function`)*: 间隔时间函数，控制每次迭代产生的值的速度，返回一个未来的时间戳（绝对时间值）。
 6. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: generator循环的调度器，如果没有提供，默认为 `Scheduler.timeout`.
 
 #### 返回值
