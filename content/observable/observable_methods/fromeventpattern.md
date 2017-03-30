@@ -16,10 +16,7 @@ Wrapping an event from [jQuery](http://jquery.com)
 
 [](http://jsbin.com/wihiw/1/embed?js,console)
 
-[codepen](//codepen.io/enxaneta/embed/VpVZqZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2)
-
-<iframe height='265' scrolling='no' title='Intersecting Lines' src='//codepen.io/enxaneta/embed/VpVZqZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/enxaneta/pen/VpVZqZ/'>Intersecting Lines</a> by Gabi (<a href='http://codepen.io/enxaneta'>@enxaneta</a>) on <a href='http://codepen.io'>CodePen</a>.
-</iframe>
+<a class="jsbin-embed" href="http://jsbin.com/mukoqicuku/1/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.41.9"></script>
 
 Wrapping an event from the [Dojo Toolkit](http://dojotoolkit.org)
 
