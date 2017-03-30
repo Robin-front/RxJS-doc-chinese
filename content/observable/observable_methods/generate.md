@@ -3,7 +3,7 @@
 ![generate](http://reactivex.io/documentation/operators/images/generate.png)
 
 
-将一个数组转换为observable，使用可选的调度器枚举数组。
+将一个数组(事实上，初始值可以是任何类型)转换为observable，使用可选的调度器枚举数组。
 
 #### 参数
 1. `initialState` *(`Any`)*: 初始值，可以是任何类型
