@@ -2,7 +2,7 @@
 
 ![start](http://reactivex.io/documentation/operators/images/start.png)
 
-在指定的调度程序上异步调用指定的函数，通过可观察的序列来显示结果。
+在指定的调度程序上异步地调用指定的函数，通过可观察的序列来显示结果。
 
 #### 参数
 1. `func` *(`Function`)*: 异步调用的函数.
