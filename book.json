@@ -19,7 +19,8 @@
       "todo",
       "quiz",
       "include-highlight",
-      "tonic"
+      "tonic",
+      "disqus"
   ],
   "theme": "theme",
   "pluginsConfig": {
@@ -43,6 +44,9 @@
               "star"
           ],
           "size": "small"
+      },
+      "disqus": {
+          "shortName": "robin-front-github-io"
       }
   },
   "variables": {
