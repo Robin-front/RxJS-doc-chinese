@@ -1,13 +1,13 @@
 ## [`Rx.Observable.ofWithScheduler([scheduler], ...args)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/of.js)
 
-Converts arguments to an observable sequence, using an optional scheduler to enumerate the arguments.
+将一系列参数转换成 observable 序列, 并使用指定的调度器枚举参数。
 
 #### 参数
-1. `[scheduler]` *(Scheduler)*: An optional scheduler used to enumerate the arguments.
-2. `args` *(Arguments)*: A list of arguments to turn into an Observable sequence.
+1. `[scheduler]` *(Scheduler)*: 用于枚举参数的可选调度程序。
+2. `args` *(Arguments)*: 将参数转换为可观察序列的参数列表.
 
 #### 返回值
-*(`Observable`)*: The observable sequence whose elements are pulled from the given arguments.
+*(`Observable`)*: 一个将参数值作为返回值的observable。
 
 #### 例
 

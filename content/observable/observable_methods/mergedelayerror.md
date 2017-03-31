@@ -1,8 +1,5 @@
 ## [`Rx.Observable.mergeDelayError(...args)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/mergedelayerror.js)
 
-把观测到的发射观测到一个可见的，在某种程度上让观察员
-从所有的源观测值接收所有成功发射的项目，而不被中断
-其中一个错误通知。
 将多个Observable抹平合并进一个Observable，通过这个方法，让观察者能够成功接收到所有Observable正常发出的值，而不会被其中的某个错误通知中断。（错误会在流结束后发出）
 
 它的表现很像 `Observable.prototype.mergeAll`，除了当合并的 Observables 中的某个发出错误（`onError`）时，`mergeDelayError`会延迟错误通知，直到所有合并的 Observables完成之后。
