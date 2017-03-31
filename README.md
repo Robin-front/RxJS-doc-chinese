@@ -1,6 +1,7 @@
-# RxJS 中文文档
 
 ## RxJS <sup>v4.0</sup> 中文文档
+
+[https://robin-front.gitbooks.io/rxjs-doc-chinese/content/](https://robin-front.gitbooks.io/rxjs-doc-chinese/content/)
 
 网络上现在翻译资料和专题讲解比较零散，所以打算整理现有翻译资源，并尝试自己翻译，也希望有人参与，水平有限，错误之处请多多指点。
 引用现在翻译都会在里面注明原翻译作者和发布链接。
