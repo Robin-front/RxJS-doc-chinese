@@ -1,14 +1,14 @@
-# Using Subjects #
+# 使用 Subjects #
 
-The [`Subject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md) class inherits both [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) and [`Observer`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md), in the sense that it is both an observer and an observable. You can use a subject to subscribe all the observers, and then subscribe the subject to a backend data source. In this way, the subject can act as a proxy for a group of subscribers and a source. You can use subjects to implement a custom observable with caching, buffering and time shifting. In addition, you can use subjects to broadcast data to multiple subscribers.
+[`Subject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md) 继承了 [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) 和 [`Observer`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md), 在某种意义上说，它既是观察者 (observer), 也是被观察者（observable）。 你可以使用一个 subject 订阅所有观察者，然后再订阅接收后端数据的。通过这种方式， subject 可以充当一组观察者和源的代理。您可以使用subject来实现与高速缓存，缓冲和时移定制的观测。此外，您可以使用subject广播数据给多个用户。
 
-By default, subjects do not perform any synchronization across threads. They do not take a scheduler but rather assume that all serialization and grammatical correctness are handled by the caller of the subject.  A subject simply broadcasts to all subscribed observers in the thread-safe list of subscribers. Doing so has the advantage of reducing overhead and improving performance.
+默认情况下，subject 不进行跨线程任何同步。他们不采取调度程序，而是假设所有序列化和语法正确性处理是通过subject调用处理方法。subject 简单地广播到用户的线程安全列表中的所有订阅的观察者。这样做有减少开销和提高性能的优势。
 
-## Using Subjects ##
+## 使用 Subjects ##
 
-In the following example, we create a subject, subscribe to that subject and then use the same subject to publish values to the observer. By doing so, we combine the publication and subscription into the same source.
+在下面的例子中，我们创建了一个subject，订阅该subject，然后使用同一subject发送值给观察者。通过这样做，我们将发布和订阅合并到同一个来源。
 
-In addition to taking an `Observer`, the [`subscribe`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted) method can also take a function for onNext, which means that the action will be executed every time an item is published. In our sample, whenever onNext is invoked, the item will be written to the console.
+除了采用 `Observer`,  [`subscribe`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted) 方法还可以采取onNext的函数，这意味着动作将在每一个项目发布的第一时间被执行。在我们的例子中，只要调用onNext，该结果将被写入控制台。
 
 ```js
 var subject = new Rx.Subject();
@@ -31,7 +31,7 @@ subscription.dispose();
 
 ```
 
-The following example illustrates the proxy and broadcast nature of a `Subject`. We first create a source sequence which produces an integer every 1 second. We then create a `Subject`, and pass it as an observer to the source so that it will receive all the values pushed out by this source sequence. After that, we create another two subscriptions, this time with the subject as the source. The `subSubject1` and `subSubject2` subscriptions will then receive any value passed down (from the source) by the `Subject`.
+下面的示例将展示出`Subject`的代理和广播特性。我们首先创建一个每隔1秒产生的整数的源序列。然后，我们创建一个`Subject`, 并且将它作为一个观察者，这样它会接收这个源发送的所有值。之后，我们创建另外两个订阅，这次 subject作为发射源。`subSubject1` 和 `subSubject2` 两个订阅者将接收通过`Subject`传下来的任何值。
 
 ```js
 // Every second
@@ -71,8 +71,12 @@ setTimeout(() => {
 
 ```
 
-## Different types of Subjects ##
+## Subjects 的不同类型 ##
 
-The `Subject` object in the RxJS library is a basic implementation, but you can create your own using  the [`Subject.create`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md#rxsubjectcreateobserver-observable) method. There are other implementations of Subjects that offer different functionalities. All of these types store some (or all of) values pushed to them via onNext, and broadcast them back to their observers. In this way, they convert a Cold Observable into a Hot one. This means that if you Subscribe to any of these more than once (i.e. subscribe -> unsubscribe -> subscribe again), you will see at least one of the same value again. For more information on hot and cold observables, see the last section of the [Creating and Subscribing to Simple Observable Sequences](creating.md) topic.
+`Subject` 对象在 RxJS 库中是一个基本的实现, 但你也可以使用 [`Subject.create`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md#rxsubjectcreateobserver-observable) 方法创建你自己的 subject. 有一些通过不同函数实现的Subjects. 所有这些类型的存储通过onNext推到他们一些（或全部）值，并广播他们回到自己的观察者。通过这种方法，它们将冷门的可观察到的热点之一。这意味着，如果你订阅不止这一次变更（即认购- >退订- >再次订阅） This means that if you Subscribe to any of these more than once (i.e. subscribe -> unsubscribe -> subscribe again)，你会至少看到两次相同的值。有关冷热observables的信息，请查看最新的章节[Creating and Subscribing to Simple Observable Sequences](creating.md) .
 
-[`ReplaySubject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/replaysubject.md) stores all the values that it has published. Therefore, when you subscribe to it, you automatically receive an entire history of values that it has published, even though your subscription might have come in after certain values have been pushed out. [`BehaviourSubject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/behaviorsubject.md) is similar to `ReplaySubject`, except that it only stores the last value it published. `BehaviourSubject` also requires a default value upon initialization. This value is sent to observers when no other value has been received by the subject yet. This means that all subscribers will receive a value instantly on `subscribe`, unless the `Subject` has already completed. [`AsyncSubject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/asyncsubject.md) is similar to the Replay and Behavior subjects, however it will only store the last value, and only publish it when the sequence is completed. You can use the `AsyncSubject` type for situations when the source observable is hot and might complete before any observer can subscribe to it. In this case, `AsyncSubject` can still provide the last value and publish it to any future subscribers.
+[`ReplaySubject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/replaysubject.md) 存储它发布过的所有值。因些，当你订阅它时，你将自动接收到它发布数据的整个历史，即使当你订阅的时候已经发布了一些数据了。
+
+[`BehaviourSubject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/behaviorsubject.md)类似于 `ReplaySubject`, 除了它仅存储它发布过的最后一个值。`BehaviourSubject`还需要初始化时的默认值。当还没有收到 subject的其他值的时候，这个默认值将会发送给它的观察者。 这意味着所有订阅者在订阅的时候会立即收到一个值。除非 `Subject` 已经结束了。
+
+[`AsyncSubject`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/asyncsubject.md) 类似于 `ReplaySubject`和 `BehaviourSubject`。但它只会保存最后一个值，并且当序列完成（结束）发布时。当观察源很热并且可能结束之前，任何观察者可以订阅它，你可以使用 `AsyncSubject` 类型。这种情况，`AsyncSubject` 仍会提供最后一个值给将来的订阅者。
