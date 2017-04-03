@@ -13,16 +13,16 @@ Rx.DOM.Request.jsonpRequest(url);
 // With a settings object
 Rx.DOM.Request.jsonpRequest(settings);
 ```
-#### Arguments
+#### 参数
 1. `url` *(String)*: A string of the URL to make the JSONP call.
 1. `settings` *(Object)*: An object with the following properties:
 		- `url` *(String)*: URL of the request
   		- `jsonp` *(String)*: The named callback parameter for the JSONP call
 
-#### Returns
+#### 返回值
 *(Observable)*: A hot observable containing the results from the JSONP call.
 
-#### Example
+#### 例
 
 The following example uses a simple URL to retrieve a list of entries from Wikipedia. 
 

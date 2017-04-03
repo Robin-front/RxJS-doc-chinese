@@ -12,12 +12,12 @@
 
 Ignores values from an observable sequence which are followed by another value before dueTime.
 
-#### Arguments
+#### 参数
 1. `dueTime` *(`Number`)*: Selector function to retrieve a sequence indicating the throttle duration for each given element.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: The throttled sequence. 
     
-#### Example
+#### 例
 
 [](http://jsbin.com/gazesu/1/embed?js,console)

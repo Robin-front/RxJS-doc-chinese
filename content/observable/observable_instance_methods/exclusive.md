@@ -4,7 +4,7 @@ Performs a exclusive map waiting for the first to finish before subscribing to a
 
 Observables that come in between subscriptions will be dropped on the floor.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An exclusive observable with only the results that happen when subscribed.
 
-#### Example
+#### 例

@@ -12,9 +12,9 @@
 
 Returns an observable sequence that stays connected to the source as long as there is at least one subscription to the observable sequence.
    
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that stays connected to the source as long as there is at least one subscription to the observable sequence.
  
-#### Example
+#### 例
 
 [](http://jsbin.com/sotos/1/embed?js,console)

@@ -12,15 +12,15 @@
 
 Samples the observable sequence at each interval.
 
-#### Arguments
+#### 参数
 1. `[interval]` *(`Number`)*: Interval at which to sample (specified as an integer denoting milliseconds)
 2. `[sampleObservable]` *(`Observable`)*: Sampler Observable.
 3. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the sampling timer on. If not specified, the timeout scheduler is used.
  
-#### Returns
+#### 返回值
 *(`Observable`)*: Sampled observable sequence.
 
-#### Example
+#### 例
 
 ##### With an interval time
 

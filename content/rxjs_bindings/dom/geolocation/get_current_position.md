@@ -3,7 +3,7 @@
 
 Obtains the geographic position, in terms of latitude and longitude coordinates, of the device.
 
-#### Arguments
+#### 参数
 1. `[geolocationOptions]` *(Object)*: An object literal to specify one or more of the following attributes and desired values:
      - enableHighAccuracy: Specify true to obtain the most accurate position possible, or false to optimize in favor of performance and power consumption.
      - timeout: An Integer value that indicates the time, in milliseconds, allowed for obtaining the position.
@@ -14,10 +14,10 @@ Obtains the geographic position, in terms of latitude and longitude coordinates,
         If maximumAge is zero (0), watchPosition always tries to obtain an updated position, even if a cached position is already available.
         If maximumAge is Infinity, any cached position is used, regardless of its age, and watchPosition only tries to obtain an updated position if no cached position data exists.
 
-#### Returns
+#### 返回值
 *(Observable)*: An observable sequence with the current geographical location of the device running the client.
 
-#### Example
+#### 例
 ```js
 var source = Rx.DOM.Geolocation.getCurrentPosition();
 

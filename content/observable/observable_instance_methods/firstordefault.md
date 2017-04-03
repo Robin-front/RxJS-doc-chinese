@@ -12,7 +12,7 @@
 
 Returns the first element of an observable sequence that satisfies the condition in the predicate, or a default value if no such element exists.
 
-#### Arguments
+#### 参数
 1. `predicate` *(`Function`)*: A predicate function to evaluate for elements in the source sequence. The callback is called with the following information:
     1. the value of the element
     2. the index of the element
@@ -20,10 +20,10 @@ Returns the first element of an observable sequence that satisfies the condition
 2. `[defaultValue]` *(`Any`)*: The default value if no such element exists.  If not specified, defaults to null.
 3. `[thisArg]` *(`Any`)*: Object to use as `this` when executing the predicate.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence that contains elements from the input sequence that satisfy the condition.  
 
-#### Example
+#### 例
 
 ##### Without a predicate but default value
 

@@ -12,14 +12,14 @@
 
 Determines whether an observable sequence contains a specified element with an optional equality comparer.
 
-#### Arguments
+#### 参数
 1. `value` *(`Any`)*: The value to locate in the source sequence.
 2. `[comparer]` *(`Function`)*: An equality comparer function to compare elements.
 
-#### Returns
+#### 返回值
 *(`Observable`)*: An observable sequence containing a single element determining whether the source sequence contains an element that has the specified value.
 
-#### Example
+#### 例
 
 ##### Without a comparer
 
