@@ -20,7 +20,8 @@
       "quiz",
       "include-highlight",
       "tonic",
-      "disqus"
+      "disqus",
+      "sitemap"
   ],
   "theme": "theme",
   "pluginsConfig": {
@@ -47,6 +48,9 @@
       },
       "disqus": {
           "shortName": "robin-front-github-io"
+      },
+      "sitemap": {
+          "hostname": "https://robin-front.gitbooks.io/rxjs-doc-chinese/content/"
       }
   },
   "variables": {
