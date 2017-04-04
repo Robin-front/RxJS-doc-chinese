@@ -1,5 +1,5 @@
 
-## RxJS <sup>v4.0</sup> 中文文档
+## RxJS <sup>v4.0</sup> 中文文档 （翻译中...）
 
 [https://robin-front.gitbooks.io/rxjs-doc-chinese/content/](https://robin-front.gitbooks.io/rxjs-doc-chinese/content/)
 
