@@ -1,28 +1,19 @@
 ## [`Rx.Observable.from(iterable, [mapFn], [thisArg], [scheduler])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/from.js)
 
-{% if book.isPdf %}
-
 ![from](http://reactivex.io/documentation/operators/images/from.png)
 
-{% else %}
-
-
-{% endif %}
-
-This method creates a new Observable sequence from an array-like or iterable object.
+从Array创建一个Observable，参数也可以是一个类数组的对象，一个Promise，一个可迭代对象或一个Observable类对象。
 
 #### 参数
-1. `iterable` *(`Array` | `Arguments` | `Iterable`)*: An array-like or iterable object to convert to an Observable sequence.
-2. `[mapFn]` *(`Function`)*: Map function to call on every element of the array.
-3. `[thisArg]` *(`Any`)*: The context to use calling the mapFn if provided.
-4. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: Scheduler to run the enumeration of the input sequence on.
+1. `iterable` *(`Array` | `Arguments` | `Iterable`)*: 类数组或可迭代对象
+2. `[mapFn]` *(`Function`)*: 应用到第一个参数的映射函数
+3. `[thisArg]` *(`Any`)*: 提供映射函数上下文
+4. `[scheduler=Rx.Scheduler.currentThread]` *(`Scheduler`)*: 枚举输入序列的调度器
 
 #### 返回值
-*(`Observable`)*: The observable sequence whose elements are pulled from the given iterable sequence.
+*(`Observable`)*: 通过给定的可迭代序列生成的`observable`.
 
 #### 例
-
-{% if book.isPdf %}
 
 ##### [Array-like object (arguments) to Observable](http://jsbin.com/dekire/2/edit?js,console)
 
@@ -116,32 +107,3 @@ Rx.Observable.from({length: 5}, (v, k) => k).subscribe(
 // => onNext: 4
 // => onCompleted
 ```
-
-{% else %}
-
-##### Array-like object (arguments) to Observable
-
-[](http://jsbin.com/dekire/2/embed?js,console)
-
-##### Set
-
-[](http://jsbin.com/dapoju/4/embed?js,console)
-
-##### Map
-
-[](http://jsbin.com/yukiyu/4/embed?js,console)
-
-##### String
-
-[](http://jsbin.com/bemuqa/3/embed?js,console)
-
-##### Array
-
-[](http://jsbin.com/tiluno/2/embed?js,console)
-
-##### Generate a sequence of numbers
-
-[](http://jsbin.com/piyehe/2/embed?js,console)
-
-{% endif %}
-

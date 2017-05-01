@@ -1,23 +1,14 @@
 ## [`Rx.Observable.empty([scheduler])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/empty.js)
 
-{% if book.isPdf %}
-
 ![empty](http://reactivex.io/documentation/operators/images/empty.png)
 
-{% else %}
-
-
-{% endif %}
-
-Returns an empty observable sequence, using the specified scheduler to send out the single OnCompleted message.
+创建一个Observable，不会向Observer发送任何项目，并立即发出完成（`OnCompleted`）的通知。
 
 #### 参数
-1. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: Scheduler to send the termination call on.
+1. `[scheduler=Rx.Scheduler.immediate]` *(`Scheduler`)*: 调度程序发送终止调用。
 
 #### 返回值
-*(`Observable`)*: An observable sequence with no elements.
-
-{% if book.isPdf %}
+*(`Observable`)*: 空的可观察序列
 
 #### [Example](http://jsbin.com/kizosi/2/edit?js,console)
 
@@ -32,10 +23,22 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-{% else %}
+```js
+// 发出数字7，然后完成。
+var result = Rx.Observable.empty().startWith(7);
+result.subscribe(x => console.log(x));
+```
 
-#### 例
+```js
+// 将序列'a'，'b'，'c'映射并展平奇数，
+var interval = Rx.Observable.interval(1000);
+var result = interval.mergeMap(x =>
+  x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()
+);
+result.subscribe(x => console.log(x));
 
-[](http://jsbin.com/kizosi/2/embed?js,console)
-
-{% endif %}
+// x is equal to the count on the interval eg(0,1,2,3,...)
+// 每1000ms，x会奇偶变换
+// x为偶数将输出 abc
+// x为奇数将什么也不输出
+```

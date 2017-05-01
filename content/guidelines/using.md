@@ -1,4 +1,4 @@
-# 使用 Rx 的技巧
+# 使用 Rx 的奇淫技巧
 
 ### 尝试画珠宝图 ###
 
@@ -45,7 +45,7 @@ RxJS还提供了三种方便的方法，其仅订阅所期望的序列的一部�
 
 ### 考虑通过特定的调度程序并发引入操作符 ###
 
-相比使用` observeon `操作符来改变可观察序列产生消息的执行上下文，更好的做法是在正确的地方开始创建并发。 通过正确的调度器将会减少 `ObserveOn`操作符的使用。As operators parameterize introduction of concurrency by providing a scheduler argument overload, passing the right scheduler will lead to fewer places where the ObserveOn operator has to be used.
+相比使用` observeon `操作符来改变可观察序列产生消息的执行上下文，更好的做法是在正确的地方开始创建并发。 通过正确的调度器将会减少 `ObserveOn`操作符的使用。
 
 #### 例 ####
 
@@ -53,15 +53,15 @@ RxJS还提供了三种方便的方法，其仅订阅所期望的序列的一部�
 Rx.Observable.range(0, 90000, Rx.Scheduler.requestAnimationFrame).subscribe(draw);
 ```
 
-在这个例子中，来自`range`操作符的回调将会通过`window.requestAnimationFrame`传递。In this sample, callbacks from the `range` operator will arrive by calling .  The default overload of `range` would place the `onNext` call on the `Rx.Scheduler.currentThread` which is used when recursive scheduling is required immediately.  By providing the `Rx.Scheduler.requestAnimationFrame` scheduler, all messages from this observable sequence will originate on the `window.requestAnimationFrame` callback.
+在这个例子中，来自`range`操作符的回调将会通过`window.requestAnimationFrame`传递。在这个例子中， `range`操作符的回调将被调用。默认情况下，当递归调用立即执行时，`range`过载将会代替 `onNext`在`Rx.Scheduler.currentThread`上的调用。 通过提供`Rx.Scheduler.requestAnimationFrame`调度程序， 所有来自observable的消息都将会在 `window.requestAnimationFrame`回调中产生。
 
 #### 何时忽略这条指南 ####
 
-When combining several events that originate on different execution contexts, use guideline 4.4 to put  all messages on a specific execution context as late as possible.
+当结合来自不同执行上下文的几个事件时，使用指南4.4将所有消息尽可能晚地放在特定的执行上下文。
 
-### Call the `observeOn` operator as late and in as few places as possible ###
+### 尽可能少且尽可能迟地调用`observeOn` 操作符 ###
 
-By using the `observeOn` operator, an action is scheduled for each message that comes through the original observable sequence. This potentially changes timing information as well as puts additional stress on the system. Placing this operator later in the query will reduce both concerns.
+通过使用 `observeOn` 操作符， 一个预定的功能是通过原始的消息流来获取信息。这可能会改变时序信息以及对系统施加额外的压力。在查询中延迟使用这个操作符可以改善这两个问题。
 
 #### Sample ####
 
@@ -73,61 +73,59 @@ var result = xs.throttle(1000)
   .observeOn(Rx.Scheduler.requestAnimationFrame);
 ```
 
-This sample combines many observable sequences running on many different execution contexts. The query filters out a lot of messages. Placing the `observeOn` operator earlier in the query would do extra work on messages that would be filtered out anyway. Calling the `observeOn` operator at the end of the query will create the least performance impact.
+这个例子合并了多个 运行在不同上下文的 observable 。这个查询筛选掉了大部分信息。将`observeOn`操作符放在查询中的前面会对筛选出来的消息做额外的工作。最后才调用 `observeOn` 将会最大限度地提高性能。
 
 #### 何时忽略这条指南 ####
 
-Ignore this guideline if your use of the observable sequence is not bound to a specific execution context. In that case do not use the `observeOn` operator.
+如果你使用的 observable 并没有指定不同的上下文环境。这种情况下可以不必使用 `observeOn` 操作符。
 
-### Consider limiting buffers ###
+### 关注内存限制 ###
 
-RxJS comes with several operators and classes that create buffers over observable sequences, e.g. the `replay` operator. As these buffers work on any observable sequence, the size of these buffers will depend on the observable sequence it is operating on. If the buffer is unbounded, this can lead to memory pressure. Many buffering operators provide policies to limit the buffer, either in time or size. Providing this limit will address memory pressure issues.
+RxJS 有很多操作符和类可以在内存中创建 observable, 比如：`replay` 操作符。当这些内存存储着 observable 时，这些缓存的大小将取决于 observable 的操作。如果缓存过大，将会造成内存溢出。有许多缓冲操作符提供策略来限制缓冲区，不管是从时间方面还是大小。提供这个限制将解决内存压力问题。
 
-#### Sample ####
+#### 例子 ####
 
 ```js
 var result = xs.replay(null, 10000, 1000 * 60 /* 1 hr */).refCount();
 ```
 
-In this sample, the `replay` operator creates a buffer. We have limited that buffer to contain at most 10,000 messages and keep these messages around for a maximum of 1 hour.
+这个例子中，`replay` 操作符创建了一个 buffer. 我们有限制这个 buffer 最多包含 10,000 条信息以及最多保留这些信息1小时。
 
 #### 何时忽略这条指南 ####
 
-When the amount of messages created by the observable sequence that populates the buffer is small or when the buffer size is limited.
+当 observable 创建了大量的信息只填充了一小块 buffer， 或者当 buffer本身有大小限制。
 
-### Make side-effects explicit using the `do`/`tap` operator ###
+### 使用 `do`/`tap` 操作符的副作用很明显 ###
 
-As many Rx operators take functions as arguments, it is possible to pass any valid user code in these arguments. This code can change global state (e.g. change global variables, write to disk etc...).
+有很多 Rx 操作符使用函数作为参数，这可以在这些参数中传递任何有效的用户代码。这些代码可以改变全局状态（比如改变全局变量，读写硬盘等等）。
 
-The composition in Rx runs through each operator for each subscription (with the exception of the sharing operators, such as `publish`). This will make every side-effect occur for each subscription.
+Rx 是通过每个操作符组合起来运行的（除了共享操作符，例如“publish”）。这将使副作用发生在每个订阅。
 
-If this behavior is the desired behavior, it is best to make this explicit by putting the side-effecting code
-in a `do`/`tap` operator.  There are overloads to this method which call the specified method only, for example `doOnNext`/`tapOnNext`, `doOnError`/`tapOnError`,`doOnCompleted`/`tapOnCompleted`
+如果这种表现是期望的行为，最好弄清楚在 `do`/`tap` 操作符中有副作用的这部分代码。这些方法会过载，只能调用指定的方法，比如 `doOnNext`/`tapOnNext`，`doOnError`/`tapOnError`,`doOnCompleted`/`tapOnCompleted`
 
-#### Sample ####
+#### 例 ####
 
 ```js
 var result = xs.filter(x => x.failed).tap(x => log(x));
 ```
 
-In this sample, messages are filtered for failure. The messages are logged before handing them out to the code subscribed to this observable sequence. The logging is a side-effect (e.g. placing the messages in the computer’s event log) and is explicitly done via a call to the `do`/`tap` operator.
+这个例子中，过滤失败的消息。将它们分发到订阅observable的代码之前记录该消息。此记录有一个副作用（比如：将消息放置在计算机的事件日志中）并明确地通过调用`do`/`tap`操作符。
 
-### Assume messages can come through until unsubscribe has completed ###
+### 假设消息可以传达，直到退订完成 ###
 
-As RxJS uses a push model, messages can be sent from different execution contexts. Messages can be in flight while calling unsubscribe. These messages can still come through while the call to unsubscribe is in progress. After control has returned, no more messages will arrive. The unsubscription process can still be in progress on a different context.
+由于RxJS 使用推模式，消息可以通过不同的上下文环境发送。 当退订的时候，消息可能还在路上。当退订还没有完成的时候，这些消息仍然可以被传达。当控制权被返回时，消息将不能再传达。退订过程可以是在一个不同的上下文环境中进行。
 
 #### 何时忽略这条指南 ####
 
-Once the `onCompleted` or `onError` method has been received, the RxJS grammar guarantees that the subscription can be considered to be finished.
+一旦 `onCompleted` 或 `onError` 方法被调用，RxJS语法可以保证订阅已结束。
 
-### Use the `publish` operator to share side-effects ###
+### 使用 `publish` 操作符分享副作用 ###
 
-As many observable sequences are cold [\(see cold vs. hot on Channel 9\)](http://channel9.msdn.com/Blogs/J.Van.Gogh/Rx-API-in-depth-Hot-and-Cold-observables), each subscription will have a
-separate set of side-effects. Certain situations require that these side-effects occur only once. The `publish` operator provides a mechanism to share subscriptions by broadcasting a single subscription to multiple subscribers.
+因为许多 observable是冷门的[\(see cold vs. hot on Channel 9\)](http://channel9.msdn.com/Blogs/J.Van.Gogh/Rx-API-in-depth-Hot-and-Cold-observables), 每个订阅都有单独的副作用。 某些情况下，这些副作用只发生一次。`publish` 操作符通过向多个用户广播单个订阅来提供共享订阅的机制。
 
-There are several overloads of the `publish` operator. The most convenient overloads are the ones that provide a function with a wrapped observable sequence argument that shares the side-effects.
+有几个过载`publish`运算符。最方便的过载是那些提供了一个函数封装 observable 共享的副作用的参数。
 
-#### Sample ####
+#### 例 ####
 
 ```js
 var xs = Rx.Observable.create(observer => {
@@ -143,8 +141,8 @@ xs.publish(sharedXs => {
 }).subscribe();
 ```
 
-In this sample, xs is an observable sequence that has side-effects (writing to the console). Normally each separate subscription will trigger these side-effects. The `publish` operator uses a single subscription to xs for all subscribers to sharedXs.
+这个例子中，`xs` 是一个有副作用的（写入console） observable。正常情况下，每个单独的订阅都会触发这些副作用。 `publish` 操作符使用`xs`单独给所有订阅者 `sharedXs` 变量去订阅。
 
 #### 何时忽略这条指南 ####
 
-Only use the `publish` operator to share side-effects when sharing is required. In most situations you can create separate subscriptions without any problems: either the subscriptions do not have side-effects or the side effects can execute multiple times without any issues.
+只有当 `publish` 操作符需要共享副作用时才使用这条指南。在大多数情况下，您可以创建单独的订阅，没有任何问题：不管是订阅没有副作用的或是副作用可以执行多次没有任何问题的。

@@ -1,13 +1,13 @@
 ## [`Rx.Observable.pairs(obj, [scheduler])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/pairs.js)
 
-Convert an object into an observable sequence of [key, value] pairs using an optional `Scheduler` to enumerate the object.
+将一系列键值对转换成 observable 序列，并使用可选的调度器来枚举对象。
 
 #### 参数
-1. `obj` *(Object)*: The object to inspect and turn into an Observable sequence.
-2. `[scheduler]` *(`Scheduler`)*: Scheduler to run the enumeration of the input sequence on. If not specified, defaults to `Rx.Scheduler.currentThread`
+1. `obj` *(Object)*: 需要转换的对象
+2. `[scheduler]` *(`Scheduler`)*: 执行枚举输入序列的调度器，如果没有提供，则默认为 `Rx.Scheduler.currentThread`
 
 #### 返回值
-*(`Observable`)*: An observable sequence of [key, value] pairs from the object.
+*(`Observable`)*: 返回一个 observable
 
 #### 例
 ```js

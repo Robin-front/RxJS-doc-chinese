@@ -1,24 +1,15 @@
 ## [`Rx.Observable.forkJoin(...args [resultSelector])`]()
 
-{% if book.isPdf %}
-
 ![forkJoin](http://reactivex.io/documentation/operators/images/forkJoin.png)
 
-{% else %}
-
-
-{% endif %}
-
-Runs all observable sequences in parallel and collect their last elements.
+并行运行所有observable，并收集所有observable最后的返回值。不管每个流会发射多少值，都只取最后一个返回值。
 
 #### 参数
-1. `args` *(`Arguments` | `Array`)*: An array or arguments of Observable sequences or Promises to collect the last elements for.
-2. `resultSelector`: *(`Function`)* - The result selector from all the values produced. If not specified, `forkJoin` will return the results as an array.
+1. `args` *(`Arguments` | `Array`)*: 数组 或 Observable 或 Promises
+2. `resultSelector`: *(`Function`)*: `resultSelector`应用到所有产生的值。如果没有指定，`forkjoin`将返回结果为数组。
 
 #### 返回值
-*(`Observable`)*: An observable sequence with an array collecting the last elements of all the input sequences or the result of the result selector if specified.
-
-{% if book.isPdf %}
+*(`Observable`)*: 一个可观察的序列，用数组收集所有输入流的最后一个元素，如果指定`resultSelector`，将返回`resultSelector`包装的结果。
 
 #### [Example](http://jsbin.com/sudura/2/edit?js,console)
 
@@ -40,17 +31,7 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-{% else %}
-
-#### 例
-
-[](http://jsbin.com/sudura/2/embed?js,console)
-
-{% endif %}
-
-{% if book.isPdf %}
-
-#### [Example]()
+#### [Example](http://jsbin.com/sudura/2/embed?js,console)
 
 ```js
 var source = Rx.Observable.forkJoin(
@@ -73,12 +54,3 @@ var subscription = source.subscribe(
 // => Next: 98
 // => Completed
 ```
-
-{% else %}
-
-#### 例
-
-[](http://jsbin.com/sudura/2/embed?js,console)
-
-{% endif %}
-

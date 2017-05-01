@@ -32,6 +32,7 @@
 * [pairs](pairs.html)
 * [range](range.html)
 * [repeat](repeat.html)
+* [return|just](repeat.html)
 * [spawn](spawn.html)
 * [start](start.html)
 * [startAsync](startasync.html)

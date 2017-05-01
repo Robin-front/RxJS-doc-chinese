@@ -1,22 +1,16 @@
 ## [`Rx.Observable.create(subscribe)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/create.js)
 
-{% if book.isPdf==true %}
-
 ![create](https://github.com/Netflix/RxJava/wiki/images/rx-operators/create.png)
 
-{% endif %}
-
-Creates an observable sequence from a specified subscribe method implementation.  This is an alias for the `createWithDisposable` method
+创建一个新的Observable，当Observer订阅它时，它将执行指定的函数。这是`createWithDisposable`方法的别称。
 
 #### 参数
-1. `subscribe` *(`Function`)*: Implementation of the resulting observable sequence's subscribe method, optionally returning a function that will be wrapped in a disposable object.  This could also be a disposable object.
+1. `subscribe` *(`Function`)*: 执行所得到的可观察序列的订阅方法，可选地返回将被包装在一次性对象中的函数（如： `onNext`、`onCompleted`、`onError`）。这也可以是一次性的对象。
 
 #### 返回值
-*(`Observable`)*: The observable sequence with the specified implementation for the subscribe method.
+*(`Observable`)*: 返回 Observable，拥有约定实现的订阅方法。
 
 #### 例
-
-{% if book.isPdf %}
 
 ##### [Using a function](http://jsbin.com/luweq/2/edit?js,console)
 
@@ -26,7 +20,7 @@ var source = Rx.Observable.create(observer => {
     observer.onNext(42);
     observer.onCompleted();
 
-    // Note that this is optional, you do not have to return this if you require no cleanup
+    // 这是可选项, 如果不需要清除它，可以不必返回。
     return () => console.log('disposed')
 });
 
@@ -51,7 +45,7 @@ var source = Rx.Observable.create(observer => {
     observer.onNext(42);
     observer.onCompleted();
 
-    // Note that this is optional, you do not have to return this if you require no cleanup
+    // 这是可选项, 如果不需要清除它，可以不必返回
     return Rx.Disposable.create(() => console.log('disposed'));
 });
 
@@ -63,15 +57,3 @@ var subscription = source.subscribe(
 // => onNext: 42
 // => onCompleted
 ```
-
-{% else %}
-
-##### Using a function
-
-[](http://jsbin.com/luweq/2/embed?js,console)
-
-##### Using a disposable
-
-[](http://jsbin.com/puveyi/2/embed?js,console)
-
-{% endif %}

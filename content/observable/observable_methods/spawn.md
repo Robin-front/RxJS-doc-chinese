@@ -1,12 +1,12 @@
 ## [`Rx.Observable.spawn(fn)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/spawn.js)
 
-Spawns a generator function which allows for Promises, Observable sequences, Arrays, Objects, Generators and functions.
+演算一个generator函数, 也可以是Promises，可观察序列，数组、对象、Generators和 普通函数。
 
 #### 参数
-1. `fn` *(`Function`)*: The spawning function.
+1. `fn` *(`Function`)*: 需要演算的函数.
 
 #### 返回值
-*(`Observable`)*: An Observable with the final result.
+*(`Observable`)*: 一个包含最终结果的 Observable
 
 #### 例
 ```js

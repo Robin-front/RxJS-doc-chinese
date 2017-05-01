@@ -1,25 +1,17 @@
 ## [`Rx.Observable.fromCallback(func, [scheduler], [context], [selector])`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/fromcallback.js)
 
-{% if book.isPdf %}
-
 ![fromCallback](http://reactivex.io/documentation/operators/images/fromCallback.png)
 
-{% else %}
-
-
-
-{% endif %}
-
-Converts a callback function to an observable sequence. 
+将一个回调函数转换成`observable`工厂函数.
 
 #### 参数
-1. `func` *(`Function`)*: Function with a callback as the last parameter to convert to an Observable sequence.
-2. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: Scheduler to run the function on. If not specified, defaults to `Rx.Scheduler.timeout`.
-3. `[context]` *(`Any`)*: The context for the func parameter to be executed.  If not specified, defaults to undefined.
-4. `[selector]` *(`Function`)*: A selector which takes the arguments from the callback to produce a single item to yield on next.
+1. `func` *(`Function`)*: 需要转换为`Observable` 的回调函数
+2. `[scheduler=Rx.Scheduler.timeout]` *(`Scheduler`)*: 执行回调函数的调度器。如果没有指定，则默认为`Rx.Scheduler.timeout`.
+3. `[context]` *(`Any`)*: 第一个函数参数的执行上下文。如果没有指定，则默认为 `undefined`
+4. `[selector]` *(`Function`)*: 它以第一个参数函数中返回的值作为本函数的参数，处理以产生下一个项。
 
 #### 返回值
-*(`Function`)*: A function, when executed with the required parameters minus the callback, produces an Observable sequence with a single value of the arguments to the callback as an array if no selector given, else the object created by the selector function.
+*(`Function`)*: 返回一个函数
 
 #### 例
 ```js

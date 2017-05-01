@@ -1,14 +1,15 @@
 ## [`Rx.Observable.wrap(fn)`](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/linq/observable/spawn.js)
 
-Wrap the given generator fn into a function that returns an Observable.
+将给定的generator函数封装到Observable中。
 
 #### 参数
-1. `fn` *(`Function`)*: A generator function to wrap.
+1. `fn` *(`Function`)*: 需要封装的 generator 函数.
 
 #### 返回值
-*(`Observable`)*: A function once executed, returns an Observable.
+*(`Observable`)*: 返回一个函数，该函数执行后返回一个 Observable.
 
 #### 例
+
 ```js
 var Rx = require('rx');
 

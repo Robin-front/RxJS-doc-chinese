@@ -4,8 +4,49 @@
   "description": "RxJS中文文档",
   "main": "index.js",
   "author": "<lb.robin1991@gmail.com>",
-  "license": "MIT",
+  "license": "Apache 2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Robin-front/RxJS-doc-chinese.git"
+  },
   "dependencies": {
-    "gitbook-plugin-toggle-chapters": "^0.0.3"
+    "gitbook-plugin-anchors": "^0.3.0",
+    "gitbook-plugin-atoc": "0.0.4",
+    "gitbook-plugin-catalog": "^0.1.2",
+    "gitbook-plugin-chart": "0.0.2",
+    "gitbook-plugin-comment": "^0.2.0",
+    "gitbook-plugin-editlink": "^1.0.1",
+    "gitbook-plugin-github": "^2.0.0",
+    "gitbook-plugin-github-buttons": "^1.2.2",
+    "gitbook-plugin-gtoc": "^0.2.0",
+    "gitbook-plugin-include-codeblock": "^1.5.0",
+    "gitbook-plugin-include-highlight": "^0.1.0",
+    "gitbook-plugin-jsbin": "0.0.5",
+    "gitbook-plugin-light-it": "^0.3.0",
+    "gitbook-plugin-quiz": "^0.1.0",
+    "gitbook-plugin-search": "^1.1.0",
+    "gitbook-plugin-search-pro": "^1.0.5",
+    "gitbook-plugin-splitter": "0.0.6",
+    "gitbook-plugin-structured-toc": "^0.1.0",
+    "gitbook-plugin-todo": "^0.1.0",
+    "gitbook-plugin-video": "0.0.2"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "font-awesome": "^4.4.0",
+    "gitbook-plugin-tonic": "^1.1.0",
+    "gulp": "^3.9.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.1",
+    "gulp-util": "^3.0.7",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "merge-stream": "^1.0.0",
+    "mousetrap": "^1.5.3",
+    "run-sequence": "^1.1.5",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

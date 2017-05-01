@@ -2,7 +2,7 @@
 
 ### 通过组合现有的流产生新的流 ###
 
-Many operations can be composed from existing operators. This will lead to smaller, easier to maintain code. The Rx team has put a lot of effort in dealing with all corner cases in the base operators. By reusing these operators you’ll get all that work for free in your operator.
+许多操作可以从已存在的操作符进行组合。这会让我们的代码更少更简单。 Rx 团队在所有基本的操作符上下了很多工夫。通过复用这些操作符，你可以自由地组合你自己个性化的操作符。
 
 #### Sample ####
 
@@ -10,19 +10,19 @@ Many operations can be composed from existing operators. This will lead to small
 Rx.Observable.prototype.flatMap = function(selector) { return this.map(selector).mergeAll(); }
 ```
 
-In this sample, the `flatMap` operator uses two existing operators: [`map`](../../observable/observable_instance_methods/map.html) and [`mergeAll`](../../observable/observable_instance_methods/mergeall.html). The [`map`](../../observable/observable_instance_methods/map.html) operator already deals with any issues around the selector function throwing an exception. The [`mergeAll`](../../observable/observable_instance_methods/mergeall.html) operator already deals with concurrency issues of multiple observable sequences firing at the same time.
+在这个例子中， `flatMap`操作符使用了两个已存在的操作符： [`map`](../../observable/observable_instance_methods/map.html) and [`mergeAll`](../../observable/observable_instance_methods/mergeall.html)。  [`map`](../../observable/observable_instance_methods/map.html) 操作符已经处理围绕选择器函数抛出异常的任何问题。 [`mergeAll`](../../observable/observable_instance_methods/mergeall.html) 操作符已经处理多个可观察序列的并发问题。
 
 #### 何时忽略这条指南 ####
 
-- No appropriate set of base operators is available to implement this operator.
-- Performance analysis proves that the implementation using existing operators has performance issues.  Such can be caused by [`materialize`](../../observable/observable_instance_methods/materialize.html).
+- 没有适当的基础运算符集可用于实现此运算符.
+- 性能分析证明，使用现有操作符的实现具有性能问题。比如[`materialize`](../../observable/observable_instance_methods/materialize.html).
 
 ### 使用 [`Observable.create`](../../observable/observable_methods/create.html)创建新的流 ###
 
-When it is not possible to follow guideline 5.1, use the Observable.Create(WithDisposable) method to create an observable sequence as it provides several protections make the observable sequence follow the RxJS contract.
+当无法遵循准则5.1时， 使用 `Observable.Create(WithDisposable)` 方法创建一个新的可观察对象，因为它提供了几个保护，使可观察的序列遵循RxJS约定。
 
-- When the observable sequence has finished (either by firing [`onError`](../..observer/observer_instance_methods/onerror.html) or [`onCompleted`](../../observer/observer_instance_methods/oncompleted.html)), any subscription will automatically be unsubscribed.
-- Any subscribed observer instance will only see a single OnError or OnCompleted message. No more messages are sent through. This ensures the Rx grammar of onNext* (onError|onCompleted)?
+- 当可观察序列已经完成时（不管是触发了[`onError`](../..observer/observer_instance_methods/onerror.html) 还是 [`onCompleted`](../../observer/observer_instance_methods/oncompleted.html))）， 任何订阅者都会自动取消订阅。
+- 任何订阅者的实例都只能接收到一条错误（OnError）或完成（OnCompleted）消息。之后可观察序列不会再发送消息。 No more messages are sent through. This ensures the Rx grammar of onNext* (onError|onCompleted)?
 
 #### Sample ####
 
