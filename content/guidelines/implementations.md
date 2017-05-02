@@ -121,11 +121,11 @@ function readWebSocket(socket) {
 }
 ```
 
-In this sample, an error condition is detected in the subscribe method implementation. An error is raised by calling the `onError` method instead of throwing the exception. This allows for proper handling of the exception if `subscribe` is called outside of the execution context of the original call to Subscribe by the user.
+在这个例子中，subscribe方法的实现中做了 error 检测。错误是通过 `onError` 方法调用而不是抛出异常。如果用户在原始调用的执行上下文之外调用 `subscribe`， 也能正确处理异常。
 
 #### 何时忽略这条指南 ####
 
-When a catastrophic error occurs that should bring down the whole program anyway.
+当一个灾难性的错误发生时，无论如何都会导致整个程序的中断。
 
 ### `onError` messages should have abort semantics
 
