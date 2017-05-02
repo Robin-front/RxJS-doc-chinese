@@ -1,77 +1,77 @@
-# Exploring The Major Concepts in RxJS #
+# 探索 RxJS 的主要概念 #
 
-This topic describes the major Reactive Extensions for JavaScript (Rx) objects used to represent observable sequences and subscribe to them.
+本主题描述用于表示可观察序列并订阅它们的 RX 主要对象。
 
-The `Observable` / `Observer` objects are available in the core distribution of RxJS.
+`Observable` / `Observer` 对象是 RxJS 的核心部分。
 
 ## `Observable` / `Observer` ##
 
-Rx exposes asynchronous and event-based data sources as push-based, observable sequences abstracted by the [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) object in the core distribution of RxJS. It represents a data source that can be observed, meaning that it can send data to anyone who is interested.
+RX 通过核心对象 [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) 为抽象化的基于推送的可观察序列暴露异步和基于事件的数据源。它代表可以观察到的数据源，这意味着它可以发送数据给订阅者。
 
-As described in [What is RxJS](what_are_the_reactive_extensions.md), the other half of the push model is represented by the [`Observer`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md) object, which represents an observer who registers an interest through a subscription. Items are subsequently handed to the observer from the observable sequence to which it subscribes.
+由于在 [What is RxJS](what_are_the_reactive_extensions.md) 已经描述了， push模型的另一半由[`Observer`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md) 对象表示，观察者通过订阅进行注册特定的信息。信息随后推送给订阅可观察序列的观察者。
 
-In order to receive notifications from an observable collection, you use the [`subscribe`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted) method of `Observable` to hand it an `Observer` object. In return for this observer, the [`subscribe`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted) method returns a `Disposable` object that acts as a handle for the subscription. This allows you to clean up the subscription after you are done.  Calling `dispose` on this object detaches the observer from the source so that notifications are no longer delivered. As you can infer, in RxJS you do not need to explicitly unsubscribe from an event as in the common JavaScript event model.
+为了从可观察序列集合中接收通知，可以使用 `observable` 的 [`subscribe`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted) 方法去传递给 `observer` 对象。 作为观察者的返回值， [`subscribe`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted) 方法返回一个`Disposable`对象作为订阅的返回值。允许在完成订阅之后销毁它。在这个对象分离出来的观察者上调用 `dispose`，以便通知不再推送给这个观察者。可以推断，在RxJS你不需要显式地取消订阅事件中常见的JavaScript事件模型。
 
-Observers support three publication events, reflected by the object's methods. The [`onNext`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md#rxobserverprototypeonnextvalue) can be called zero or more times, when the observable data source has data available. For example, an observable data source used for mouse move events can send out an event object every time the mouse has moved. The other two methods are used to indicate completion or errors.
+观察者支持三种事件发布，映射对象方法。[`onNext`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md#rxobserverprototypeonnextvalue)可以被调用任意次，如果数据源可用的话。举个例子，用于鼠标移动事件的可观察数据源可以在每次鼠标移动时发送事件对象。其他两种方法用于指示完成或错误。
 
-The following lists the `Observable` / `Observer` objects in addition to the `Disposable` object.
+下面列出了`Observable` / `Observer` 除了`Disposable`对象。
 
 ```js
 /**
- * Defines a method to release allocated resources.
+ * 定义释放分配资源的方法.
  */
 function Disposable() { }
 
 /**
- * Performs application-defined tasks associated with freeing, releasing, or resetting resources.
+ * 执行与释放、释放或重置资源相关的应用程序定义的任务.
  */
 Disposable.prototype.dispose =  () => { ... }
 
 /**
- * Defines a provider for push-based notification.
+ * 定义用于推送通知的数据源
  */
 function Observable() { }
 
 /**
- * Notifies the provider that an observer is to receive notifications.
+ * 通知提供者，观察者将接收通知
  *
- * @param {Observer} observer The object that is to receive notifications.
- * @returns {Disposable} A reference to disposable that allows observers to stop receiving notifications before the provider has finished sending them.
+ * @param {Observer} observer 接收通知的对象
+ * @returns {Disposable} 一种一次性的引用，它允许观察者在提供者完成发送之前停止接收通知。
  */
 Observable.prototype.subscribe =  observer => { ... }
 
 /**
- * Provides a mechanism for receiving push-based notifications.
+ * 提供接收基于推送通知的机制。
  */
 function Observer() { }
 
 /**
- * Provides the observer with new data.
+ * 提供新的数据给观察者
  *
- * @param {Any} value The current notification information.
+ * @param {Any} value 当前的通知信息.
  */
 Observer.prototype.onNext = value => { ... };
 
 /**
- * Notifies the observer that the provider has experienced an error condition.
+ * 通知观察者，提供程序处理异常的条件
  *
- * @param {Error} error An object that provides additional information about the error.
+ * @param {Error} error 提供有关错误的附加信息的.
  */
 Observer.prototype.onError = error => { ... };
 
 /**
- * Notifies the observer that the provider has finished sending push-based notifications.
+ * 通知观察者，提供程序已完成发送基于推送的通知
  */
 Observer.prototype.onCompleted = () => { ... };
 ```
 
-RxJS also provides `subscribe` capabilities so that you can avoid implementing the `Observer` object yourself. For each publication event (`onNext`, `onError`, `onCompleted`) of an observable sequence, you can specify a function that will be invoked, as shown in the following example. If you do not specify an action for an event, the default behavior will occur.
+RxJS 也提供 `subscribe` 的能力，这样你就可以避免自己实现`Observer`对象。为每个发布事件（` OnNext `，` OnError `，` onCompleted `）可观察序列，你可以指定一个函数将被调用，如下面的示例所示。如果不指定事件的操作，将发生默认行为。
 
 ```js
-// Creates an observable sequence of 5 integers, starting from 1
+// 创建从1开始、包含5个整数的可观察序列
 var source = Rx.Observable.range(1, 5);
 
-// Prints out each item
+// 输出每个数据
 var subscription = source.subscribe(
 	x => console.log('onNext: ' + x),
 	e => console.log('onError: ' + e.message),
@@ -85,15 +85,15 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-You can treat the observable sequence (such as a sequence of mouse-over events) as if it were a normal collection. Thus you can write queries over the collection to do things like filtering, grouping, composing, etc. To make observable sequences more useful, the RxJS libraries provide many factory operators so that you do not need to implement any of these on your own. This will be covered in the [Querying Observable Sequences](creating_and_querying_observable_sequences/README.md) topic.
+可以将可观察序列（如鼠标事件的序列）视为正常集合。因此，您可以在集合中编写查询，以便进行筛选、分组、组合等操作。为了让可观察序列再有用，更易操作， RxJS 库提供许多工厂方法给操作者，这样就不需要自己去实现这些操作。这些都会在[Querying Observable Sequences](creating_and_querying_observable_sequences/README.md) 这个主题文章中提到。
 
-### Caution:
-You do not need to implement the Observable/Observer objects yourself.  Rx provides internal implementations of these interfaces for you and exposes them through various extension methods provided by the Observable and Observer types.  See the [Creating and Querying Observable Sequences](creating_and_querying_observable_sequences/README.md) topic for more information.
+### 注意:
+你不需要自己实现 Observable/Observer 对象。Rx 为您提供这些接口的内部实现，并通过可观察的和观察者类型提供的各种扩展方法暴露它们。查看 [Creating and Querying Observable Sequences](creating_and_querying_observable_sequences/README.md) 文章以获取更多信息。
 
-### See Also
+### 相关文章
 
-Concepts
-- [Querying Observable Sequences](querying.md)
+概念
+- [查询可观察序列](creating_and_querying_observable_sequences/querying_observable_sequences.md)
 
-Other Resources
-- [Creating and Querying Observable Sequences](creating_and_querying_observable_sequences/README.md)
+其他资源
+- [创建和查询可观察序列](creating_and_querying_observable_sequences/README.md)
