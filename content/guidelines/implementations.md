@@ -93,17 +93,17 @@ Rx.Observable.prototype.map = function(selector, thisArg) {
 };
 ```
 
-This sample invokes a selector function which is user code. It catches any exception resulting from this call and transfers the exception to the subscribed observer instance through the `onError` call.
+这个例子调用一个用户传进来的 selector 函数。它在调用的时候捕获了所有异常结果，并通过调用 `onError` 传给了观察者实例。
 
 #### 何时忽略这条指南 ####
 
-Ignore this guideline for calls to user code that are made before creating the observable sequence (outside of the `Observable.create` call). These calls are on the current execution context and are allowed to follow normal control flow.
+调用创建可观察序列之前的用户代码（`Observable.create`之外调用）时忽略这条指南。这些调用位于当前执行上下文中，并遵循正常控制流.
 
-**Note:** do not protect calls to `subscribe`, `dispose`, `onNext`, `onError` and `onCompleted` methods. These calls are on the edge of the monad. Calling the `onError` method from these places will lead to unexpected behavior.
+**注意:** 谨慎调用 `subscribe`, `dispose`, `onNext`, `onError` 和 `onCompleted` 这些方法。These calls are on the edge of the monad. 在这些地方调用 `onError` 方法会导致异常发生。
 
-### `subscribe` implementations should not throw ###
+### `subscribe` 的实现不应该抛出异常 ###
 
-As multiple observable sequences are composed, subscribe to a specific observable sequence might not happen at the time the user calls `subscribe` (e.g. Within the `concat` operator, the second observable sequence argument to `concat` will only be subscribed to once the first observable sequence has completed). Throwing an exception would bring down the program. Instead exceptions in subscribe should be tunneled to the `onError` method.
+当多个可观察序列合并时， 订阅一个特殊的可观察序列可能不会发生在用户调用 `subscribe`的时候（比如：在`concat` 操作符内，第一个可观察序列完成后，第二个可观察序列参数只能被订阅一次）。抛出异常会终止程序。相反，订阅发生的异常应该被传到`onError`方法。
 
 #### Sample ####
 
@@ -116,7 +116,7 @@ function readWebSocket(socket) {
       observer.onError(new Error('The websocket is no longer open.'));
       return;
     }
-    // Rest of the implementation goes here
+    // 这里放具体实现代码
   });
 }
 ```
