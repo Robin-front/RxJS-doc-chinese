@@ -1,14 +1,14 @@
 # 操作符分类 #
 
-This topic lists all major operators implemented by the [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) type by their categories, specifically: creation, conversion, combine, functional, mathematical, time, exceptions, miscellaneous, selection and primitives.
+这篇文章列出 [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) 的所有主要的操作符，由可观察类型按其类别分类，特别是：创建，转换，合并，功能，数学，时间，异常，杂项，选择和原值。
 
-## Operators by Categories ##
+## 操作符分类 ##
 
 <table style="display: table">
 
-   <th>Usage</th><th>Operators</th>
+   <th>用法</th><th>操作符</th>
    <tr>
-      <td>Creating an observable sequence</td>
+      <td>创建一个可观察序列</td>
       <td>
       <ol>
       <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/create.md">create</a></li>
@@ -22,7 +22,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
       </td>
    </tr>
    <tr>
-      <td>Converting events or asynchronous patterns to observable sequences, or between Arrays and observable sequences.</td>
+      <td>将事件或异步模式转换为可观察序列或数组</td>
       <td>
     	<ol>
       <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/from.md">from</a></li>
@@ -41,9 +41,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
       </td>
    </tr>
    <tr>
-   <td>
-   Combining multiple observable sequences into a single sequence.
-   </td>
+   <td>将多个可观测序列组合成一个序列</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/amb.md">amb</a></li>
@@ -64,7 +62,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Functional - Sharing Side Effects</td>
+   <td>功能 - 共享的副作用</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/let.md">let</a></li>
@@ -80,7 +78,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Mathemathical operators on sequences</td>
+   <td>序列的数学运算</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/aggregate.md">aggregate</a></li>
@@ -96,7 +94,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Time-based operations</td>
+   <td>时间 - 操作符的基础</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/debounce.md">debounce</a></li>
@@ -112,7 +110,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Handling Exceptions</td>
+   <td>异常处理</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/catch.md">catch</a></li>
@@ -125,7 +123,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Filtering and selecting values in a sequence</td>
+   <td>在序列中筛选值</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/concatmap.md">concatMap</a></li>
@@ -168,7 +166,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Grouping and Windowing</td>
+   <td>分组和窗口</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/buffer.md">buffer</a></li>
@@ -186,7 +184,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Imperative Operators</td>
+   <td>必要的操作符</td>
    <td>
    <ol>
   <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/case.md">case</a></li>
@@ -206,7 +204,7 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </td>
    </tr>
    <tr>
-   <td>Primitives</td>
+   <td>原值</td>
    <td>
    <ol>
    <li><a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/empty.md">empty</a></li>
@@ -218,10 +216,10 @@ This topic lists all major operators implemented by the [`Observable`](https://g
    </tr>
 </table>
 
-## See Also ##
+## 相关内容 ##
 
-*Reference*
+*参考*
  - [`Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md)
 
-*Concepts*
-- [Querying Observable Sequences](querying.md)
+*概念*
+- [查询可观察序列](querying.md)
