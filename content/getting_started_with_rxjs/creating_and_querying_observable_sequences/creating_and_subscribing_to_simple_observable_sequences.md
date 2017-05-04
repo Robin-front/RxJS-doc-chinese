@@ -102,50 +102,51 @@ var subscription = source.subscribe(observer);
 另外，从零创建一个数据流，你也可以将已存在的 数据， 事件，回调以及 `promise` 转换成数据流。下一节的主题将会教你怎么做。
 
 注意，这一节只展示了可以从零创建数据流的很少一部分操作符。学习更多其他的  `LINQ` 操作符， 可以查看 [Querying Observable Sequences](querying_observable_squences.md).
-## Using a timer ##
 
-The following sample uses the [`timer`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/timer.md) operator to create a sequence. The sequence will push out the first value after 5 second has elapsed, then it will push out subsequent values every 1 second. For illustration purpose, we chain the [`timestamp`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/timestamp.md) operator to the query so that each value pushed out will be appended by the time when it is published. By doing so, when we subscribe to this source sequence, we can receive both its value and timestamp.
+## 使用定时器 ##
 
-First, we need to ensure we reference the proper files if in the browser.  Note that the RxJS NPM Package already includes all operators by default.
+接下来的例子使用 [`timer`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/timer.md) 操作符去创建一个数据流。 这个数据流将在5秒后输出第一个值，接着每1秒输出后面的值。为了说明， 我们配合 [`timestamp`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/timestamp.md) 操作符去查询，使每一个被推出来的值将在发布时追加时间戳。这样，当我们订阅这个数据源时，我们可以接收到值和时间戳。
+
+首先，我们需要确认我们是否在浏览器引入了相关的文件。注意 RxJS NPM 包已经默认包含了所有操作符。
 
 ```html
 <script src="rx.js"></script>
 <script src="rx.time.js"></script>
 ```
 
-Now on to our example
+下面是我们的例子：
 
 ```js
 console.log('Current time: ' + Date.now());
 
 var source = Rx.Observable.timer(
-  5000, /* 5 seconds */
-  1000 /* 1 second */)
+  5000, /* 5 秒 */
+  1000 /* 1 秒 */)
    .timestamp();
 
 var subscription = source.subscribe(
   x => console.log(x.value + ': ' + x.timestamp));
 
-/* Output may be similar to this */
+/* 输出可能像这样子 */
 // Current time: 1382560697820
 // 0: 1382560702820
 // 1: 1382560703820
 // 2: 1382560704820
 ```
 
-By using the `timestamp` operator, we have verified that the first item is indeed pushed out 5 seconds after the sequence has started, and each item is published 1 second later.
+通过使用 `timestamp` 操作符，我们可以证实，第一个值确实是开始5秒后输出，然后每1秒输出一个值。
 
-## Converting Arrays and Iterables to an Observable Sequence ##
+## 将数组和可迭代对象转换为数据流 ##
 
-Using the [`Rx.Observable.from`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/from.md) operator, you can convert an array to observable sequence.
+使用 [`Rx.Observable.from`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/from.md) 操作符，你可以将一个数组转换为数据流。
 
 ```js
 var array = [1,2,3,4,5];
 
-// Converts an array to an observable sequence
+// 将数组转换为数据流
 var source = Rx.Observable.from(array);
 
-// Prints out each item
+// 输出每个值
 var subscription = source.subscribe(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
@@ -159,14 +160,15 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-You can also convert array-like objects such as objects with a length property and indexed with numbers.  In this case, we'll simply have an object with a length of 5.
+你也可以转换类数组结构，比如包含 `length` 属性和数字索引的对象。这种情况下，我们只简单有一个包含长度为5的对象。
+
 ```js
 var arrayLike = { length: 5 };
 
-// Converts an array to an observable sequence
+// 转换数组为数据流
 var source = Rx.Observable.from(arrayLike, (v, k) => k);
 
-// Prints out each item
+// 输出每个值
 var subscription = source.subscribe(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
@@ -181,16 +183,15 @@ var subscription = source.subscribe(
 
 ```
 
-
-In addition, we can also use ES6 Iterable objects such as `Map` and `Set` using `from` to an observable sequence.  In this example, we can take a `Set` and convert it to an observable sequence.
+另外，我们也可以使用 ES6 可迭代对象，如 `Map` 和 `Set` 使用 `from` 转换成数据流。下面这个例子，我们将获取一个 `Set` 对象，并且将它转换成数据流。
 
 ```js
 var set = new Set([1,2,3,4,5]);
 
-// Converts a Set to an observable sequence
+// 转换 Set 为数据流
 var source = Rx.Observable.from(set);
 
-// Prints out each item
+// 转出每个值
 var subscription = source.subscribe(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
@@ -204,15 +205,15 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-We can also do a `Map` as well by applying the same technique.
+我们也可以将它应用在 `Map` 对象上面。
 
 ```js
 var map = new Map([['key1', 1], ['key2', 2]]);
 
-// Converts a Map to an observable sequence
+// 将 Map 转换成数据流
 var source = Rx.Observable.from(map);
 
-// Prints out each item
+// 打印每个值
 var subscription = source.subscribe(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
@@ -223,7 +224,7 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-The `from` method can also support ES6 generators which may already be in your browser, or coming to a browser near you.  This allows us to do such things as Fibonacci sequences and so forth and convert them to an observable sequence.
+`from` 方法也支持 ES6 generators，可以你的浏览器已经支持，或将要支持。这允许我们实现一些像 `斐波那契序列` 等，并将它们转换成数据流。
 
 ```js
 function* fibonacci () {
@@ -237,10 +238,10 @@ function* fibonacci () {
   }
 }
 
-// Converts a generator to an observable sequence
+// 将 generator 转换成数据流
 var source = Rx.Observable.from(fibonacci()).take(5);
 
-// Prints out each item
+// 打印每个值
 var subscription = source.subscribe(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
@@ -254,21 +255,21 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-## Cold vs. Hot Observables ##
+## 冷（陏性） vs. 热（非陏性） 数据流 ##
 
-Cold observables start running upon subscription, i.e., the observable sequence only starts pushing values to the observers when Subscribe is called. Values are also not shared among subscribers. This is different from hot observables such as mouse move events or stock tickers which are already producing values even before a subscription is active. When an observer subscribes to a hot observable sequence, it will get the current value in the stream. The hot observable sequence is shared among all subscribers, and each subscriber is pushed the next value in the sequence. For example, even if no one has subscribed to a particular stock ticker, the ticker will continue to update its value based on market movement. When a subscriber registers interest in this ticker, it will automatically get the latest tick.
+冷数据流的开始运行取决于订阅，比如，数据流只有当 `subscribe` 调用的时候才开始输出值。用户之间也没有共享值。这些是与热数据流的不同之处，热数据像流鼠标移动事件或股票代码这样的订阅时就已经不断输出值。当观察者订阅热数据流时，它将会获取流的实时值。热数据流是与所有订阅者共享的，每个订阅者按顺序推送下一个值。举个例子，就算没有人订阅一个特定的股票，股票市场也将继续根据市场动向更新其价值。当有注册者对这支股票感兴趣时，它会自动获得股票的最新值。
 
-The following example demonstrates a cold observable sequence. In this example, we use the Interval operator to create a simple observable sequence of numbers pumped out at specific intervals, in this case, every 1 second.
+下面的示例演示了一个冷数据流。这个例子中，我们使用了 `Interval` 操作符去创建一个单一数据流并在特定的时间间隔输出值，这个例子中是间隔1秒。
 
-Two observers then subscribe to this sequence and print out its values. You will notice that the sequence is reset for each subscriber, in which the second subscription will restart the sequence from the first value.
+两个观察者订阅这个数据流并打印输出值。你会注意到数据流会为每个订阅者重置，第二个订阅者也是从第1个值开始的。
 
-First, we need to ensure we reference the proper files if in the browser.  Note that the RxJS NPM Package already includes all operators by default.
+首先，我们需要确保在浏览器中引入了相关文件。注意 RxJS NPM 包已经默认包含了所有操作符。
 
 ```html
 <script src="rx.lite.js"></script>
 ```
 
-And now to the example.
+然后是例子：
 
 ```js
 var source = Rx.Observable.interval(1000);
@@ -298,7 +299,7 @@ setTimeout(() => {
 // => Observer 2: onNext: 3
 ```
 
-In the following example, we convert the previous cold observable sequence source to a hot one using the [`publish`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/publish.md) operator, which returns a `ConnectableObservable` instance we name `hot`. The [`publish`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/publish.md) operator provides a mechanism to share subscriptions by broadcasting a single subscription to multiple subscribers. The `hot` variable acts as a proxy by subscribing to `source` and, as it receives values from `source`, pushing them to its own subscribers. To establish a subscription to the backing source and start receiving values, we use the [`ConnectableObservable.prototype.connect`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/connect.md) method. Since `ConnectableObservable` inherits `Observable`, we can use `subscribe` to subscribe to this hot sequence even before it starts running. Notice that in the example, the hot sequence has not been started when `subscription1` subscribes to it. Therefore, no value is pushed to the subscriber. After calling Connect, values are then pushed to `subscription1`. After a delay of 3 seconds, `subscription2` subscribes to `hot` and starts receiving the values immediately from the current position (3 in this case) until the end. The output looks like this:
+接下来的例子中，我们使用 [`publish`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/publish.md) 操作符将前面的冷数据源转换成热数据源，返回一个 `ConnectableObservable` 实例，我们称为 `hot`。[`publish`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/publish.md) 操作符通过向多个订阅服务器广播单个订阅来提供共享订阅的机制。`hot`变量作为代理订阅 `source`，因为它从 `source` 接收值，推到自己的用户. 我们使用 [`ConnectableObservable.prototype.connect`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/connect.md) 建立订阅的备份源，并开始接收值。因为 `ConnectableObservable` 继承自 `Observable`， 我们可以在它运行之前使用 `subscribe` 去订阅这个热数据流。 在这个例子中要注意，当 `subscription1`订阅它的时候热数据流还没有开始。因些，没有值输出给订阅者。只有调用 `Connect` 之后，输出值才会推送给 `subscription1`。3秒的延迟之后，`subscription2` 订阅了热数据流，并且立即开始接收当前输出值（当前值是3），一直到最后。输出结果看起来像这样：
 
 ```
 // => Current time: 1382562433256
@@ -315,24 +316,24 @@ In the following example, we convert the previous cold observable sequence sourc
 // => Observer 2: onNext: 4
 ```
 
-First, we need to ensure we reference the proper files if in the browser.  Note that the RxJS NPM Package already includes all operators by default.
+首先，我们需要确认我们引入了相关文件。注意 RxJS NPM包已经默认包含了所有操作符。
 
 ```html
 <script src="rx.lite.js"></script>
 ```
 
-Now onto the example!
+接下来是例子！
 
 ```js
 console.log('Current time: ' + Date.now());
 
-// Creates a sequence
+// 创建一个数据流
 var source = Rx.Observable.interval(1000);
 
-// Convert the sequence into a hot sequence
+// 将数据流转换成热数据流
 var hot = source.publish();
 
-// No value is pushed to 1st subscription at this point
+// 第一个订阅时没有值输出
 var subscription1 = hot.subscribe(
   x => console.log('Observer 1: onNext: %s', x),
   e => console.log('Observer 1: onError: %s', e),
@@ -340,15 +341,15 @@ var subscription1 = hot.subscribe(
 
 console.log('Current Time after 1st subscription: ' + Date.now());
 
-// Idle for 3 seconds
+// 空闲 3 秒
 setTimeout(() => {
 
-  // Hot is connected to source and starts pushing value to subscribers
+  // 热数据源连接并开始输出值给订阅者
   hot.connect();
 
   console.log('Current Time after connect: ' + Date.now());
 
-  // Idle for another 3 seconds
+  // 又空闲 3 秒
   setTimeout(() => {
 
     console.log('Current Time after 2nd subscription: ' + Date.now());
@@ -375,12 +376,12 @@ setTimeout(() => {
 // => ...
 ```
 
-**Analogies**
+**类推**
 
-It helps to think of cold and hot Observables as movies or performances that one can watch ("subscribe").
+这有助于思考冷热数据源的关系，就像一个人看（`subscribe`）电影和表演。
 
-- Cold Observables: movies.
-- Hot Observables: live performances.
-- Hot Observables replayed: live performances recorded on video.
+- 冷数据流：电影。
+- 热数据流：现场演出
+- 重播热数据流：录播现场演出
 
-Whenever you watch a movie, your run of the movie is independent of anyone else's run, even though all movie watchers see the same effects. On the other hand, a live performance is shared to multiple viewers. If you arrive late to a live performance, you will simply miss some of it. However, if it was recorded on video (in RxJS this would happen with a BehaviorSubject or a ReplaySubject), you can watch a "movie" of the live performance. A [`.publish().refCount()`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/refcount.md) live performance is one where the artists quit playing when no one is watching, and start playing again when there is at least one person in the audience.
+你管你何时观看电影，你看电影和别人看都是独立的，尽管所有观看者看的都是相同的内容。另一方面，一个表演是与多个观看都一起分享的。如果你迟到了，你将会错过一部分。不管怎样，如果记录下来了（在 RxJS中可以使用 `BehaviorSubject` 或 `ReplaySubject`），你也可像看电影一样看现场演出。[`.publish().refCount()`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/refcount.md) 现场表演是艺术家在没有人观看的情况下退出比赛，当观众中至少有一人出现时，他会重新开始演奏。
