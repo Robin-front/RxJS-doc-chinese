@@ -1,32 +1,32 @@
-# Creating and Subscribing to Simple Observable Sequences #
+# 创建和订阅单一可观察序列 #
 
-You do not need to implement the `Observable` class manually to create an observable sequence. Similarly, you do not need to implement `Observer` either to subscribe to a sequence. By installing the Reactive Extension libraries, you can take advantage of the `Observable` type which provides many operators for you to create a simple sequence with zero, one or more elements. In addition, RxJS provides an overloaded `subscribe` method which allows you to pass in `onNext`, `onError` and `onCompleted` function handlers.
+你不需要去实现 `Observable` 类去创建一个可观察序列。 同样的，你也不需要去实现 `Observer` 去订阅数据流。通过安装 Rx 库，你可以利用 `Observable`类型，它提供了许多操作符来根据零个，一个或多个元素去创建一个数据流。另外， RxJS 还提供 `subscribe` 方法允许你使用 `onNext`, `onError` 和 `onCompleted` 函数。
 
-## Creating a sequence from scratch ##
+## 从零创建一个数据流 ##
 
-Before getting into many operators, let's look at how to create an `Observable` from scratch using the [`Rx.Observable.create`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/create.md) method.
+在使用操作符之前，让我们看一看怎样使用 [`Rx.Observable.create`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/create.md) 方法从零创建 `Observable` 。
 
-First, we need to ensure we reference the core `rx.js` file.
+首先， 我们需要确认引用了 `rx.js` 核心文件。
 
 ```html
 <script src="rx.js"></script>
 ```
 
-Or if we're using [Node.js](http://node.js), we can reference it as such:
+如果我们使用 [Node.js](http://node.js)， 我们可以这样引入:
 
 ```js
 var Rx = require('rx');
 ```
 
-In this example, we will simply yield a single value of 42 and then mark it as completed.  The return value is completely optional if no cleanup is required.
+在这个例子中， 我们将只产生一个单一值42，然后标记为完成。 如果不需要清除，返回值是完全可选的。
 
 ```js
 var source = Rx.Observable.create(observer => {
-  // Yield a single value and complete
+  // 产生一个单一值然后完成。
   observer.onNext(42);
   observer.onCompleted();
 
-  // Any cleanup logic might go here
+  // 任何清除的逻辑写在这里
   return () => console.log('disposed')
 });
 
@@ -42,19 +42,19 @@ subscription.dispose();
 // => disposed
 ```
 
-For most operations, this is completely overkill, but shows the very basics of how most RxJS operators work.
+对于大多数操作， 这完全是多余的，但这展示了非常基础的大部分 RxJS 操作符是如何工作的。
 
-## Creating and subscribing to a simple sequence ##
+## 创建及订阅单一数据流 ##
 
-The following sample uses the [`range`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/range.md) operator of the `Observable` type to create a simple observable collection of numbers. The observer subscribes to this collection using the Subscribe method of the Observable class, and provides actions that are delegates which handle `onNext`, `onError` and `onCompleted`.  In our example, it creates a sequence of integers that starts with x and produces y sequential numbers afterwards.
+接下来的例子使用 `Observable` 类的 [`range`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/range.md) 操作符来创建一个包含一些数字的单一数据流。观察者使用 `Observable` 类的 `Subscribe` 订阅这个数据流集合， 并且处理回调 `onNext`, `onError` and `onCompleted`。在我们的例子中，创建了一个从 x 开始的整数序列，然后接下来产生 y 个。
 
-As soon as the subscription happens, the values are sent to the observer. The `onNext` function then prints out the values.
+只要订阅了数据流，数据就会发送给观察者。`onNext`函数会打印出这个值。
 
 ```js
-// Creates an observable sequence of 5 integers, starting from 1
+// 创建一个从 1 开始，包含 5 个整数的数据流
 var source = Rx.Observable.range(1, 5);
 
-// Prints out each item
+// 打印每个值
 var subscription = source.subscribe(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
@@ -68,27 +68,27 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-When an observer subscribes to an observable sequence, the `subscribe` method may be using asynchronous behavior behind the scenes depending on the operator. Therefore, the `subscribe` call is asynchronous in that the caller is not blocked until the observation of the sequence completes. This will be covered in more details in the [Using Schedulers](schedulers.md) topic.
+当一个观察者订阅了一个数据流， `subscribe` 方法背后使用的异步操作取决于操作符。因些， `subscribe` 的调用是异步的，因为调用者在完成序列观察之前不会被阻塞。这篇文章 [Using Schedulers](schedulers.md) 提供了更多信息。
 
-Notice that the [`subscribe`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/susbcribe.md) method returns a `Disposable`, so that you can unsubscribe to a sequence and dispose of it easily. When you invoke the `dispose` method on the observable sequence, the observer will stop listening to the observable for data.  Normally, you do not need to explicitly call `dispose` unless you need to unsubscribe early, or when the source observable sequence has a longer life span than the observer. Subscriptions in Rx are designed for fire-and-forget scenarios without the usage of a finalizer. Note that the default behavior of the Observable operators is to dispose of the subscription as soon as possible (i.e, when an `onCompleted` or `onError` messages is published). For example, the code will subscribe x to both sequences a and b. If a throws an error, x will immediately be unsubscribed from b.
+注意 [`subscribe`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/susbcribe.md) 方法返回一个 `Disposable`，所以你可以很容易地退订和销毁它。当你在可观察对象上调用 `dispose` 方法时，观察者将会停止监听数据流。正常来说，你不需要精确地调用 `dispose` 除非你需要提前退订，或者当数据流的生命周期比观察者的还长。 Rx 的订阅被设计成 `触发-丢弃` 的场景，并不需要终结者。注意到，可观察对象的操作符的默认表现是 只要有可能（比如，`onCompleted` 或 `onError` 消息被发送时），订阅就会被销毁。举个例子，下面的代码将会订阅 a 和 b 两个数据流。如果 a 抛出一个错误， x 会立即退订 b 。
 
 ```js
 var x = Rx.Observable.zip(a, b, (a1, b1) => a1 + b1).subscribe();
 ```
 
-You can also tweak the code sample to use the Create operator of the Observer type, which creates and returns an observer from specified OnNext, OnError, and OnCompleted action delegates. You can then pass this observer to the Subscribe method of the Observable type. The following sample shows how to do this.
+还可以调整代码示例以使用观察者的 `Create` 运算符，创建并从指定的 `OnNext`, `OnError`, 和 `OnCompleted` 回调返回一个观察者。然后你可以传递 `observer` 给 `observable` 的 `subscribe` 方法。下面的例子展示了这种写法。
 
 ```js
-// Creates an observable sequence of 5 integers, starting from 1
+// 创建包含 5个整数的数据流，从 1 开始
 var source = Rx.Observable.range(1, 5);
 
-// Create observer
+// 创建观察者
 var observer = Rx.Observer.create(
   x => console.log('onNext: %s', x),
   e => console.log('onError: %s', e),
   () => console.log('onCompleted'));
 
-// Prints out each item
+// 打印每个结果
 var subscription = source.subscribe(observer);
 
 // => onNext: 1
@@ -99,10 +99,9 @@ var subscription = source.subscribe(observer);
 // => onCompleted
 ```
 
-In addition to creating an observable sequence from scratch, you can convert existing Arrays,  events, callbacks and promises into observable sequences. The other topics in this section will show you how to do this.
+另外，从零创建一个数据流，你也可以将已存在的 数据， 事件，回调以及 `promise` 转换成数据流。下一节的主题将会教你怎么做。
 
-Notice that this topic only shows you a few operators that can create an observable sequence from scratch. To learn more about other LINQ operators, see Querying Observable Sequences using LINQ Operators.
-
+注意，这一节只展示了可以从零创建数据流的很少一部分操作符。学习更多其他的  `LINQ` 操作符， 可以查看 [Querying Observable Sequences](querying_observable_squences.md).
 ## Using a timer ##
 
 The following sample uses the [`timer`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/timer.md) operator to create a sequence. The sequence will push out the first value after 5 second has elapsed, then it will push out subsequent values every 1 second. For illustration purpose, we chain the [`timestamp`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/timestamp.md) operator to the query so that each value pushed out will be appended by the time when it is published. By doing so, when we subscribe to this source sequence, we can receive both its value and timestamp.
@@ -376,7 +375,7 @@ setTimeout(() => {
 // => ...
 ```
 
-**Analogies** 
+**Analogies**
 
 It helps to think of cold and hot Observables as movies or performances that one can watch ("subscribe").
 
@@ -384,4 +383,4 @@ It helps to think of cold and hot Observables as movies or performances that one
 - Hot Observables: live performances.
 - Hot Observables replayed: live performances recorded on video.
 
-Whenever you watch a movie, your run of the movie is independent of anyone else's run, even though all movie watchers see the same effects. On the other hand, a live performance is shared to multiple viewers. If you arrive late to a live performance, you will simply miss some of it. However, if it was recorded on video (in RxJS this would happen with a BehaviorSubject or a ReplaySubject), you can watch a "movie" of the live performance. A [`.publish().refCount()`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/refcount.md) live performance is one where the artists quit playing when no one is watching, and start playing again when there is at least one person in the audience. 
+Whenever you watch a movie, your run of the movie is independent of anyone else's run, even though all movie watchers see the same effects. On the other hand, a live performance is shared to multiple viewers. If you arrive late to a live performance, you will simply miss some of it. However, if it was recorded on video (in RxJS this would happen with a BehaviorSubject or a ReplaySubject), you can watch a "movie" of the live performance. A [`.publish().refCount()`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/refcount.md) live performance is one where the artists quit playing when no one is watching, and start playing again when there is at least one person in the audience.
