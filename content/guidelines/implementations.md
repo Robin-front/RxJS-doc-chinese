@@ -22,7 +22,7 @@ Rx.Observable.prototype.flatMap = function(selector) { return this.map(selector)
 当无法遵循准则5.1时， 使用 `Observable.Create(WithDisposable)` 方法创建一个新的可观察对象，因为它提供了几个保护，使可观察的序列遵循RxJS约定。
 
 - 当可观察序列已经完成时（不管是触发了[`onError`](../..observer/observer_instance_methods/onerror.html) 还是 [`onCompleted`](../../observer/observer_instance_methods/oncompleted.html))）， 任何订阅者都会自动取消订阅。
-- 任何订阅者的实例都只能接收到一条错误（OnError）或完成（OnCompleted）消息。之后可观察序列不会再发送消息。 No more messages are sent through. This ensures the Rx grammar of onNext* (onError|onCompleted)?
+- 任何订阅者的实例都只能接收到一条错误（OnError）或完成（OnCompleted）消息。之后可观察序列不会再发送消息。
 
 #### Sample ####
 
@@ -50,22 +50,22 @@ Rx.Observable.prototype.map = function(selector, thisArg) {
 };
 ```
 
-In this sample, `map` uses the `Observable.create` operator to return a new instance of the Observable class. This ensures that no matter the implementation of the source observable sequence, the output observable sequence follows the Rx contract . It also ensures that the lifetime of subscriptions is a short as possible.
+在这个例子中， `map` 使用了 `Observable.create` 操作符返回一个新的可观察对象的实例。这确保了不管可观察序列的源是什么，输出都遵循 Rx 的规范。这也确保了订阅的生命周期尽可能地短。
 
 #### 何时忽略这条指南 ####
 
-- The operator needs to return an observable sequence that doesn’t follow the Rx contract. This should usually be avoided (except when writing tests to see how code behaves when the contract is broken)
-- The object returned needs to implement more than the Observable class (e.g. Subject, or a custom class).
+- 操作符需要返回一个不遵循 Rx 规范的可观察序列。这通常应该避免（除非需要写一个测试代码去查看不遵循规范时的表现）。
+- 返回的对象需要实现比 Observable 类更多的功能。（比如， Subject, 或者一个常用的类）。
 
-### Protect calls to user code from within an operator ###
+### 在操作符内防止调用用户代码 ###
 
-When user code is called from within an operator, this is potentially happening outside of the execution context of the call to the operator (asynchronously). Any exception that happens here will cause the program to terminate unexpectedly. Instead it should be fed through to the subscribed observer instance so that the exception can be dealt with by the subscribers.
+当用户的代码在操作符里面被调用时，可能会在执行上下文之外（异步地）调用操作符。这里发生的任何异常都会导致程序意外终止。相反， 它应该被反馈到订阅者的实例，以便异常可以由订阅者处理。
 
-Common kinds of user code that should be protected:
-- Selector functions passed in to the operator.
-- Comparer functions passed into the operator.
+通常应该防止出现这些类型的用户代码：
+- 传递选择器函数给操作符。
+- 传递比较函数给操作符。
 
-**Note:** calls to `Scheduler` implementations are not considered for this guideline. The reason for this is that only a small set of issues would be caught as most schedulers deal with asynchronous calls. Instead, protect the arguments passed to schedulers inside each scheduler implementation.
+**注意:** 调用`Scheduler` 的实现不遵循这本准则。这样做的原因是，只有一小部分的问题会被捕获，因为大多数的调度程序都是异步调用。相反，在每个调度器实现里，应该防止传递这些参数。
 
 #### Sample ####
 
