@@ -1,14 +1,14 @@
-# Bridging to Events #
+# 事件桥接 #
 
-RxJS provides factory methods for you to bridge with existing asynchronous sources in the DOM or Node.js so that you can employ the rich composing, filtering and resource management features provided by RxJS on any kind of data streams. This topic examines the [`fromEvent`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromevent.md) and [`fromEventPattern`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromeventpattern.md) operator that allows "importing" a DOM or custom event into RxJS as an observable sequence. Every time an event is raised, an `onNext` message will be delivered to the observable sequence. You can then manipulate event data just like any other observable sequences.
+RxJS 提供工厂方法来桥接 DOM 或 Node.js 中已存在的异步数据源，所以，你可以使用丰富的创作、过滤和资源管理功能对RxJS提供的任何类型的数据流进行操作。这篇文章探讨 [`fromEvent`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromevent.md) 和 [`fromEventPattern`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromeventpattern.md)操作符，它允许导入一个 DOM 或者普通事件到 RxJS 的数据流。每次引发事件时，一个 `OnNext` 消息将传递到数据流。然后，可以像其他任何数据流一样操作事件数据流。
 
-RxJS does not aim at replacing existing asynchronous programming models such as promises or callbacks. However, when you attempt to compose events, RxJS’s factory methods will provide you the convenience that cannot be found in the current programming model. This is especially true for resource maintenance (e.g., when to unsubscribe) and filtering (e.g., choosing what kind of data to receive). In this topic and the ones that follow, you can examine how these RxJS features can assist you in asynchronous programming.
+RxJS 不打算取代现有的异步编程模型如 `Promises` 或 `callbacks`。但是，当你尝试组合事件， RxJS的工厂方法会提供简便的方法给你，你完全感受不到当前使用了何种编程模式。这真的很方便维护（比如取消订阅）和筛选（比如选择合适的数据）数据源。在本节和下节中，你可以尝试 RxJS 的这些特性如何协助你完成异步编程。
 
-Natively, RxJS supports a number of libraries and hooks into them such as [jQuery](http://jquery.com/), [Zepto.js](http://zeptojs.com/), [AngularJS](https://angularjs.org/), [Ember.js](http://emberjs.com/) and [Backbone.js](http://backbonejs.org) for using their event system.  This behavior, however, can be overridden to only use native bindings only.  By default, RxJS also has hooks for [Node.js](http://nodejs.org) `EventEmitter` events natively supported.
+自然，RxJS 支持一批库和他们的勾子函数去使用他们的事件系统，比如 [jQuery](http://jquery.com/), [Zepto.js](http://zeptojs.com/), [AngularJS](https://angularjs.org/), [Ember.js](http://emberjs.com/) 和 [Backbone.js](http://backbonejs.org)。这种行为，不管怎样只能重写本地绑定。默认情况下， RxJS 也支持 [Node.js](http://nodejs.org) `EventEmitter` 的事件勾子。
 
-## Converting a DOM event to a RxJS Observable Sequence ##
+## 将一个 DOM 事件转换成 RxJS 数据流 ##
 
-The following sample creates a simple DOM event handler for the mouse move event, and prints out the mouse’s location on the page.
+接下来这个例子为鼠标移动事件创建了一个 DOM 事件操作，并且在页面上打印出鼠标的坐标。
 
 ```js
 var result = document.getElementById('result');
@@ -16,9 +16,9 @@ var result = document.getElementById('result');
 document.addEventListener('mousemove', e => result.innerHTML = e.clientX + ', ' + e.clientY, false);
 ```
 
-To import an event into RxJS, you can use the [`fromEvent`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromevent.md) operator, and provide the event arguments that will be raised by the event being bridged. It then converts the given event into an observable sequence.
+导入一个事件到 RxJS, 你可以使用 [`fromEvent`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromevent.md) 操作符，并且传入被桥接的事件参数。然后它会将事件转换成数据流。
 
-In the following example, we convert the mousemove event stream of the DOM into an observable sequence. Every time a mouse-move event is fired, the subscriber will receive an `onNext` notification. We can then examine the event arguments value of such notification and get the location of the mouse-move.
+下面这个例子，我们将 DOM 的 `mousemove` 事件流转换成事件流（可观察对象）。每次鼠标移动事件被触发时，订阅都会接收到一个 `onNext` 事件。然后我们可以检查这种通知的事件参数并获得鼠标的坐标。
 
 ```js
 var result = document.getElementById('result');
@@ -28,11 +28,11 @@ var source = Rx.Observable.fromEvent(document, 'mousemove');
 var subscription = source.subscribe(e => result.innerHTML = e.clientX + ', ' + e.clientY);
 ```
 
-Notice that in this sample, move becomes an observable sequence in which we can manipulate further. The [Querying Observable Sequences](querying.md) topic will show you how you can project this sequence into a collection of Points type and filter its content, so that your application will only receive values that satisfy a certain criteria.
+在这个例子中要注意，（鼠标）移动变成一个数据流以便我们进一步操作。 [Querying Observable Sequences](querying.md) 这篇文章将会展示如何将该序列投射到点类型集合中并筛选其内容，以便应用程序只接收满足一定条件的值。
 
-Cleaning up of the event handler is taken care of by the `Disposable` object returned by the `subscribe` method. Calling `dispose` will release all resources being used by the sequence including the underlying event handler. This essentially takes care of unsubscribing to an event on your behalf.
+事件处理程序的销毁由 `subscribe` 方法返回的 `Disposable` 对象处理。调用 `dispose` 将会释放由该序列所使用的所有资源，包括底层事件处理程序。这本质上是取消订阅事件。
 
-The `fromEvent` method also supports adding event handlers to multiple items, for example a DOM NodeList.  This example will add the 'click' to each element in the list.
+`fromEvent` 方法还支持向多个项目添加事件处理程序，比如一整个 DOM 节点列表。下面这个例子将会给列表中的每个元素添加 'click' 事件。
 
 ```js
 var result = document.getElementById('result');
@@ -43,7 +43,7 @@ var source = Rx.Observable.fromEvent(sources, 'click');
 var subscription = source.subscribe(e => result.innerHTML = e.clientX + ', ' + e.clientY);
 ```
 
-In addition, `fromEvent` also supports libraries such as [jQuery](http://jquery.com/), [Zepto.js](http://zeptojs.com/), [AngularJS](https://angularjs.org/), [Ember.js](http://emberjs.com/) and [Backbone.js](http://backbonejs.org):
+另外，`fromEvent` 也支持类库，像 [jQuery](http://jquery.com/), [Zepto.js](http://zeptojs.com/), [AngularJS](https://angularjs.org/), [Ember.js](http://emberjs.com/) and [Backbone.js](http://backbonejs.org)：
 
 ```js
 var $result = $('#result');
@@ -54,13 +54,13 @@ var source = Rx.Observable.fromEvent($sources, 'click');
 var subscription = source.subscribe(e => $result.html(e.clientX + ', ' + e.clientY));
 ```
 
-If this behavior is not desired, you can override it by setting the `Rx.config.useNativeEvents` to `true` which will disregard any library for which we support events.
+如果表现不如预期，你可以通过设置 `Rx.config.useNativeEvents` 为 `true` 去重写它，这会无视任何类库。
 
 ```js
-// Use only native events even if jQuery
+// 只使用原生事件，尽管引用了 jQuery
 Rx.config.useNativeEvents = true;
 
-// Native events only
+// 只使用原生事件
 var result = document.getElementById('result');
 
 var source = Rx.Observable.fromEvent(document, 'mousemove');
@@ -68,7 +68,7 @@ var source = Rx.Observable.fromEvent(document, 'mousemove');
 var subscription = source.subscribe(e => result.innerHTML = e.clientX + ', ' + e.clientY);
 ```
 
-In addition, you could easily add many shortcuts into the event system for events such as `mousemove`, and even extending to [Pointer](http://www.w3.org/TR/pointerevents/) and [Touch](http://www.w3.org/TR/touch-events/) Events.
+另外，您可以轻松地给事件系统的事件添加许多快捷方式，比如 `mousemove`， 甚至是 [Pointer](http://www.w3.org/TR/pointerevents/) and [Touch](http://www.w3.org/TR/touch-events/) 事件。
 
 ```js
 Rx.dom = {};
@@ -90,7 +90,8 @@ events.split(' ').forEach(e => {
 });
 ```
 
-Now we can rewrite a simple mouse drag as the following:
+现在我们可以重写单个鼠标拖拽事件：
+
 ```js
 var draggable = document.getElementById('draggable');
 
@@ -105,11 +106,11 @@ var mousedrag = Rx.dom.mousedown(draggable).flatMap(md => {
 });
 ```
 
-Note this is already available in the [RxJS-DOM](https://github.com/Reactive-Extensions/RxJS-DOM) project, but is small enough for you to implement yourself.
+注意这在 [RxJS-DOM](https://github.com/Reactive-Extensions/RxJS-DOM) 项目中已经可用，但你自己实现也只需要很少量的代码。
 
-## Converting a Node.js event to a RxJS Observable Sequence ##
+## 将 Node.js 事件转换成 RxJS 数据流 ##
 
-Node.js is also supported such as an [`EventEmitter`](http://nodejs.org/api/events.html#events_class_events_eventemitter):
+Node.js 也支持类似 [`EventEmitter`](http://nodejs.org/api/events.html#events_class_events_eventemitter):
 
 ```js
 var Rx = require('rx'),
@@ -125,17 +126,18 @@ eventEmitter.emit('data', 'foo');
 // => data: foo
 ```
 
-## Bridging to Custom Events with FromEventPattern ##
+## 使用 FromEventPattern 桥接自定义事件 ##
 
-There may be instances dealing with libraries which have different ways of subscribing and unsubscribing from events.  The [`fromEventPattern`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromeventpattern.md) method was created exactly for this purpose to allow you to bridge to each of these custom event emitters.
+下面有一个使用类库实现事件订阅和退订的实例。[`fromEventPattern`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/fromeventpattern.md) 方法就是为了这个目的而创建的，用来桥接这些自定义事件。
 
-For example, you might want to bridge to using jQuery [`on`](http://api.jquery.com/on/) method.  We can convert the following code which alerts based upon the click of a table row.
+举个例子，你可以想使用 jQuery [`on`](http://api.jquery.com/on/) 方法去桥接。我们可以将下列代码转换为基于表格行单击的 alert。
+
 
 ```js
 $( "#dataTable tbody" ).on('click', 'tr', e => alert($( e.target ).text()));
 ```
 
-The converted code looks like this while using the `fromEventPattern` method.  Each function passes in the handler function which allows you to call the `on` and `off` methods to properly handle disposal of events.
+使用 `fromEventPattern` 方法转换后的代码看起来像下面这样。每个函数在处理函数中传递，允许您调用 `on` 和 `off` 方法来正确处理事件的处理。
 
 ```js
 var $tbody = $('#dataTable tbody');
@@ -147,7 +149,7 @@ var source = Rx.Observable.fromEventPattern(
 var subscription = source.subscribe(e => alert($( e.target ).text()));
 ```
 
-In addition to this normal support, we also support if the `addHandler` returns an object, it can be passed to the `removeHandler` to properly unsubscribe.  In this example, we'll use the [Dojo Toolkit](http://dojotoolkit.org) and the [`on`](http://dojotoolkit.org/api/1.9/dojo/on.html) module.
+除了这种常用的支持外，我们也支持 `addHandler` 返回一个对象，它可以通过 `removeHandler` 去完全退订。在这个例子中，我们将使用 [Dojo Toolkit](http://dojotoolkit.org) 和 [`on`](http://dojotoolkit.org/api/1.9/dojo/on.html) 模块。
 
 ```js
 require(['dojo/on', 'dojo/dom', 'rx', 'rx.async', 'rx.binding'], (on, dom, rx) => {
@@ -173,7 +175,7 @@ require(['dojo/on', 'dojo/dom', 'rx', 'rx.async', 'rx.binding'], (on, dom, rx) =
 });
 ```
 
-## See Also
+## 相关内容
 
-Concepts
-- [Querying Observable Sequences](querying.md)
+概念
+- [Querying Observable Sequences](querying_observable_sequences.md)
