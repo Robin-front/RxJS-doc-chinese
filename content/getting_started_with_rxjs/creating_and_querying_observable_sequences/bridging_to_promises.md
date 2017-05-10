@@ -1,10 +1,10 @@
-# Bridging to Promises #
+# 桥接 Promises #
 
-Promises are a defacto standard within JavaScript community and is part of the ECMAScript Standard.  A promise represents the eventual result of an asynchronous operation. The primary way of interacting with a promise is through its `then` method, which registers callbacks to receive either a promise’s eventual value or the reason why the promise cannot be fulfilled.  You can create them very easily where the constructor has two functions, `resolve` and `reject` which resolves the value or rejects it for a given reason.  RxJS is fully committed to standards and has native support for Promises for any number of methods where they can be used interchangeably with Observable sequences.  
+Promises 事实上是在JavaScript社区的标准，是ECMAScript标准的一部分。Promise 表示异步操作的最终结果.Promise 主要的调用方式是通过 `then` 方法，注册回调函数接受一个promise的最终值或无法履行 promise 的返回。你可以非常容易地创建它，通过包含 `resolve` 和 `reject` 两个函数的构造函数，分别代表给定的解析值或拒绝值。rxjs完全致力于标准和原生支持Promise为任何数量的方法，在那里他们可以与可观察序列的交替使用。
 
-The advantage that you get when you intermix Promises with Observable sequences is that unlike the ES6 Promise standard, you get cancellation semantics which means you can disregard values if you no longer are interested.  One of the biggest problems around Promises right now are around cancellation, as to cancel the operation, such as an XHR is not easily done with the existing standard, nor is it to only get the last value to ensure no out of order requests.  With Observable sequences, you get that behavior for free in a multicast behavior, instead of the unicast Promise behavior.
+优点是，当你与之混合可观察序列的Promises不同的是，ES6 Promises 的标准，你可以取消语义意味着你可以无视后续的返回值，如果你不再有兴趣。其中 Promises 一个最大的问题就是取消，如取消操作，如一个XHR并不容易与现有的标准兼容，也不是只有最后一个值以确保没有出单的要求。通过可观察序列，您可以在多播行为中获得该行为，而不是 Promise 的单播行为。
 
-The following list of operators natively support Promises:
+下面这个操作符列表支持 Promises:
 - [`Rx.Observable.amb`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/amb.md) | [`Rx.Observable.prototype.amb`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/ambproto.md)
 - [`Rx.Observable.case`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/case.md)
 - [`Rx.Observable.catch`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/catch.md) | [`Rx.Observable.prototype.catch`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/catchproto.md)
@@ -34,7 +34,7 @@ The following list of operators natively support Promises:
 - [`Rx.Observable.withLatestFrom`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/withlatestfrom.md)
 - [`Rx.Observable.zip`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/zip.md) | [`Rx.Observable.prototype.zip`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/zipproto.md)
 
-Because of this, we can now do a number of very interesting things such as combining Promises and Observable sequences.
+基于这个，我们可以做一些有趣的事情，比如组合 Promises 和 数据流。
 
 ```js
 var source = Rx.Observable.range(0, 3)
@@ -51,13 +51,13 @@ var subscription = source.subscribe(
 // => onCompleted
 ```
 
-This is just scratching the surface of what Promises and RxJS can do together so that we have first class single values and first class multiple values working together.
+这只是提取 Promises 和rxjs可以一起做的事情，我们将一类单值和一类多值配合一起工作。
 
-## Converting Promises to Observable Sequences ##
+## 将 Promises 转换成数据流 ##
 
-It's quite simple to convert a Promise object which conforms to the ES6 Standard Promise where the behavior is uniform across implementations.  To support this, we provide the [`Rx.Observable.fromPromise`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/frompromise.md) method which calls the `then` method of the promise to handle both success and error cases.
+将Promise 对象转换成符合 ES6 标准，很容易实现 Promise 的行为一致。为了支持这个，我们提供 [`Rx.Observable.fromPromise`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/frompromise.md) 方法，调用 `then` 方法来处理成功和失败两种状态。
 
-In the following example, we create promise objects using [RSVP](https://github.com/tildeio/rsvp.js) library.
+下面这个例子，我们使用 [RSVP](https://github.com/tildeio/rsvp.js) 库创建一个 Promise 对象。
 
 ```js
 // Create a promise which resolves 42
@@ -73,7 +73,7 @@ var subscription1 = source1.subscribe(
 // => onNext: 42
 // => onCompleted
 
-// Create a promise which rejects with an error
+// 创建一个包含错误 rejects 的 promise
 var promise2 = new RSVP.Promise((resolve, reject) => reject(new Error('reason')));
 
 var source2 = Rx.Observable.fromPromise(promise2);
@@ -86,17 +86,17 @@ var subscription2 = source2.subscribe(
 // => onError: reason
 ```
 
-Notice that in this sample, these promises become observable sequences which we can manipulate further. The [Querying Observable Sequences](querying.md) topic will show you how you can project this sequence into another, filter its content, so that your application will only receive values that satisfy a certain criteria.
+注意，这个例子中，这些 promises 变成数据流时，我们还可以做得更多。[Querying Observable Sequences](querying.md) 这篇主题将会给你展示如何将这个数据流映射到另一个，筛选它的内容，使您的应用程序只接收满足一定条件的值。
 
-## Converting Observable Sequences to Promises ##
+## 将可观察对象转换成 Promises ##
 
-Just as you can convert a Promise to an Observable sequence, you can also convert an Observable sequence to a Promise.  This either requires native support for Promises, or a Promise library you can add yourself, such as [Q](https://github.com/kriskowal/q), [RSVP](https://github.com/tildeio/rsvp.js), [when.js](https://github.com/cujojs/when) among others.  These libraries must conform to the ES6 standard for construction where it provides two functions to resolve or reject the promise.
+正如你可以将 Promise 转换成数据流，你也同样也可以将可观察对象转换成 Promise. 这要求原生支持 Promise, 或者添加了一个 Promise 库，比如 [Q](https://github.com/kriskowal/q), [RSVP](https://github.com/tildeio/rsvp.js), [when.js](https://github.com/cujojs/when) 或其他的。这些库必须确认适用于 ES6 标准，它提供 resolve 和 reject 两个函数。
 
 ```js
 var p = new Promise((resolve, reject) => resolve(42));
 ```
 
-We can use the [`toPromise`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/frompromise.md) method which allows you to convert an Observable sequence to a Promise.  This method accepts a Promise constructor, and if not provided, will default to a default implementation.  In this first example, we will use [RSVP](https://github.com/tildeio/rsvp.js) to construct our Promise objects.
+我们可以使用 [`toPromise`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/frompromise.md) 方法，它允许你将一个可观察对象转换成 Promise. 这个方法接受一个 Promise 构造函数，如果不提供，将会实使默认的实现方式。 在下面第一个例子中，我们会使用 [RSVP](https://github.com/tildeio/rsvp.js) 去构造我们的 Promise 对象。
 
 ```js
 // Return a single value
@@ -118,7 +118,7 @@ source2.then(
 // => Rejected reason: Error: reason
 ```
 
-If an implementation is not given with the [`toPromise`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/frompromise.md) method, it will fall back to the Promise implementation specified in the `Rx.config.Promise` field.  By default this will be set to the runtime's ES6 Promise implementation, but can easily be overridden by specifying the configuration information.
+如果一个实现没有提供构造函数给 [`toPromise`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/frompromise.md) 方法，它将会降级使用 `Rx.config.Promise` 设置的 Promise 实现方法。默认情况下这将被设置为运行时的ES6 Promise 实现，但可以很容易地通过指定配置信息重写。
 
 ```js
 Rx.config.Promise = RSVP.Promise;
@@ -132,7 +132,8 @@ source1.then(
 // => Resolved value: 1
 ```
 
-If you are in a pure ES6 environment, this should just work without any settings on your part as it will use the runtime's ES6 Promise implementation.
+如果你是一个纯 ES6 的环境，没有任何设置也应该能工作，它将使用运行时的 ES6 Promise 实现。
+
 ```js
 var source1 = Rx.Observable.just(1).toPromise();
 
@@ -143,5 +144,5 @@ source1.then(
 // => Resolved value: 1
 ```
 
-Concepts
+参考
 - [Querying Observable Sequences](querying.md)
