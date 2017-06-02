@@ -54,6 +54,6 @@
       }
   },
   "variables": {
-      "isPdf": false
+      "isPdf": true
   }
 }
