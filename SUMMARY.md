@@ -327,7 +327,7 @@
 
 * [资源](content/resources/README.md)
   * [文章](content/resources/articles/README.md)   
-  * [响应式编辑类库](content/resources/reactive_libraries/README.md)
+  * [相关响应式类库](content/resources/reactive_libraries/README.md)
     * [Bacon](content/resources/reactive_libraries/bacon.md)
     * [Cycle](content/resources/reactive_libraries/cycle.md)
     * [Elm](content/resources/reactive_libraries/elm.md)
