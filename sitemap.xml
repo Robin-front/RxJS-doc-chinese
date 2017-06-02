@@ -26,6 +26,9 @@
 <url> <loc>https://robin-front.gitbooks.io/content/getting_started_with_rxjs/scheduling_and_concurrency.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/getting_started_with_rxjs/testing_and_debugging.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/getting_started_with_rxjs/implementing_your_own_operators.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://robin-front.gitbooks.io/content/which_operator_do_i_use/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://robin-front.gitbooks.io/content/which_operator_do_i_use/creation_operators.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://robin-front.gitbooks.io/content/which_operator_do_i_use/instance_operators.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/how_do_i/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/how_do_i/existing_api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/how_do_i/jquery_with_rxjs.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -322,7 +325,4 @@
 <url> <loc>https://robin-front.gitbooks.io/content/methods_by_libraries/rx.testing.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/methods_by_libraries/rx.time.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://robin-front.gitbooks.io/content/methods_by_libraries/rx.virtualtime.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://robin-front.gitbooks.io/content/which_operator_do_i_use/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://robin-front.gitbooks.io/content/which_operator_do_i_use/creation_operators.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://robin-front.gitbooks.io/content/which_operator_do_i_use/instance_operators.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>
