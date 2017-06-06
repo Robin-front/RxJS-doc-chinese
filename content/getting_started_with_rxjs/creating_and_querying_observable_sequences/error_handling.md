@@ -1,6 +1,8 @@
-# Error Handling in the Reactive Extensions #
+# RXJS中的错误处理 #
 
-One of the most difficult tasks in asynchronous programming is dealing with errors.  Unlike interactive style programming, we cannot simply use the try/catch/finally approach that we use when dealing with blocking code.
+异步编程中最困难的任务之一就是处理错误。与交互式样式编程不同，我们不能简单地像我们在处理代码块时使用的try / catch / finally方法。
+
+> One of the most difficult tasks in asynchronous programming is dealing with errors.  Unlike interactive style programming, we cannot simply use the try/catch/finally approach that we use when dealing with blocking code.
 
 ```js
 try {
@@ -14,7 +16,10 @@ try {
 }
 ```
 
-These actions mirror exactly our `Observer` class which has the following contract for handing zero to infinite items with `onNext` and optionally handling either an `Error` with `onError` or successful completion with `onCompleted`.
+这些动作正好反映了我们的`Observer`类，它有以下契约，用于将零到无限项，`onNext`并且可选地处理`Error`与`onError`或成功完成的`onCompleted`。
+
+> These actions mirror exactly our `Observer` class which has the following contract for handing zero to infinite items with `onNext` and optionally handling either an `Error` with `onError` or successful completion with `onCompleted`.
+
 ```typescript
 interface Observer<T> {
   onNext(value: T) : void
@@ -23,21 +28,27 @@ interface Observer<T> {
 }
 ```
 
-But the try/catch/finally approach won't work with asynchronous code.  Instead, we have a myriad of ways of handling errors as they occur, and ensure proper disposal of resources.
+但是try / catch / finally方法不能与异步代码一起使用。作为替代，我们有多种处理错误的方法，并确保妥善处理资源。
 
-For example, we might want to do the following:
-- swallow the error and switch over to a backup Observable to continue the sequence
-- swallow the error and emit a default item
-- swallow the error and immediately try to restart the failed Observable
-- swallow the error and try to restart the failed Observable after some back-off interval
+> But the try/catch/finally approach won't work with asynchronous code.  Instead, we have a myriad of ways of handling errors as they occur, and ensure proper disposal of resources.
 
-We'll cover each of those scenarios and more in this section.
+例如，我们可能想要执行以下操作：
+- 接受错误并切换到备份`Observable`以继续执行序列
+- 接受该错误并发射一个默认值
+- 接受该错误，并立即尝试重新启动失败的Observable
+- 接受该错误，并尝试重新启动失败的Observable 在一些后台定时器之后
 
-## Catching Errors ##
+我们将在本节中介绍这每个场景和更多内容。
 
-The first topic is catching errors as they happen with our streams. In the Reactive Extensions, any error is propogated through the `onError` channel which halts the sequence.  We can compensate for this by using the `catch` operator, at both the class and instance level.  
+## 捕捉错误 ##
 
-Using the class level `catch` method, we can catch errors as they happen with the current sequence and then move to the next sequence should there be an error.  For example, we could try getting data from several URLs, it doesn't matter which since they all have the same data, and then if that fails, default to a cached version, so an error should never propagate.  One thing to note is that if `get('url')` calls succeed, then it will not move onto the next sequence in the list.
+第一个主题是随着我们的数据流发生错误。在RXJS中，通过`onError`停止序列的通道传播的任何错误。我们可以通过`catch`在类和实例级别使用运算符来弥补这一点。
+
+> The first topic is catching errors as they happen with our streams. In the Reactive Extensions, any error is propogated through the `onError` channel which halts the sequence.  We can compensate for this by using the `catch` operator, at both the class and instance level.  
+
+使用类级别`catch`方法，我们可以捕获当前序列发生的错误，然后如果存在错误，则移动到下一个序列。例如，我们可以尝试从多个URL获取数据，因为它们都具有相同的数据，因此无论如何，如果失败，默认为缓存版本，因此错误不应该传播。需要注意的一点是，如果`get('url')`调用成功，那么它不会移动到列表中的下一个序列。
+
+> Using the class level `catch` method, we can catch errors as they happen with the current sequence and then move to the next sequence should there be an error.  For example, we could try getting data from several URLs, it doesn't matter which since they all have the same data, and then if that fails, default to a cached version, so an error should never propagate.  One thing to note is that if `get('url')` calls succeed, then it will not move onto the next sequence in the list.
 
 ```js
 var source = Rx.Observable.catch(
@@ -54,6 +65,8 @@ var subscription = source.subscribe(
 );
 ```
 
+我们还有一个实例版本`catch`可以使用两种方式。第一种方式就像上面的例子，我们可以在现有的流中捕获错误并移动到下一个流或`Promise`。
+
 We also have an instance version of `catch` which can be used two ways.  The first way is much like the example above, where we can take an existing stream, catch the error and move onto the next stream or `Promise`.
 
 ```js
@@ -66,7 +79,9 @@ var subscription = source.subscribe(
 );
 ```
 
-The other overload of `catch` allows us to inspect the error as it comes in so we can decide which route to take.  For example, if an error status code of 500 comes back from our web server, we can assume it is down and then use a cached version.
+另一个超载`catch`允许我们检查错误，因为它进来，所以我们可以决定采取哪条路线。例如，如果从我们的Web服务器返回错误状态代码500，我们可以假设它已经关闭，然后使用缓存版本。
+
+> The other overload of `catch` allows us to inspect the error as it comes in so we can decide which route to take.  For example, if an error status code of 500 comes back from our web server, we can assume it is down and then use a cached version.
 
 ```js
 var source = get('url1').catch(e => {
@@ -84,7 +99,7 @@ var subscription = source.subscribe(
 );
 ```
 
-This isn't the only way to handle errors as there are plenty of others as you'll see below.
+这不是处理错误的唯一方式，因为有很多其他方法，如下所示。
 
 ## Ignoring Errors with `onErrorResumeNext` ##
 
@@ -203,7 +218,7 @@ function DisposableWebSocket(url, protocol) {
 
 var source = Rx.Observable.using(
   () => new DisposableWebSocket('ws://someurl', 'xmpp'),
-  d => 
+  d =>
     Rx.Observable.from(data)
       .tap(data => d.socket.send(data));
   }
