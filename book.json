@@ -26,7 +26,7 @@
   "theme": "theme",
   "pluginsConfig": {
       "theme-default": {
-        "showLevel": true
+        "showLevel": false
       },
       "fontSettings": {
           "theme": "white",
@@ -54,6 +54,6 @@
       }
   },
   "variables": {
-      "isPdf": false
+      "isPdf": true
   }
 }

@@ -1,14 +1,14 @@
-# RxJS Recipes
+# RxJS Recipes(秘方？)
 
-## Error Handling
+## 错误处理
 
-There are many ways of handling errors in RxJS. This will cover a number of recipes when handling errors:
+在RxJS中有许多处理错误的方法。这将涵盖处理错误时的许多方法：
 
-* Incremental retry with ```retryWhen```
+* 增量重试 ```retryWhen```
 
-### Incremental retry with ```retryWhen```
+### 增量重试 ```retryWhen```
 
-This example will show how you can back off a retry for a number of seconds between tries instead of retrying them all at once.
+此示例将显示如何在几秒钟之后尝试重试，而不是只重试一次。
 
 {% if book.isPdf %}
 

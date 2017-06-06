@@ -1,6 +1,6 @@
-# Generators and Observable Sequences #
+# Generators 与可观测序列 #
 
-One of the more exciting features of ES6 is a new function type called generators.  They have been in Firefox for years, although they have now been finally standardized in ES6, and will be shipping in a browser or runtime near you. How generators differ from normal functions is that a normal function such as the following will run to completion, regardless of whether it is asynchronous or not.
+ES6更令人激动的功能之一是称为`generators`的新功能特性。他们已经在Firefox多年了，尽管它们现在终于在ES6中被标准化了，并将在您使用的其他浏览器普及。`generators`与正常功能的不同之处在于，正常功能（如下列操作）将直接运行直到完成，无论是否是异步的。
 
 ```js
 function printNumberOfTimes(msg, n) {
@@ -12,21 +12,22 @@ function printNumberOfTimes(msg, n) {
 printNumberOfTime('Hello world', 1);
 // => Hello world
 
-// Asynchronous
-setTimeout(() => console.log('Hello from setTimeout after one second'), 1000); 
+// 异步
+setTimeout(() => console.log('Hello from setTimeout after one second'), 1000);
 // => Hello from setTimeout after one second
 ```
 
-Instead of running to completion, generators allow us to interrupt the flow of the function by introducing the `yield` keyword which pauses the function.  The function cannot resume on its own without the external consumer saying that they need the next value.  
+`generator`不是运行到完成，而是允许我们通过引入具有暂停功能的`yield`关键字来中断功能的流程。如果没有外部消费者说他们需要下一个值，该功能就无法自行恢复。
 
-To create a generator function, you must use the `function*` syntax which then becomes a generator.  In this particular example, we will yield a single value, the meaning of life.
+要创建一个`generator`函数，你必须使用这个`function*`语法，然后就成为一个`generator`。在这个特殊的例子中，我们将产生一个单一的价值，即生命的意义。
+
 ```js
 function* theMeaningOfLife() {
   yield 42;
 }
 ```
 
-To get the value out, we need to invoke the function, and then call `next` to get the next value.  The return value from the `next` call will have a flag as to whether it is done, as well as any value that is yielded.  Note that the function doesn't do anything until we start to call `next`.
+要获取值，我们需要调用该函数，然后调用`next`获取下一个值。来自`next`调用的返回值将具有关于是否完成的标志，以及所产生的任何值。请注意，在我们开始调用之前，该函数不会执行任何`next`操作。
 
 ```js
 var it = theMeaningOfLife();
@@ -38,7 +39,7 @@ it.next();
 // => { done: true, value: undefined }
 ```
 
-We can also use some ES6 shorthand for getting values from a generator such as the `for..of`.
+我们还可以使用一些ES6的简写来获取来自`generator`的值,比如 `for..of`:
 
 ```js
 for (var v of theMeaningOfLife()) {
@@ -47,15 +48,15 @@ for (var v of theMeaningOfLife()) {
 // => 42
 ```
 
-This of course is only scratching the surface of what generators are capable of doing as we're more focused on the simple nature of yielding values.
+这当然只是模拟了`generators`能够做什么的表面现象，因为我们更侧重于产生值的简单性质。
 
-Since RxJS believes heavily in standards, we also look for ways to incorporate new language features as they become standardized so that you can take advantage of them, combined with the power of RxJS.
+由于RxJS相当重视标准，因此我们还会在新的语言特性标准化的同时寻找方法，以便您可以利用它们，并结合RxJS的功能。
 
-## Async/Await Style and RxJS ##
+## Async/Await 风格与 RxJS ##
 
-One common complaint of JavaScript is the callback nature to asynchronous behavior.  Luckily, this can be solved quite easily with a library approach.  To that end, we introduce [`Rx.Observable.spawn`](../../observable/observable_methods/spawn.md) which allows you to write code in a straight forward manner and can yield not only Observable sequences, but also Promises, Callbacks, Arrays, etc.  This allows you to write your code in a very imperative manner without all the callbacks, but also brings the power of RxJS whether you want to call `timeout`, `retry`, `catch` or any other method for that matter.  Note that this only yields a single value, but in RxJS terms, this is still quite useful.  
+JavaScript的一个常见吐槽是异步行为的回调。幸运的是，这可以通过类库方法很容易解决。为此，我们介绍一下[`Rx.Observable.spawn`](../../observable/observable_methods/spawn.md)可以直接编写代码的方式，不仅可以产生可观察序列，还可以产生`Promises`，回调，数组等。这样可以非常紧凑地编写代码，而无需任何回调，但也带来了是否要调用`timeout`，`retry`，`catch`这些RxJS的能力或与此有关的任何其他方法。请注意，这只产生一个值，但是在RxJS术语中，这仍然是非常有用的。
 
-For example, we could get the HTML from Bing.com and write it to the console, with a timeout of 5 seconds which will throw an error should it not respond in time.  We could also add in things like `retry` and `catch` so that we could for example try three times and then if it fails, give a default response or cached version.
+例如，我们可以从[Bing.com](Bing.com)获取HTML并将其写入控制台，超时时间为5秒，如果没有及时响应，则会发出错误。我们也可以添加类似的东西`retry`，`catch`以便我们可以例如尝试三次，然后如果失败，给出默认响应或缓存版本。
 
 ```js
 var Rx = require('rx');
@@ -68,15 +69,15 @@ Rx.Observable.spawn(function* () {
     data = yield get('http://bing.com').timeout(5000 /*ms*/);
   } catch (e) {
     console.log('Error %s', e);
-  } 
+  }
 
   console.log(data);
 }).subscribe();
 ```
 
-## Mixing Operators with Generators ##
+## 操作符与 Generators 配合 ##
 
-Many of the operators inside RxJS also support generators.  For example, we could use the [`Rx.Observable.from`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/from.md) method to take a generator function, in this case, a Fibonacci sequence, take 10 of them and display it.
+RxJS内的许多操作符也支持`generators`。例如，我们可以使用该[`Rx.Observable.from`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/from.md)方法来获取一个`generator`函数，在这种例子中，它是一个斐波那契序列，显示它其中的10个。
 
 ```js
 function* fibonacci(){
@@ -106,7 +107,7 @@ Rx.Observable.from(fibonacci())
 //=> Value: 55
 ```
 
-That's just the beginning, as there are several operators such as [`concatMap`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/concatmap.md)/[`selectConcat`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/concatmap.md) and [`flatMap`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/selectmany.md)/[`selectMany`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/concatmap.md) which take iterables as an argument so that we can further enable composition.  For example, we could project using generators from a `flatMap` operation.
+这只是一个开始，因为有几个运算符，如[`concatMap`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/concatmap.md)/[`selectConcat`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/concatmap.md) and [`flatMap`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/selectmany.md)/[`selectMany`](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core/operators/concatmap.md) ，它将iterables作为参数，以便我们进一步启用组合。例如，我们可以从一个`flatMap`操作项目中使用generators。
 
 ```js
 var source = Rx.Observable.of(1,2,3)
@@ -129,11 +130,11 @@ var subscription = source.subscribe(
 // => Completed
 ```
 
-The future of JavaScript is exciting and generators add new possibilities to our applications to allow them to mix and match our programming styles.
+JavaScript的未来是令人兴奋的，generators为我们的应用程序添加了新的可能性，以允许他们混合和匹配我们的编程风格。
 
-Notice that in this sample, move becomes an observable sequence in which we can manipulate further. The [Querying Observable Sequences](querying.md) topic will show you how you can project this sequence into a collection of Points type and filter its content, so that your application will only receive values that satisfy a certain criteria.
+请注意，在此示例中，`move`将成为可观察的序列，我们可以在其中进一步操作。该[查询可观察序列](querying.md)的话题将告诉你如何预测这序列转换点类型的集合和过滤其内容，让您的应用程序将只接收满足特定的标准值。
 
-## See Also
+## 相关阅读
 
-Concepts
+参考
 - [Querying Observable Sequences](querying.md)
