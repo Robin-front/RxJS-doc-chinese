@@ -4734,8 +4734,11 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="error-handling-in-the-reactive-extensions"><a name="error-handling-in-the-reactive-extensions" class="plugin-anchor" href="#error-handling-in-the-reactive-extensions"><i class="fa fa-link" aria-hidden="true"></i></a>Error Handling in the Reactive Extensions</h1>
+                                <h1 id="rxjs&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;"><a name="rxjs&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;" class="plugin-anchor" href="#rxjs&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>RXJS&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;</h1>
+<p>&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x4E2D;&#x6700;&#x56F0;&#x96BE;&#x7684;&#x4EFB;&#x52A1;&#x4E4B;&#x4E00;&#x5C31;&#x662F;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x3002;&#x4E0E;&#x4EA4;&#x4E92;&#x5F0F;&#x6837;&#x5F0F;&#x7F16;&#x7A0B;&#x4E0D;&#x540C;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x7B80;&#x5355;&#x5730;&#x50CF;&#x6211;&#x4EEC;&#x5728;&#x5904;&#x7406;&#x4EE3;&#x7801;&#x5757;&#x65F6;&#x4F7F;&#x7528;&#x7684;try / catch / finally&#x65B9;&#x6CD5;&#x3002;</p>
+<blockquote>
 <p>One of the most difficult tasks in asynchronous programming is dealing with errors.  Unlike interactive style programming, we cannot simply use the try/catch/finally approach that we use when dealing with blocking code.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">try</span> {
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> obj <span class="hljs-keyword">in</span> objs) {
     doSomething(obj);
@@ -4746,25 +4749,37 @@
   doCleanup();
 }
 </code></pre>
+<p>&#x8FD9;&#x4E9B;&#x52A8;&#x4F5C;&#x6B63;&#x597D;&#x53CD;&#x6620;&#x4E86;&#x6211;&#x4EEC;&#x7684;<code>Observer</code>&#x7C7B;&#xFF0C;&#x5B83;&#x6709;&#x4EE5;&#x4E0B;&#x5951;&#x7EA6;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x96F6;&#x5230;&#x65E0;&#x9650;&#x9879;&#xFF0C;<code>onNext</code>&#x5E76;&#x4E14;&#x53EF;&#x9009;&#x5730;&#x5904;&#x7406;<code>Error</code>&#x4E0E;<code>onError</code>&#x6216;&#x6210;&#x529F;&#x5B8C;&#x6210;&#x7684;<code>onCompleted</code>&#x3002;</p>
+<blockquote>
 <p>These actions mirror exactly our <code>Observer</code> class which has the following contract for handing zero to infinite items with <code>onNext</code> and optionally handling either an <code>Error</code> with <code>onError</code> or successful completion with <code>onCompleted</code>.</p>
+</blockquote>
 <pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Observer&lt;T&gt; {
   onNext(value: T) : <span class="hljs-built_in">void</span>
   onError(error: <span class="hljs-built_in">Error</span>) : <span class="hljs-built_in">void</span>
   onCompleted() : <span class="hljs-built_in">void</span>
 }
 </code></pre>
+<p>&#x4F46;&#x662F;try / catch / finally&#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x4E0E;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x3002;&#x4F5C;&#x4E3A;&#x66FF;&#x4EE3;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x591A;&#x79CD;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x786E;&#x4FDD;&#x59A5;&#x5584;&#x5904;&#x7406;&#x8D44;&#x6E90;&#x3002;</p>
+<blockquote>
 <p>But the try/catch/finally approach won&apos;t work with asynchronous code.  Instead, we have a myriad of ways of handling errors as they occur, and ensure proper disposal of resources.</p>
-<p>For example, we might want to do the following:</p>
+</blockquote>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x60F3;&#x8981;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;</p>
 <ul>
-<li>swallow the error and switch over to a backup Observable to continue the sequence</li>
-<li>swallow the error and emit a default item</li>
-<li>swallow the error and immediately try to restart the failed Observable</li>
-<li>swallow the error and try to restart the failed Observable after some back-off interval</li>
+<li>&#x63A5;&#x53D7;&#x9519;&#x8BEF;&#x5E76;&#x5207;&#x6362;&#x5230;&#x5907;&#x4EFD;<code>Observable</code>&#x4EE5;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x5E8F;&#x5217;</li>
+<li>&#x63A5;&#x53D7;&#x8BE5;&#x9519;&#x8BEF;&#x5E76;&#x53D1;&#x5C04;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;</li>
+<li>&#x63A5;&#x53D7;&#x8BE5;&#x9519;&#x8BEF;&#xFF0C;&#x5E76;&#x7ACB;&#x5373;&#x5C1D;&#x8BD5;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x5931;&#x8D25;&#x7684;Observable</li>
+<li>&#x63A5;&#x53D7;&#x8BE5;&#x9519;&#x8BEF;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x5931;&#x8D25;&#x7684;Observable &#x5728;&#x4E00;&#x4E9B;&#x540E;&#x53F0;&#x5B9A;&#x65F6;&#x5668;&#x4E4B;&#x540E;</li>
 </ul>
-<p>We&apos;ll cover each of those scenarios and more in this section.</p>
-<h2 id="catching-errors"><a name="catching-errors" class="plugin-anchor" href="#catching-errors"><i class="fa fa-link" aria-hidden="true"></i></a>Catching Errors</h2>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x8282;&#x4E2D;&#x4ECB;&#x7ECD;&#x8FD9;&#x6BCF;&#x4E2A;&#x573A;&#x666F;&#x548C;&#x66F4;&#x591A;&#x5185;&#x5BB9;&#x3002;</p>
+<h2 id="&#x6355;&#x6349;&#x9519;&#x8BEF;"><a name="&#x6355;&#x6349;&#x9519;&#x8BEF;" class="plugin-anchor" href="#&#x6355;&#x6349;&#x9519;&#x8BEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6355;&#x6349;&#x9519;&#x8BEF;</h2>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x4E3B;&#x9898;&#x662F;&#x968F;&#x7740;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x636E;&#x6D41;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x3002;&#x5728;RXJS&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;<code>onError</code>&#x505C;&#x6B62;&#x5E8F;&#x5217;&#x7684;&#x901A;&#x9053;&#x4F20;&#x64AD;&#x7684;&#x4EFB;&#x4F55;&#x9519;&#x8BEF;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>catch</code>&#x5728;&#x7C7B;&#x548C;&#x5B9E;&#x4F8B;&#x7EA7;&#x522B;&#x4F7F;&#x7528;&#x8FD0;&#x7B97;&#x7B26;&#x6765;&#x5F25;&#x8865;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
+<blockquote>
 <p>The first topic is catching errors as they happen with our streams. In the Reactive Extensions, any error is propogated through the <code>onError</code> channel which halts the sequence.  We can compensate for this by using the <code>catch</code> operator, at both the class and instance level.  </p>
+</blockquote>
+<p>&#x4F7F;&#x7528;&#x7C7B;&#x7EA7;&#x522B;<code>catch</code>&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6355;&#x83B7;&#x5F53;&#x524D;&#x5E8F;&#x5217;&#x53D1;&#x751F;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x7136;&#x540E;&#x5982;&#x679C;&#x5B58;&#x5728;&#x9519;&#x8BEF;&#xFF0C;&#x5219;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x4ECE;&#x591A;&#x4E2A;URL&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x90FD;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x6B64;&#x65E0;&#x8BBA;&#x5982;&#x4F55;&#xFF0C;&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x7F13;&#x5B58;&#x7248;&#x672C;&#xFF0C;&#x56E0;&#x6B64;&#x9519;&#x8BEF;&#x4E0D;&#x5E94;&#x8BE5;&#x4F20;&#x64AD;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x5982;&#x679C;<code>get(&apos;url&apos;)</code>&#x8C03;&#x7528;&#x6210;&#x529F;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x4E0D;&#x4F1A;&#x79FB;&#x52A8;&#x5230;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x3002;</p>
+<blockquote>
 <p>Using the class level <code>catch</code> method, we can catch errors as they happen with the current sequence and then move to the next sequence should there be an error.  For example, we could try getting data from several URLs, it doesn&apos;t matter which since they all have the same data, and then if that fails, default to a cached version, so an error should never propagate.  One thing to note is that if <code>get(&apos;url&apos;)</code> calls succeed, then it will not move onto the next sequence in the list.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> source = Rx.Observable.catch(
   get(<span class="hljs-string">&apos;url1&apos;</span>),
   get(<span class="hljs-string">&apos;url2&apos;</span>),
@@ -4778,6 +4793,7 @@
   }
 );
 </code></pre>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x7248;&#x672C;<code>catch</code>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x5C31;&#x50CF;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x73B0;&#x6709;&#x7684;&#x6D41;&#x4E2D;&#x6355;&#x83B7;&#x9519;&#x8BEF;&#x5E76;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6D41;&#x6216;<code>Promise</code>&#x3002;</p>
 <p>We also have an instance version of <code>catch</code> which can be used two ways.  The first way is much like the example above, where we can take an existing stream, catch the error and move onto the next stream or <code>Promise</code>.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> source = get(<span class="hljs-string">&apos;url1&apos;</span>).catch(getCachedVersion());
 
@@ -4787,7 +4803,10 @@
   }
 );
 </code></pre>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x8D85;&#x8F7D;<code>catch</code>&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x68C0;&#x67E5;&#x9519;&#x8BEF;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8FDB;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x91C7;&#x53D6;&#x54EA;&#x6761;&#x8DEF;&#x7EBF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4ECE;&#x6211;&#x4EEC;&#x7684;Web&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x72B6;&#x6001;&#x4EE3;&#x7801;500&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#x5B83;&#x5DF2;&#x7ECF;&#x5173;&#x95ED;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x7248;&#x672C;&#x3002;</p>
+<blockquote>
 <p>The other overload of <code>catch</code> allows us to inspect the error as it comes in so we can decide which route to take.  For example, if an error status code of 500 comes back from our web server, we can assume it is down and then use a cached version.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> source = get(<span class="hljs-string">&apos;url1&apos;</span>).catch(e =&gt; {
   <span class="hljs-keyword">if</span> (e.status === <span class="hljs-number">500</span>) {
     <span class="hljs-keyword">return</span> cachedVersion();
@@ -4802,10 +4821,16 @@
   }
 );
 </code></pre>
-<p>This isn&apos;t the only way to handle errors as there are plenty of others as you&apos;ll see below.</p>
-<h2 id="ignoring-errors-with-onerrorresumenext"><a name="ignoring-errors-with-onerrorresumenext" class="plugin-anchor" href="#ignoring-errors-with-onerrorresumenext"><i class="fa fa-link" aria-hidden="true"></i></a>Ignoring Errors with <code>onErrorResumeNext</code></h2>
+<p>&#x8FD9;&#x4E0D;&#x662F;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x7684;&#x552F;&#x4E00;&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;-onerrorresumenext-&#x5FFD;&#x7565;&#x9519;&#x8BEF;"><a name="&#x4F7F;&#x7528;-onerrorresumenext-&#x5FFD;&#x7565;&#x9519;&#x8BEF;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-onerrorresumenext-&#x5FFD;&#x7565;&#x9519;&#x8BEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; <code>onErrorResumeNext</code> &#x5FFD;&#x7565;&#x9519;&#x8BEF;</h2>
+<p>&#x5728;&#x6211;&#x4EEC;&#x7684;RXJS&#x8BBE;&#x8BA1;&#x4E2D;&#x501F;&#x9274;&#x4E86;&#x591A;&#x79CD;&#x8BED;&#x8A00;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x529F;&#x80FD;<a href="https://msdn.microsoft.com/en-us/library/5hsw66as.aspx" target="_blank"><code>On Error Resume Next</code></a>&#x6765;&#x81EA;<code>Microsoft Visual Basic</code>&#x3002;&#x6B64;&#x64CD;&#x4F5C;&#x6307;&#x5B9A;&#x5F53;&#x8FD0;&#x884C;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x63A7;&#x4EF6;&#x5C06;&#x8F6C;&#x5230;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x7684;&#x8BED;&#x53E5;&#x4E4B;&#x540E;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x5E76;&#x4ECE;&#x8BE5;&#x70B9;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;&#x6709;&#x4E00;&#x4E9B;&#x6D41;&#x5904;&#x7406;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x60A8;&#x53EA;&#x60F3;&#x8DF3;&#x8FC7;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x7684;&#x6D41;&#x5E76;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6D41;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x57FA;&#x4E8E;&#x7C7B;&#x548C;&#x5B9E;&#x4F8B;&#x7684;<code>onErrorResumeNext</code>&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<blockquote>
 <p>The Reactive Extensions borrowed from a number of languages in our design.  One of those features is bringing <a href="https://msdn.microsoft.com/en-us/library/5hsw66as.aspx" target="_blank"><code>On Error Resume Next</code></a> from Microsoft Visual Basic.  This operation specifies that when a run-time error occurs, control goes to the statement immediately following the statement where the error occurred, and execution continues from that point.  There are some instances with stream processing that you simply want to skip a stream which produces an error and move to the next stream.  We can achieve this with a class based and instance based <code>onErrorResumeNext</code> method.</p>
+</blockquote>
+<p>&#x57FA;&#x4E8E;&#x7C7B;<code>onErrorResumeNext</code>&#x5C06;&#x4F1A;&#x4F7F;&#x6570;&#x636E;&#x6D41;&#x7EE7;&#x7EED;&#x76F4;&#x5230;&#x6B63;&#x5E38;&#x7EC8;&#x6B62;&#x6216;&#x56E0;&#x4E3A;<code>Error</code>&#x800C;&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6D41;&#x6216;<code>Promise</code>&#x3002;&#x4E0D;&#x540C;&#x4E8E;<code>catch</code>&#xFF0C;<code>onErrorResumeNext</code>&#x5C06;&#x7EE7;&#x7EED;&#x4E0B;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x65E0;&#x8BBA;&#x4EE5;&#x524D;&#x662F;&#x5426;&#x6709;&#x9519;&#x8BEF;&#x3002;&#x4E3A;&#x4E86;&#x4F7F;&#x8FD9;&#x4E2A;&#x66F4;&#x5177;&#x4F53;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x6DF7;&#x5408;&#x9519;&#x8BEF;&#x5E8F;&#x5217;&#x4E0E;&#x6B63;&#x5E38;&#x7684;&#x5E8F;&#x5217;&#x3002;</p>
+<blockquote>
 <p>The class based <code>onErrorResumeNext</code> continues a stream that is terminated normally or by an <code>Error</code> with the next stream or <code>Promise</code>.  Unlike <code>catch</code>, <code>onErrorResumeNext</code> will continue to the next sequence regardless of whether the previous was in error or not.  To make this more concrete, let&apos;s use a simple example of mixing error sequences with normal sequences.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> source = Rx.Observable.onErrorResumeNext(
   Rx.Observable.just(<span class="hljs-number">42</span>),
   Rx.Observable.throw(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>()),
@@ -4821,10 +4846,19 @@
 <span class="hljs-comment">// =&gt; 56</span>
 <span class="hljs-comment">// =&gt; 78</span>
 </code></pre>
+<p>&#x57FA;&#x4E8E;<code>onErrorResumeNext</code>&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x7C7B;&#x4F3C;&#x4E8E;&#x57FA;&#x4E8E;&#x7C7B;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x533A;&#x522B;&#x662F;&#x5B83;&#x9644;&#x52A0;&#x5230;&#x539F;&#x578B;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x6216;<code>Promise</code>&#x7EE7;&#x7EED;&#x3002;</p>
+<blockquote>
 <p>The instance based <code>onErrorResumeNext</code> is similar to the class based version, the only difference being that it is attached to the prototype, but can take another sequence or <code>Promise</code> and continue.</p>
-<h2 id="retrying-sequences"><a name="retrying-sequences" class="plugin-anchor" href="#retrying-sequences"><i class="fa fa-link" aria-hidden="true"></i></a>Retrying Sequences</h2>
+</blockquote>
+<h2 id="&#x91CD;&#x8BD5;"><a name="&#x91CD;&#x8BD5;" class="plugin-anchor" href="#&#x91CD;&#x8BD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x91CD;&#x8BD5;</h2>
+<p>&#x5F53;&#x6355;&#x83B7;&#x9519;&#x8BEF;&#x662F;&#x4E0D;&#x8DB3;&#x591F;&#x597D;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x91CD;&#x8BD5;&#x6211;&#x4EEC;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;<code>retry</code>&#x6216;<code>retryWhen</code>&#x64CD;&#x4F5C;&#x7B26;&#x3002;&#x4F7F;&#x7528;<code>retry</code>&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x4E4B;&#x524D;&#x591A;&#x6B21;&#x5C1D;&#x8BD5;&#x4E00;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5F53;&#x60A8;&#x9700;&#x8981;&#x4ECE;&#x6570;&#x636E;&#x6E90;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x80FD;&#x7531;&#x4E8E;&#x52A0;&#x8F7D;&#x6216;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x95EE;&#x9898;&#x800C;&#x4EA7;&#x751F;&#x95F4;&#x6B47;&#x6027;&#x6545;&#x969C;&#x65F6;&#xFF0C;&#x8FD9;&#x5F88;&#x6709;&#x7528;&#x3002;</p>
+<blockquote>
 <p>When catching errors isn&apos;t enough and we want to retry our logic, we can do so with <code>retry</code> or <code>retryWhen</code> operators.  With the <code>retry</code> operator, we can try a certain operation a number of times before an error is thrown.  This is useful when you need to get data from a resource which may have intermittent failures due to load or any other issue.</p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x8BD5;&#x56FE;&#x4ECE;URL&#x4E2D;&#x83B7;&#x53D6;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x5728;&#x4E09;&#x6B21;&#x5C1D;&#x8BD5;&#x540E;&#x653E;&#x5F03;&#x3002;</p>
+<blockquote>
 <p>Let&apos;s take a look at a simple example of trying to get some data from a URL and giving up after three tries.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-comment">// Try three times to get the data and then give up</span>
 <span class="hljs-keyword">var</span> source = get(<span class="hljs-string">&apos;url&apos;</span>).retry(<span class="hljs-number">3</span>);
 
@@ -4833,18 +4867,24 @@
   err =&gt; <span class="hljs-built_in">console</span>.log(err)
 );
 </code></pre>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x5B83;&#x4F1A;&#x5728;&#x4E09;&#x6B21;&#x5C1D;&#x8BD5;&#x540E;&#x653E;&#x5F03;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x7B2C;&#x4E09;&#x6B21;&#x5C1D;&#x8BD5;&#x540E;&#x7EE7;&#x7EED;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>onError</code>&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;<code>catch</code>&#x4F7F;&#x7528;&#x5907;&#x7528;&#x6765;&#x8865;&#x6551;&#x3002;</p>
+<blockquote>
 <p>In the above example, it will give up after three tries and thus call <code>onError</code> if it continues to fail after the third try.  We can remedy that by adding <code>catch</code> to use an alternate source.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-comment">// Try three times to get the data and then return cached data if still fails</span>
 <span class="hljs-keyword">var</span> source = get(<span class="hljs-string">&apos;url&apos;</span>).retry(<span class="hljs-number">3</span>).catch(cachedVersion());
 
 <span class="hljs-keyword">var</span> subscription = source.subscribe(
   data =&gt; {
-    <span class="hljs-comment">// Displays the data from the URL or cached data</span>
+    <span class="hljs-comment">// &#x663E;&#x793A;&#x6765;&#x81EA;URL&#x6216;&#x7F13;&#x5B58;&#x7684;&#x6570;&#x636E; Displays the data from the URL or cached data</span>
     <span class="hljs-built_in">console</span>.log(data);
   }
 );
 </code></pre>
+<p>&#x4E0A;&#x8FF0;&#x60C5;&#x51B5;&#x5728;&#x5931;&#x8D25;&#x540E;&#x7ACB;&#x5373;&#x91CD;&#x8BD5;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x63A7;&#x5236;&#x91CD;&#x8BD5;&#x7684;&#x65F6;&#x95F4;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;<code>retryWhen</code>&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x6DF1;&#x5EA6;&#x63A7;&#x5236;&#x4E0B;&#x4E00;&#x6B21;&#x91CD;&#x8BD5;&#x7684;&#x65F6;&#x673A;&#x3002;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x9010;&#x6B65;&#x9000;&#x51FA;&#x91CD;&#x8BD5;&#xFF1A;</p>
+<blockquote>
 <p>The above case retries immediately upon failure.  But what if you want to control when a retry happens?  We have the <code>retryWhen</code> operator which allows us to deeply control when the next try happens.  We incrementally back off trying again by using the following method:</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> source = get(<span class="hljs-string">&apos;url&apos;</span>).retryWhen(
    attempts =&gt;
     attempts
@@ -4865,9 +4905,15 @@
 <span class="hljs-comment">// =&gt; delay retry by 2 second(s)</span>
 <span class="hljs-comment">// =&gt; Data</span>
 </code></pre>
-<h2 id="ensuring-cleanup-with-finally"><a name="ensuring-cleanup-with-finally" class="plugin-anchor" href="#ensuring-cleanup-with-finally"><i class="fa fa-link" aria-hidden="true"></i></a>Ensuring Cleanup with Finally</h2>
+<h2 id="&#x6700;&#x540E;&#x786E;&#x4FDD;&#x6E05;&#x7406;&#xFF08;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF09;"><a name="&#x6700;&#x540E;&#x786E;&#x4FDD;&#x6E05;&#x7406;&#xFF08;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF09;" class="plugin-anchor" href="#&#x6700;&#x540E;&#x786E;&#x4FDD;&#x6E05;&#x7406;&#xFF08;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6700;&#x540E;&#x786E;&#x4FDD;&#x6E05;&#x7406;&#xFF08;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF09;</h2>
+<p>&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8986;&#x76D6;&#x4E86;<code>try / catch</code> / <code>try / finally</code>&#x7684;<code>try / catch</code>&#x90E8;&#x5206;&#xFF0C;&#x6700;&#x540E;&#x5462;&#xFF1F;<code>finally</code>&#x5728;&#x6570;&#x636E;&#x6E90;&#x6B63;&#x5E38;&#x6216;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x3002;&#x5982;&#x679C;&#x60A8;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x6216;&#x5B8C;&#x6210;&#x540E;&#x9700;&#x8981;&#x91CA;&#x653E;&#x7279;&#x5B9A;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x5C06;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</p>
+<blockquote>
 <p>We&apos;ve already covered the try/catch part of try/catch/finally, so what about finally?  We have the <code>finally</code> operator which calls a function after the source sequence terminates gracefully or exceptionally.  This is useful if you are using external resources or need to free up a particular variable upon completion.  </p>
+</blockquote>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;<code>WebSocket</code>&#x4E00;&#x65E6;&#x5904;&#x7406;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x786E;&#x4FDD;&#x5B83;&#x5C06;&#x88AB;&#x5173;&#x95ED;&#x3002;</p>
+<blockquote>
 <p>In this example, we can ensure that our <code>WebSocket</code> will indeed be closed once the last message is processed.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> socket = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">&apos;ws://someurl&apos;</span>, <span class="hljs-string">&apos;xmpp&apos;</span>);
 
 <span class="hljs-keyword">var</span> source = Rx.Observable.from(data)
@@ -4879,9 +4925,15 @@
   }
 );
 </code></pre>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>using</code>&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x7BA1;&#x7406;&#x8D44;&#x6E90;&#x65B9;&#x9762;&#x505A;&#x5F97;&#x66F4;&#x597D;&#x3002;</p>
+<blockquote>
 <p>But we can do a better job in terms of managing resources if need be by using the <code>using</code> method.</p>
-<h2 id="ensuring-resource-disposal"><a name="ensuring-resource-disposal" class="plugin-anchor" href="#ensuring-resource-disposal"><i class="fa fa-link" aria-hidden="true"></i></a>Ensuring Resource Disposal</h2>
+</blockquote>
+<h2 id="&#x786E;&#x4FDD;&#x8D44;&#x6E90;&#x56DE;&#x6536;"><a name="&#x786E;&#x4FDD;&#x8D44;&#x6E90;&#x56DE;&#x6536;" class="plugin-anchor" href="#&#x786E;&#x4FDD;&#x8D44;&#x6E90;&#x56DE;&#x6536;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x786E;&#x4FDD;&#x8D44;&#x6E90;&#x56DE;&#x6536;</h2>
+<p>&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;<code>finally</code>&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x786E;&#x4FDD;&#x9002;&#x5F53;&#x5730;&#x6E05;&#x7406;&#x4EFB;&#x4F55;&#x8D44;&#x6E90;&#x6216;&#x6839;&#x636E;&#x9700;&#x8981;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x526F;&#x4F5C;&#x7528;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;<code>dispose</code>&#x65B9;&#x6CD5;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5BF9;&#x8C61;&#x5468;&#x56F4;&#x521B;&#x5EFA;&#x4E00;&#x6B21;&#x6027;&#x5305;&#x88C5;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x66F4;&#x5E72;&#x51C0;&#x7EAF;&#x7CB9;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x4FBF;&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x8D44;&#x6E90;&#x5C06;&#x901A;&#x8FC7;<code>using</code>&#x64CD;&#x4F5C;&#x884C;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x56DE;&#x6536;&#x3002;</p>
+<blockquote>
 <p>As stated above, <code>finally</code> can be used to ensure proper cleanup of any resources or perform any side effects as necessary.  There is a cleaner approach we can take by creating a disposable wrapper around our object with a <code>dispose</code> method so that when our scope is complete, then the resource is automatically disposed through the <code>using</code> operator.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DisposableWebSocket</span>(<span class="hljs-params">url, protocol</span>) </span>{
   <span class="hljs-keyword">var</span> socket = <span class="hljs-keyword">new</span> WebSocket(url, protocol);
 
@@ -4895,7 +4947,7 @@
 
 <span class="hljs-keyword">var</span> source = Rx.Observable.using(
   () =&gt; <span class="hljs-keyword">new</span> DisposableWebSocket(<span class="hljs-string">&apos;ws://someurl&apos;</span>, <span class="hljs-string">&apos;xmpp&apos;</span>),
-  d =&gt; 
+  d =&gt;
     Rx.Observable.from(data)
       .tap(data =&gt; d.socket.send(data));
   }
@@ -4903,9 +4955,15 @@
 
 <span class="hljs-keyword">var</span> subscription = source.subscribe();
 </code></pre>
-<h2 id="delaying-errors-with-mergedelayerror"><a name="delaying-errors-with-mergedelayerror" class="plugin-anchor" href="#delaying-errors-with-mergedelayerror"><i class="fa fa-link" aria-hidden="true"></i></a>Delaying Errors with <code>mergeDelayError</code></h2>
+<h2 id="&#x4F7F;&#x7528;-mergedelayerror-&#x5EF6;&#x8FDF;&#x9519;&#x8BEF;"><a name="&#x4F7F;&#x7528;-mergedelayerror-&#x5EF6;&#x8FDF;&#x9519;&#x8BEF;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-mergedelayerror-&#x5EF6;&#x8FDF;&#x9519;&#x8BEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; <code>mergeDelayError</code> &#x5EF6;&#x8FDF;&#x9519;&#x8BEF;</h2>
+<p>&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x53E6;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5F53;&#x60A8;&#x5C06;&#x6241;&#x5E73;&#x5316;&#x5E8F;&#x5217;&#x5904;&#x7406;&#x4E3A;&#x5355;&#x4E2A;&#x5E8F;&#x5217;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x9519;&#x8BEF;&#x3002;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x4E00;&#x4E2A;&#x5E73;&#x6ED1;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x88AB;&#x6211;&#x4EEC;&#x7684;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6E90;&#x9519;&#x8BEF;&#x4E2D;&#x65AD;&#x3002;&#x8FD9;&#x4E0E;&#x53E6;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;<code>mergeAll</code>&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x5B83;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x662F;&#x5EF6;&#x8FDF;&#x76F4;&#x5230;&#x6700;&#x540E;&#x3002;</p>
+<blockquote>
 <p>Another issue may arise when you are dealing with flattening sequences into a single sequence and there may be errors along the way.  We want a way to flatten without being interrupted by one of our sources being in error.  This is much like the other operator <code>mergeAll</code> but the main difference is, instead of immediately bubbling up the error, it holds off until the very end.</p>
+</blockquote>
+<p>&#x4E3A;&#x4E86;&#x8BF4;&#x660E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x8FD9;&#x4E2A;&#x5C0F;&#x6837;&#x672C;&#xFF0C;&#x5F53;&#x5B83;&#x8BD5;&#x56FE;&#x5C55;&#x5F00;&#x6574;&#x4E2A;&#x5E8F;&#x5217;&#x65F6;&#xFF0C;&#x4E2D;&#x95F4;&#x5939;&#x6709;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x5E8F;&#x5217;&#x3002;</p>
+<blockquote>
 <p>To illustrate, we can create this little sample that has an errored sequence in the middle when it is trying to flatten the sequences.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> source1 = Rx.Observable.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
 <span class="hljs-keyword">var</span> source2 = Rx.Observable.throwError(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;woops&apos;</span>));
 <span class="hljs-keyword">var</span> source3 = Rx.Observable.of(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>);
@@ -4925,10 +4983,10 @@
 <span class="hljs-comment">// =&gt; 6</span>
 <span class="hljs-comment">// =&gt; Error: Error: woops</span>
 </code></pre>
-<h2 id="further-reading"><a name="further-reading" class="plugin-anchor" href="#further-reading"><i class="fa fa-link" aria-hidden="true"></i></a>Further Reading</h2>
+<h2 id="&#x8FDB;&#x4E00;&#x6B65;&#x9605;&#x8BFB;"><a name="&#x8FDB;&#x4E00;&#x6B65;&#x9605;&#x8BFB;" class="plugin-anchor" href="#&#x8FDB;&#x4E00;&#x6B65;&#x9605;&#x8BFB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FDB;&#x4E00;&#x6B65;&#x9605;&#x8BFB;</h2>
 <ul>
-<li><a href="generators.md">Using Generators For Try/Catch Operations</a></li>
-<li><a href="testing.md">Testing and Debugging Your RxJS Application</a></li>
+<li><a href="generators_and_observable_sequenes.md">&#x4F7F;&#x7528;Generators&#x8FDB;&#x884C;Try/Catch&#x64CD;&#x4F5C;</a></li>
+<li><a href="../testing_and_debugging.html">&#x6D4B;&#x8BD5;&#x548C;&#x8C03;&#x8BD5;&#x60A8;&#x7684;RxJS&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</a></li>
 </ul>
 
                                 
@@ -4957,7 +5015,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"可观察序列中的错误处理","level":"1.4.3.7","depth":3,"next":{"title":"可观察序列的Transducers","level":"1.4.3.8","depth":3,"path":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/transducers.md","ref":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/transducers.md","articles":[]},"previous":{"title":"查询可观察序列","level":"1.4.3.6","depth":3,"path":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/querying_observable_sequences.md","ref":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/querying_observable_sequences.md","articles":[]},"dir":"ltr"},"config":{"plugins":["jsbin","anchors","video","ga","toggle-chapters","editlink","include-codeblock","splitter","github-buttons","chart","todo","quiz","include-highlight","tonic","disqus","sitemap"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"robin-front-github-io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/Robin-front/RxJS-doc-chinese/edit/master"},"todo":{},"splitter":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"tonic":{},"include-highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"white","family":"sans"},"highlight":{},"sitemap":{"hostname":"https://robin-front.gitbooks.io/rxjs-doc-chinese/content/"},"quiz":{},"github-buttons":{"repo":"Robin-front/RxJS-doc-chinese","types":["star"],"size":"small"},"ga":{"configuration":"auto","token":"UA-74634898-2"},"video":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"jsbin":{},"chart":{"type":"c3"},"toggle-chapters":{}},"theme":"theme","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"isPdf":true},"title":"RxJS - Javascript library for functional reactive programming.","gitbook":"*","description":"RxJS 中文文档"},"file":{"path":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/error_handling.md","mtime":"2017-05-04T00:56:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-05T08:21:49.792Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"可观察序列中的错误处理","level":"1.4.3.7","depth":3,"next":{"title":"可观察序列的Transducers","level":"1.4.3.8","depth":3,"path":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/transducers.md","ref":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/transducers.md","articles":[]},"previous":{"title":"查询可观察序列","level":"1.4.3.6","depth":3,"path":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/querying_observable_sequences.md","ref":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/querying_observable_sequences.md","articles":[]},"dir":"ltr"},"config":{"plugins":["jsbin","anchors","video","ga","toggle-chapters","editlink","include-codeblock","splitter","github-buttons","chart","todo","quiz","include-highlight","tonic","disqus","sitemap"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"robin-front-github-io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/Robin-front/RxJS-doc-chinese/edit/master"},"todo":{},"splitter":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"tonic":{},"include-highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"white","family":"sans"},"highlight":{},"sitemap":{"hostname":"https://robin-front.gitbooks.io/rxjs-doc-chinese/content/"},"quiz":{},"github-buttons":{"repo":"Robin-front/RxJS-doc-chinese","types":["star"],"size":"small"},"ga":{"configuration":"auto","token":"UA-74634898-2"},"video":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"jsbin":{},"chart":{"type":"c3"},"toggle-chapters":{}},"theme":"theme","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"isPdf":true},"title":"RxJS - Javascript library for functional reactive programming.","gitbook":"*","description":"RxJS 中文文档"},"file":{"path":"content/getting_started_with_rxjs/creating_and_querying_observable_sequences/error_handling.md","mtime":"2017-06-07T02:38:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-07T02:39:29.584Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
