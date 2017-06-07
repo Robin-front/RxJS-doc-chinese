@@ -101,11 +101,15 @@ var subscription = source.subscribe(
 
 这不是处理错误的唯一方式，因为有很多其他方法，如下所示。
 
-## Ignoring Errors with `onErrorResumeNext` ##
+## 使用 `onErrorResumeNext` 忽略错误 ##
 
-The Reactive Extensions borrowed from a number of languages in our design.  One of those features is bringing [`On Error Resume Next`](https://msdn.microsoft.com/en-us/library/5hsw66as.aspx) from Microsoft Visual Basic.  This operation specifies that when a run-time error occurs, control goes to the statement immediately following the statement where the error occurred, and execution continues from that point.  There are some instances with stream processing that you simply want to skip a stream which produces an error and move to the next stream.  We can achieve this with a class based and instance based `onErrorResumeNext` method.
+在我们的RXJS设计中借鉴了多种语言。其中一个功能[`On Error Resume Next`](https://msdn.microsoft.com/en-us/library/5hsw66as.aspx)来自`Microsoft Visual Basic`。此操作指定当运行发生错误时，控件将转到发生错误的语句之后的语句，并从该点继续执行。有一些流处理的实例，您只想跳过产生错误的流并移动到下一个流。我们可以通过基于类和实例的`onErrorResumeNext`方法来实现。
 
-The class based `onErrorResumeNext` continues a stream that is terminated normally or by an `Error` with the next stream or `Promise`.  Unlike `catch`, `onErrorResumeNext` will continue to the next sequence regardless of whether the previous was in error or not.  To make this more concrete, let's use a simple example of mixing error sequences with normal sequences.
+> The Reactive Extensions borrowed from a number of languages in our design.  One of those features is bringing [`On Error Resume Next`](https://msdn.microsoft.com/en-us/library/5hsw66as.aspx) from Microsoft Visual Basic.  This operation specifies that when a run-time error occurs, control goes to the statement immediately following the statement where the error occurred, and execution continues from that point.  There are some instances with stream processing that you simply want to skip a stream which produces an error and move to the next stream.  We can achieve this with a class based and instance based `onErrorResumeNext` method.
+
+基于类`onErrorResumeNext`将会使数据流继续直到正常终止或因为`Error`而执行下一个数据流或`Promise`。不同于`catch`，`onErrorResumeNext`将继续下一个序列，无论以前是否有错误。为了使这个更具体，让我们使用一个简单的例子来混合错误序列与正常的序列。
+
+> The class based `onErrorResumeNext` continues a stream that is terminated normally or by an `Error` with the next stream or `Promise`.  Unlike `catch`, `onErrorResumeNext` will continue to the next sequence regardless of whether the previous was in error or not.  To make this more concrete, let's use a simple example of mixing error sequences with normal sequences.
 
 ```js
 var source = Rx.Observable.onErrorResumeNext(
@@ -124,13 +128,19 @@ var subscription = source.subscribe(
 // => 78
 ```
 
-The instance based `onErrorResumeNext` is similar to the class based version, the only difference being that it is attached to the prototype, but can take another sequence or `Promise` and continue.
+基于`onErrorResumeNext`类的实例类似于基于类的版本，唯一的区别是它附加到原型，但可以采用另一个序列或`Promise`继续。
 
-## Retrying Sequences ##
+> The instance based `onErrorResumeNext` is similar to the class based version, the only difference being that it is attached to the prototype, but can take another sequence or `Promise` and continue.
 
-When catching errors isn't enough and we want to retry our logic, we can do so with `retry` or `retryWhen` operators.  With the `retry` operator, we can try a certain operation a number of times before an error is thrown.  This is useful when you need to get data from a resource which may have intermittent failures due to load or any other issue.
+## 重试 ##
 
-Let's take a look at a simple example of trying to get some data from a URL and giving up after three tries.
+当捕获错误是不足够好时，我们想重试我们的逻辑，我们可以尝试`retry`或`retryWhen`操作符。使用`retry`操作符，我们可以在发生错误之前多次尝试一定的操作。当您需要从数据源获取数据，可能由于加载或任何其他问题而产生间歇性故障时，这很有用。
+
+> When catching errors isn't enough and we want to retry our logic, we can do so with `retry` or `retryWhen` operators.  With the `retry` operator, we can try a certain operation a number of times before an error is thrown.  This is useful when you need to get data from a resource which may have intermittent failures due to load or any other issue.
+
+我们来看一个简单的例子，试图从URL中获取一些数据，并在三次尝试后放弃。
+
+> Let's take a look at a simple example of trying to get some data from a URL and giving up after three tries.
 
 ```js
 // Try three times to get the data and then give up
@@ -142,7 +152,9 @@ var subscription = source.subscribe(
 );
 ```
 
-In the above example, it will give up after three tries and thus call `onError` if it continues to fail after the third try.  We can remedy that by adding `catch` to use an alternate source.
+在上面的例子中，它会在三次尝试后放弃，如果在第三次尝试后继续失败，则调用`onError`。我们可以通过添加`catch`使用备用来补救。
+
+> In the above example, it will give up after three tries and thus call `onError` if it continues to fail after the third try.  We can remedy that by adding `catch` to use an alternate source.
 
 ```js
 // Try three times to get the data and then return cached data if still fails
@@ -150,13 +162,15 @@ var source = get('url').retry(3).catch(cachedVersion());
 
 var subscription = source.subscribe(
   data => {
-    // Displays the data from the URL or cached data
+    // 显示来自URL或缓存的数据 Displays the data from the URL or cached data
     console.log(data);
   }
 );
 ```
 
-The above case retries immediately upon failure.  But what if you want to control when a retry happens?  We have the `retryWhen` operator which allows us to deeply control when the next try happens.  We incrementally back off trying again by using the following method:
+上述情况在失败后立即重试。但是，如果你想控制重试的时间怎么办？我们有一个`retryWhen`操作符，允许我们深度控制下一次重试的时机。我们通过使用以下方法逐步退出重试：
+
+> The above case retries immediately upon failure.  But what if you want to control when a retry happens?  We have the `retryWhen` operator which allows us to deeply control when the next try happens.  We incrementally back off trying again by using the following method:
 
 ```js
 var source = get('url').retryWhen(
@@ -180,11 +194,15 @@ var subscription = source.subscribe(
 // => Data
 ```
 
-## Ensuring Cleanup with Finally ##
+## 最后确保清理（释放资源） ##
 
-We've already covered the try/catch part of try/catch/finally, so what about finally?  We have the `finally` operator which calls a function after the source sequence terminates gracefully or exceptionally.  This is useful if you are using external resources or need to free up a particular variable upon completion.  
+我们已经覆盖了`try / catch` / `try / finally`的`try / catch`部分，最后呢？`finally`在数据源正常或异常终止之后，我们有一个调用函数的运算符。如果您使用外部资源或完成后需要释放特定变量，这将非常有用。
 
-In this example, we can ensure that our `WebSocket` will indeed be closed once the last message is processed.
+> We've already covered the try/catch part of try/catch/finally, so what about finally?  We have the `finally` operator which calls a function after the source sequence terminates gracefully or exceptionally.  This is useful if you are using external resources or need to free up a particular variable upon completion.  
+
+在这个例子中，我们可以确保`WebSocket`一旦处理最后一个消息，我们确保它将被关闭。
+
+> In this example, we can ensure that our `WebSocket` will indeed be closed once the last message is processed.
 
 ```js
 var socket = new WebSocket('ws://someurl', 'xmpp');
@@ -198,11 +216,15 @@ var subscription = source.subscribe(
   }
 );
 ```
-But we can do a better job in terms of managing resources if need be by using the `using` method.
+但是，如果需要使用`using`方法，我们可以在管理资源方面做得更好。
 
-## Ensuring Resource Disposal ##
+> But we can do a better job in terms of managing resources if need be by using the `using` method.
 
-As stated above, `finally` can be used to ensure proper cleanup of any resources or perform any side effects as necessary.  There is a cleaner approach we can take by creating a disposable wrapper around our object with a `dispose` method so that when our scope is complete, then the resource is automatically disposed through the `using` operator.
+## 确保资源回收 ##
+
+如上所述，`finally`可以用于确保适当地清理任何资源或根据需要执行任何副作用。我们可以通过使用`dispose`方法在我们的对象周围创建一次性包装来实现一个更干净纯粹的方法，以便当我们的上下文完成时，资源将通过`using`操作行自动进行处理回收。
+
+> As stated above, `finally` can be used to ensure proper cleanup of any resources or perform any side effects as necessary.  There is a cleaner approach we can take by creating a disposable wrapper around our object with a `dispose` method so that when our scope is complete, then the resource is automatically disposed through the `using` operator.
 
 ```js
 function DisposableWebSocket(url, protocol) {
@@ -227,11 +249,16 @@ var source = Rx.Observable.using(
 var subscription = source.subscribe();
 ```
 
-## Delaying Errors with `mergeDelayError` ##
+## 使用 `mergeDelayError` 延迟错误 ##
 
-Another issue may arise when you are dealing with flattening sequences into a single sequence and there may be errors along the way.  We want a way to flatten without being interrupted by one of our sources being in error.  This is much like the other operator `mergeAll` but the main difference is, instead of immediately bubbling up the error, it holds off until the very end.
+可能会出现另一个问题，当您将扁平化序列处理为单个序列时，可能会有错误。我们想要一个平滑的处理方式，而不会被我们的一个数据源错误中断。这与另一个操作符`mergeAll`非常相似，但主要区别在于，它不会立即抛出错误，而是延迟直到最后。
 
-To illustrate, we can create this little sample that has an errored sequence in the middle when it is trying to flatten the sequences.
+> Another issue may arise when you are dealing with flattening sequences into a single sequence and there may be errors along the way.  We want a way to flatten without being interrupted by one of our sources being in error.  This is much like the other operator `mergeAll` but the main difference is, instead of immediately bubbling up the error, it holds off until the very end.
+
+为了说明，我们可以创建这个小样本，当它试图展开整个序列时，中间夹有一个错误的序列。
+
+> To illustrate, we can create this little sample that has an errored sequence in the middle when it is trying to flatten the sequences.
+
 ```js
 var source1 = Rx.Observable.of(1,2,3);
 var source2 = Rx.Observable.throwError(new Error('woops'));
@@ -253,6 +280,6 @@ var subscription = source.subscribe(
 // => Error: Error: woops
 ```
 
-## Further Reading ##
-- [Using Generators For Try/Catch Operations](generators.md)
-- [Testing and Debugging Your RxJS Application](testing.md)
+## 进一步阅读 ##
+- [使用Generators进行Try/Catch操作](./generators_and_observable_sequenes.md)
+- [测试和调试您的RxJS应用程序](../testing_and_debugging.md)
