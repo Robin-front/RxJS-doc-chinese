@@ -1,6 +1,6 @@
 # RXJS中的错误处理 #
 
-异步编程中最困难的任务之一就是处理错误。与交互式样式编程不同，我们不能简单地像我们在处理代码块时使用的try / catch / finally方法。
+异步编程中最困难的任务之一就是处理错误。与交互式编程不同，我们不能简单地像我们在处理代码块时使用的try / catch / finally方法。
 
 > One of the most difficult tasks in asynchronous programming is dealing with errors.  Unlike interactive style programming, we cannot simply use the try/catch/finally approach that we use when dealing with blocking code.
 
