@@ -26,8 +26,8 @@
     "gitbook-plugin-quiz": "^0.1.0",
     "gitbook-plugin-search": "^1.1.0",
     "gitbook-plugin-search-pro": "^1.0.5",
+    "gitbook-plugin-sitemap": "^1.2.0",
     "gitbook-plugin-splitter": "0.0.6",
-    "gitbook-plugin-structured-toc": "^0.1.0",
     "gitbook-plugin-todo": "^0.1.0",
     "gitbook-plugin-video": "0.0.2"
   },

@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>{% block title %}{% endblock %}</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="google-site-verification" content="ezF4b6TIq3nrF8BJmQrK_v9BmJnUQfVVPB4xBYo7AD8" />
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="generator" content="GitBook {{ gitbook.version }}">
         {% if options.author %}<meta name="author" content="{{ options.author }}">{% endif %}
@@ -17,6 +18,13 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ staticBase }}/images/apple-touch-icon-precomposed-152.png">
         <link rel="shortcut icon" href="{{ staticBase }}/images/favicon.ico" type="image/x-icon">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8386186071288063",
+          enable_page_level_ads: true
+        });
+        </script>
         {% block style %}{% endblock %}
         {% block head %}{% endblock %}
         {{ htmlSnippet("head:end")|default("", true)|safe }}
